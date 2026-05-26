@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="https://fabrixh.github.io/fabrilar/img/favicon.png">
+<link rel="apple-touch-icon" href="https://fabrixh.github.io/fabrilar/img/favicon.png">
+<title>Fabrilar — Gym & Hogar · La Rioja</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+[data-theme="dark"]{--gold:#C9A84C;--gold-light:#E8C97A;--bg:#0A0A0A;--bg2:#111111;--bg3:#161616;--surface:#1A1A1A;--border:rgba(201,168,76,0.18);--border-hover:rgba(201,168,76,0.5);--text:#F0EDE6;--text-muted:#888880;--text-dim:#555550;--nav-bg:rgba(10,10,10,0.95);--card-hover:#1D1D1D;--section-alt:#111111;--section-alt2:#161616;--section-vis:#0D0D0D;--overlay-end:rgba(10,10,10,0.88);--overlay-start:rgba(10,10,10,0)}
+[data-theme="light"]{--gold:#A07830;--gold-light:#C9A84C;--bg:#F8F5F0;--bg2:#FFFFFF;--bg3:#F2EDE6;--surface:#FFFFFF;--border:rgba(160,120,48,0.2);--border-hover:rgba(160,120,48,0.5);--text:#1A1714;--text-muted:#6B6560;--text-dim:#A09A94;--nav-bg:rgba(248,245,240,0.96);--card-hover:#F5F0E8;--section-alt:#FFFFFF;--section-alt2:#F2EDE6;--section-vis:#EDE8E0;--overlay-end:rgba(30,20,10,0.82);--overlay-start:rgba(248,245,240,0)}
+html{scroll-behavior:smooth}
+body{font-family:"Jost",sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;font-weight:300;letter-spacing:0.02em;transition:background 0.4s,color 0.4s}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0.8rem 3rem;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:0.5px solid var(--border);transition:background 0.4s;gap:1rem}
+.nav-logo img{height:42px;width:auto;display:block;flex-shrink:0;transition:filter 0.4s}
+[data-theme="light"] .nav-logo img{filter:brightness(0) saturate(100%) invert(25%) sepia(15%) saturate(500%) hue-rotate(10deg)}
+.nav-links{display:flex;gap:1.8rem;list-style:none;align-items:center}
+.nav-links a{font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.3s;white-space:nowrap}
+.nav-links a:hover{color:var(--gold)}
+.nav-pill{background:var(--gold)!important;color:#fff!important;padding:0.45rem 1.1rem;font-weight:500}
+.theme-switch{display:flex;align-items:center;gap:0.5rem;cursor:pointer;padding:0.3rem 0.7rem;border:0.5px solid var(--border);transition:border-color 0.3s;flex-shrink:0}
+.theme-switch:hover{border-color:var(--gold)}
+.switch-track{width:32px;height:18px;background:var(--surface);border:0.5px solid var(--border);border-radius:9px;position:relative;transition:background 0.3s;flex-shrink:0}
+[data-theme="light"] .switch-track{background:var(--gold)}
+.switch-thumb{position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:var(--text-dim);transition:transform 0.3s}
+[data-theme="light"] .switch-thumb{transform:translateX(14px);background:#fff}
+.switch-icon{font-size:0.8rem;line-height:1}
+.icon-moon{opacity:1}.icon-sun{opacity:0.4}
+[data-theme="light"] .icon-moon{opacity:0.4}[data-theme="light"] .icon-sun{opacity:1}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;flex-shrink:0}
+.hamburger span{width:22px;height:1.5px;background:var(--text-muted);transition:all 0.3s;display:block}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;opacity:0;transition:opacity 0.3s}
+.mobile-menu.open{display:flex;opacity:1}
+.mobile-menu a{font-size:1.2rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.3s}
+.mobile-menu a:hover{color:var(--gold)}
+.mobile-menu .nav-pill{background:var(--gold)!important;color:#fff!important;padding:0.7rem 2rem}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:8rem 3rem 5rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 55% 60% at 75% 40%,rgba(201,168,76,0.07) 0%,transparent 65%)}
+.hero-eyebrow{font-size:0.68rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;opacity:0;animation:fadeUp 0.8s 0.2s forwards;display:flex;align-items:center;gap:1rem}
+.hero-eyebrow::before{content:"";display:inline-block;width:32px;height:1px;background:var(--gold)}
+.hero-title{font-family:"Cormorant Garamond",serif;font-size:clamp(3rem,8vw,7.5rem);font-weight:300;line-height:0.92;color:var(--text);opacity:0;animation:fadeUp 0.8s 0.35s forwards}
+.hero-title em{font-style:normal;color:var(--gold);display:block}
+.hero-sub{max-width:500px;font-size:0.93rem;line-height:1.85;color:var(--text-muted);margin-top:2.5rem;margin-bottom:3rem;opacity:0;animation:fadeUp 0.8s 0.5s forwards}
+.hero-cta{display:flex;gap:1rem;align-items:center;opacity:0;animation:fadeUp 0.8s 0.65s forwards;flex-wrap:wrap}
+.btn-primary{padding:0.85rem 2.2rem;background:var(--gold);color:#fff;border:none;cursor:pointer;font-family:"Jost",sans-serif;font-size:0.72rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;transition:background 0.3s,transform 0.2s;text-decoration:none;display:inline-block}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-1px)}
+.btn-ghost{padding:0.85rem 2.2rem;background:transparent;color:var(--text-muted);border:0.5px solid var(--border);cursor:pointer;font-family:"Jost",sans-serif;font-size:0.72rem;font-weight:300;letter-spacing:0.18em;text-transform:uppercase;transition:border-color 0.3s,color 0.3s;text-decoration:none;display:inline-block}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeIn 1s 1.3s forwards}
+.hero-scroll span{font-size:0.58rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-dim)}
+.scroll-bar{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2s ease-in-out infinite}
+section{padding:5rem 3rem;transition:background 0.4s}
+.section-label{font-size:0.62rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;display:flex;align-items:center;gap:1rem}
+.section-label::before{content:"";display:inline-block;width:28px;height:1px;background:var(--gold)}
+.section-title{font-family:"Cormorant Garamond",serif;font-size:clamp(1.8rem,4vw,3.2rem);font-weight:300;color:var(--text);line-height:1.1;margin-bottom:0.75rem}
+.section-sub{font-size:0.88rem;color:var(--text-muted);line-height:1.8;max-width:520px;margin-bottom:3rem}
+#gym{background:var(--section-alt)}#hogar{background:var(--section-alt2)}#visores{background:var(--section-vis)}#redes{background:var(--section-alt)}#contacto{background:var(--section-alt2)}
+.line-header{display:flex;align-items:center;gap:1.5rem;margin-bottom:2.5rem}
+.line-logo{height:48px;width:auto;transition:filter 0.4s}
+[data-theme="light"] .gym-logo{filter:brightness(0) saturate(100%) invert(25%) sepia(15%) saturate(500%) hue-rotate(10deg)}
+[data-theme="light"] .hogar-logo{filter:brightness(0) saturate(100%) invert(25%) sepia(15%) saturate(500%) hue-rotate(10deg)}
+.line-divider{flex:1;height:0.5px;background:var(--border)}
+.galeria{columns:3;column-gap:4px;margin-bottom:2rem}
+.galeria-item{break-inside:avoid;position:relative;overflow:hidden;margin-bottom:4px;cursor:pointer;background:var(--surface)}
+.galeria-item img{width:100%;display:block;transition:transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);filter:saturate(0.85)}
+.galeria-item:hover img{transform:scale(1.06);filter:saturate(1)}
+.galeria-overlay{position:absolute;inset:0;background:linear-gradient(to top,var(--overlay-end) 0%,var(--overlay-start) 55%);opacity:0;transition:opacity 0.4s;display:flex;flex-direction:column;justify-content:flex-end;padding:1.4rem 1.2rem}
+.galeria-item:hover .galeria-overlay{opacity:1}
+.galeria-nombre{font-family:"Cormorant Garamond",serif;font-size:1.1rem;color:#F0EDE6;margin-bottom:0.3rem;transform:translateY(6px);transition:transform 0.4s}
+.galeria-item:hover .galeria-nombre{transform:translateY(0)}
+.galeria-desc{font-size:0.72rem;line-height:1.5;color:rgba(240,237,230,0.75);transform:translateY(8px);transition:transform 0.45s;opacity:0}
+.galeria-item:hover .galeria-desc{transform:translateY(0);opacity:1}
+.galeria-tag{display:inline-block;margin-top:0.5rem;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);border:0.5px solid rgba(201,168,76,0.5);padding:0.2rem 0.6rem;transform:translateY(8px);opacity:0;transition:transform 0.5s,opacity 0.5s}
+.galeria-item:hover .galeria-tag{transform:translateY(0);opacity:1}
+.lightbox{position:fixed;inset:0;z-index:999;background:rgba(5,5,5,0.96);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.lightbox.open{opacity:1;pointer-events:all}
+.lightbox img{max-width:88vw;max-height:80vh;object-fit:contain;border:0.5px solid var(--border)}
+.lightbox-info{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);text-align:center;width:90%;max-width:500px}
+.lightbox-nombre{font-family:"Cormorant Garamond",serif;font-size:1.3rem;color:#F0EDE6;margin-bottom:0.3rem}
+.lightbox-desc{font-size:0.78rem;color:rgba(240,237,230,0.6)}
+.lightbox-close{position:absolute;top:1.2rem;right:1.5rem;font-size:1.5rem;color:var(--text-muted);cursor:pointer;transition:color 0.3s;background:none;border:none;padding:0.5rem}
+.lightbox-close:hover{color:var(--gold)}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:2rem;color:var(--text-muted);cursor:pointer;background:none;border:none;transition:color 0.3s;padding:1rem}
+.lightbox-nav:hover{color:var(--gold)}
+.lightbox-prev{left:0.5rem}.lightbox-next{right:0.5rem}
+.visor-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.visor-card{border:0.5px solid var(--border);background:var(--surface);overflow:hidden;display:flex;flex-direction:column}
+.visor-frame-wrap{position:relative;width:100%;aspect-ratio:16/9;background:var(--bg)}
+.visor-frame-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none;display:block}
+.visor-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(10,10,10,0.65);cursor:pointer;transition:opacity 0.3s;z-index:2}
+[data-theme="light"] .visor-overlay{background:rgba(240,235,228,0.75)}
+.visor-overlay.hidden{opacity:0;pointer-events:none}
+.visor-overlay-inner{display:flex;flex-direction:column;align-items:center;gap:0.8rem}
+.visor-play{width:52px;height:52px;border:0.5px solid var(--gold);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.4rem}
+.visor-play-text{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold)}
+.visor-info{padding:1.2rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.visor-label{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem}
+.visor-name{font-family:"Cormorant Garamond",serif;font-size:1.15rem;color:var(--text)}
+.visor-badge{font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;background:rgba(201,168,76,0.08);color:var(--gold);border:0.5px solid rgba(201,168,76,0.25);padding:0.25rem 0.6rem;white-space:nowrap}
+.ig-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:3rem}
+.ig-card{border:0.5px solid var(--border);background:var(--surface);padding:1.5rem;display:flex;align-items:center;gap:1rem;text-decoration:none;color:inherit;transition:border-color 0.3s,background 0.3s}
+.ig-card:hover{border-color:var(--border-hover);background:var(--card-hover)}
+.ig-avatar{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;border:0.5px solid var(--border)}
+.ig-handle{font-size:0.9rem;color:var(--text);margin-bottom:0.2rem}
+.ig-followers{font-size:0.7rem;color:var(--text-muted)}
+.ig-arrow{margin-left:auto;color:var(--text-dim);font-size:1rem;transition:all 0.3s;flex-shrink:0}
+.ig-card:hover .ig-arrow{color:var(--gold);transform:translate(2px,-2px)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-info p{font-size:0.88rem;line-height:1.9;color:var(--text-muted);margin-bottom:2rem}
+.contact-item{display:flex;align-items:center;gap:1rem;padding:1rem 0;border-bottom:0.5px solid var(--border);text-decoration:none;color:inherit;transition:border-color 0.3s}
+.contact-item:hover{border-bottom-color:var(--gold)}
+.contact-item:first-of-type{border-top:0.5px solid var(--border)}
+.contact-icon{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border:0.5px solid var(--border);color:var(--gold);font-size:0.95rem;flex-shrink:0;transition:border-color 0.3s}
+.contact-item:hover .contact-icon{border-color:var(--gold)}
+.contact-label{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:0.15rem}
+.contact-value{font-size:0.85rem;color:var(--text)}
+.contact-form{display:flex;flex-direction:column;gap:1rem}
+.form-group{display:flex;flex-direction:column;gap:0.4rem}
+.form-label{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim)}
+.form-input{background:var(--surface);border:0.5px solid var(--border);color:var(--text);padding:0.85rem 1rem;font-family:"Jost",sans-serif;font-size:0.88rem;font-weight:300;outline:none;transition:border-color 0.3s,background 0.4s;width:100%}
+.form-input:focus{border-color:var(--gold)}
+.form-input::placeholder{color:var(--text-dim)}
+textarea.form-input{resize:vertical;min-height:90px}
+footer{padding:2rem 3rem;border-top:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--bg);transition:background 0.4s;flex-wrap:wrap;gap:1rem}
+footer img{height:32px;width:auto;transition:filter 0.4s}
+[data-theme="light"] footer img{filter:brightness(0) saturate(100%) invert(25%) sepia(15%) saturate(500%) hue-rotate(10deg)}
+.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+.footer-links a{font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);text-decoration:none;transition:color 0.3s}
+.footer-links a:hover{color:var(--gold)}
+.footer-copy{font-size:0.62rem;color:var(--text-dim)}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:768px){
+  nav{padding:0.8rem 1.2rem}
+  .nav-links{display:none}.theme-switch{display:none}.hamburger{display:flex}
+  .hero{padding:7rem 1.5rem 4rem}
+  .hero-sub{font-size:0.88rem}
+  .hero-cta{flex-direction:column;align-items:flex-start;gap:0.8rem}
+  .btn-primary,.btn-ghost{width:100%;text-align:center;padding:1rem}
+  section{padding:4rem 1.5rem}
+  .line-logo{height:40px}
+  .galeria{columns:2}
+  .visor-grid{grid-template-columns:1fr}
+  .visor-info{flex-direction:column;align-items:flex-start;gap:0.5rem}
+  .ig-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr;gap:2.5rem}
+  footer{flex-direction:column;align-items:flex-start;padding:2rem 1.5rem}
+}
+@media(max-width:420px){.galeria{columns:1}.hero-title{font-size:2.8rem}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes scrollPulse{0%,100%{opacity:0.3}50%{opacity:1}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo"><img src="https://fabrixh.github.io/fabrilar/img/favicon.png" alt="Fabrilar"></div>
+  <ul class="nav-links">
+    <li><a href="#gym">Gym</a></li><li><a href="#hogar">Hogar</a></li>
+    <li><a href="#visores">Visores 3D</a></li><li><a href="#redes">Redes</a></li>
+    <li><a href="#contacto" class="nav-pill">Contacto</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:0.8rem">
+    <div class="theme-switch" onclick="toggleTheme()"><span class="switch-icon icon-moon">🌙</span><div class="switch-track"><div class="switch-thumb"></div></div><span class="switch-icon icon-sun">☀️</span></div>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#gym" onclick="closeMenu()">Gym</a><a href="#hogar" onclick="closeMenu()">Hogar</a>
+  <a href="#visores" onclick="closeMenu()">Visores 3D</a><a href="#redes" onclick="closeMenu()">Redes</a>
+  <a href="#contacto" class="nav-pill" onclick="closeMenu()">Contacto</a>
+  <div class="theme-switch" onclick="toggleTheme()" style="margin-top:1rem"><span class="switch-icon icon-moon">🌙</span><div class="switch-track"><div class="switch-thumb"></div></div><span class="switch-icon icon-sun">☀️</span></div>
+</div>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <p class="hero-eyebrow">La Rioja, Argentina · Calidad artesanal</p>
+  <h1 class="hero-title">Fabricamos<br><em>tu estilo.</em></h1>
+  <p class="hero-sub">Equipamiento de gym y muebles para el hogar, hechos a medida con materiales de primera calidad. Dos líneas, una sola pasión por el detalle.</p>
+  <div class="hero-cta"><a class="btn-primary" href="#gym">Ver productos</a><a class="btn-ghost" href="http://wa.me/543804985423" target="_blank">Pedir presupuesto</a></div>
+  <div class="hero-scroll"><div class="scroll-bar"></div><span>Scroll</span></div>
+</section>
+<section id="gym">
+  <p class="section-label reveal">Línea Fitness</p>
+  <div class="line-header reveal"><img class="line-logo gym-logo" src="https://fabrixh.github.io/fabrilar/img/favicon.png" alt="Fabrilar Gym"><div class="line-divider"></div></div>
+  <p class="section-sub reveal">Equipamiento de entrenamiento diseñado y fabricado localmente. Resistencia, diseño y precio justo.</p>
+  <div class="galeria reveal">    <div class="galeria-item" data-nombre="Mancuerna Hex" data-desc="Mancuernas hexagonales de hierro fundido. Agarre antideslizante, diseño compacto y resistente." onclick="abrirLightbox(this.querySelector('img').src, 'Mancuerna Hex', 'Mancuernas hexagonales de hierro fundido. Agarre antideslizante, diseño compacto y resistente.', 0)">
+      <img src="https://fabrixh.github.io/fabrilar/img/MancuernaHex.jpg" alt="Mancuerna Hex" loading="lazy">
+      <div class="galeria-overlay"><p class="galeria-nombre">Mancuerna Hex</p><p class="galeria-desc">Mancuernas hexagonales de hierro fundido. Agarre antideslizante, diseño compacto y resistente.</p><span class="galeria-tag">Ver detalle</span></div>
+    </div>
+    <div class="galeria-item" data-nombre="Polea Alta/Baja" data-desc="Sistema de polea de pared doble función: jalón y remo. Compacta y fácil de instalar." onclick="abrirLightbox(this.querySelector('img').src, 'Polea Alta/Baja', 'Sistema de polea de pared doble función: jalón y remo. Compacta y fácil de instalar.', 1)">
+      <img src="https://fabrixh.github.io/fabrilar/img/PoleaAltaBaja.png" alt="Polea Alta/Baja" loading="lazy">
+      <div class="galeria-overlay"><p class="galeria-nombre">Polea Alta/Baja</p><p class="galeria-desc">Sistema de polea de pared doble función: jalón y remo. Compacta y fácil de instalar.</p><span class="galeria-tag">Ver detalle</span></div>
+    </div>
+    <div class="galeria-item" data-nombre="Banco Pecho Rebatible" data-desc="Banco plano con soporte para barra. Estructura robusta, respaldo acolchado en cuero." onclick="abrirLightbox(this.querySelector('img').src, 'Banco Pecho Rebatible', 'Banco plano con soporte para barra. Estructura robusta, respaldo acolchado en cuero.', 2)">
+      <img src="https://fabrixh.github.io/fabrilar/img/BancoPechoRebatible.jpg" alt="Banco Pecho Rebatible" loading="lazy">
+      <div class="galeria-overlay"><p class="galeria-nombre">Banco Pecho Rebatible</p><p class="galeria-desc">Banco plano con soporte para barra. Estructura robusta, respaldo acolchado en cuero.</p><span class="galeria-tag">Ver detalle</span></div>
+    </div>
+    <div class="galeria-item" data-nombre="Smith con Rodamientos" data-desc="Máquina Smith con guías de rodamientos lineales. Movimiento suave y preciso." onclick="abrirLightbox(this.querySelector('img').src, 'Smith con Rodamientos', 'Máquina Smith con guías de rodamientos lineales. Movimiento suave y preciso.', 3)">
+      <img src="https://fabrixh.github.io/fabrilar/img/SmithRodamientosLineales.png" alt="Smith con Rodamientos" loading="lazy">
+      <div class="galeria-overlay"><p class="galeria-nombre">Smith con Rodamientos</p><p class="galeria-desc">Máquina Smith con guías de rodamientos lineales. Movimiento suave y preciso.</p><span class="galeria-tag">Ver detalle</span></div>
+    </div>
+    <div class="galeria-item" data-nombre="Rack Pared + Polea" data-desc="Rack de pared multifunción con sistema de polea integrado. Ahorra espacio sin sacrificar funcionalidad." onclick="abrirLightbox(this.querySelector('img').src, 'Rack Pared + Polea', 'Rack de pared multifunción con sistema de polea integrado. Ahorra espacio sin sacrificar funcionalidad.', 4)">
+      <img src="https://fabrixh.github.io/fabrilar/img/RackPared-PoleaAltaBaja.png" alt="Rack Pared + Polea" loading="lazy">
+      <div class="galeria-overlay"><p class="galeria-nombre">Rack Pared + Polea</p><p class="galeria-desc">Rack de pared multifunción con sistema de polea integrado. Ahorra espacio sin sacrificar funcionalidad.</p><span class="galeria-tag">Ver detalle</span></div>
+    </div>
+    <div class="galeria-item" data-nombre="Hack 45°" data-desc="Prensa hack a 45 grados. Estructura de hierro macizo, plataforma antideslizante." onclick="abrirLightbox(this.querySelector('img').src, 'Hack 45°', 'Prensa hack a 45 grados. Estructura de hierro macizo, plataforma antideslizante.', 5)">
+      <img src="https://fabrixh.github.io/fabrilar/img/Hack45.png" alt="Hack 45°" loading="lazy">
+      <div class="galeria-overlay"><p class="galeria-nombre">Hack 45°</p><p class="galeria-desc">Prensa hack a 45 grados. Estructura de hierro macizo, plataforma antideslizante.</p><span class="galeria-tag">Ver detalle</span></div>
+    </div>
+    <div class="galeria-item" data-nombre="Rack Pared Multiuso" data-desc="Estación completa de pared: dominadas, paralelas, soporte ajustable y espacio para polea." onclick="abrirLightbox(this.querySelector('img').src, 'Rack Pared Multiuso', 'Estación completa de pared: dominadas, paralelas, soporte ajustable y espacio para polea.', 6)">
+      <img src="https://fabrixh.github.io/fabrilar/img/4.png" alt="Rack Pared Multiuso" loading="lazy">
+      <div class="galeria-overlay"><p class="galeria-nombre">Rack Pared Multiuso</p><p class="galeria-desc">Estación completa de pared: dominadas, paralelas, soporte ajustable y espacio para polea.</p><span class="galeria-tag">Ver detalle</span></div>
+    </div></div>
+</section>
+<section id="hogar">
+  <p class="section-label reveal">Línea Hogar</p>
+  <div class="line-header reveal"><img class="line-logo hogar-logo" src="https://fabrixh.github.io/fabrilar/img/Fabrilarhogar.png" alt="Fabrilar Hogar"><div class="line-divider"></div></div>
+  <p class="section-sub reveal">Muebles y accesorios para el hogar fabricados con madera y materiales premium. Diseño que perdura.</p>
+  <div class="galeria reveal">    <div class="galeria-item" data-nombre="Estante Industrial" data-desc="Estantería con estructura de hierro y tablas de madera maciza. Diseño industrial moderno." onclick="abrirLightbox(this.querySelector('img').src, 'Estante Industrial', 'Estantería con estructura de hierro y tablas de madera maciza. Diseño industrial moderno.', 0)">
+      <img src="https://fabrixh.github.io/fabrilar/img/Estante.png" alt="Estante Industrial" loading="lazy">
+      <div class="galeria-overlay"><p class="galeria-nombre">Estante Industrial</p><p class="galeria-desc">Estantería con estructura de hierro y tablas de madera maciza. Diseño industrial moderno.</p><span class="galeria-tag">Ver detalle</span></div>
+    </div>
+    <div class="galeria-item" data-nombre="Mesa Ratonera" data-desc="Mesa auxiliar minimalista con estructura metálica y tablero de pino. Ideal para living o dormitorio." onclick="abrirLightbox(this.querySelector('img').src, 'Mesa Ratonera', 'Mesa auxiliar minimalista con estructura metálica y tablero de pino. Ideal para living o dormitorio.', 1)">
+      <img src="https://fabrixh.github.io/fabrilar/img/MesaRatonera.png" alt="Mesa Ratonera" loading="lazy">
+      <div class="galeria-overlay"><p class="galeria-nombre">Mesa Ratonera</p><p class="galeria-desc">Mesa auxiliar minimalista con estructura metálica y tablero de pino. Ideal para living o dormitorio.</p><span class="galeria-tag">Ver detalle</span></div>
+    </div>
+    <div class="galeria-item" data-nombre="Organizador Lavarropas" data-desc="Mueble organizador sobre lavarropas con estantes de madera y estructura de hierro. Funcional y estético." onclick="abrirLightbox(this.querySelector('img').src, 'Organizador Lavarropas', 'Mueble organizador sobre lavarropas con estantes de madera y estructura de hierro. Funcional y estético.', 2)">
+      <img src="https://fabrixh.github.io/fabrilar/img/OrgLavarropa.png" alt="Organizador Lavarropas" loading="lazy">
+      <div class="galeria-overlay"><p class="galeria-nombre">Organizador Lavarropas</p><p class="galeria-desc">Mueble organizador sobre lavarropas con estantes de madera y estructura de hierro. Funcional y estético.</p><span class="galeria-tag">Ver detalle</span></div>
+    </div></div>
+</section>
+<section id="visores">
+  <p class="section-label reveal">Tecnología</p>
+  <h2 class="section-title reveal">Explorá en 3D</h2>
+  <p class="section-sub reveal">Rotá, acercá y examiná cada pieza antes de encargar. Tocá el visor para activarlo.</p>
+  <div class="visor-grid">
+    <div class="visor-card reveal"><div class="visor-frame-wrap"><iframe id="iframe-tbar" src="" data-src="https://fabrixh.github.io/Tbar/" loading="lazy" allowfullscreen></iframe><div class="visor-overlay" id="overlay-tbar" onclick="activarVisor('tbar')"><div class="visor-overlay-inner"><div class="visor-play">▶</div><p class="visor-play-text">Activar visor 3D</p></div></div></div><div class="visor-info"><div><p class="visor-label">Visor 3D interactivo</p><h3 class="visor-name">T-Bar</h3></div><span class="visor-badge">360° · Tiempo real</span></div></div>
+    <div class="visor-card reveal"><div class="visor-frame-wrap"><iframe id="iframe-jaula" src="" data-src="https://fabrixh.github.io/Jaula3D/" loading="lazy" allowfullscreen></iframe><div class="visor-overlay" id="overlay-jaula" onclick="activarVisor('jaula')"><div class="visor-overlay-inner"><div class="visor-play">▶</div><p class="visor-play-text">Activar visor 3D</p></div></div></div><div class="visor-info"><div><p class="visor-label">Visor 3D interactivo</p><h3 class="visor-name">Jaula</h3></div><span class="visor-badge">360° · Tiempo real</span></div></div>
+    <div class="visor-card reveal"><div class="visor-frame-wrap"><iframe id="iframe-perchero" src="" data-src="https://fabrixh.github.io/Perchero/" loading="lazy" allowfullscreen></iframe><div class="visor-overlay" id="overlay-perchero" onclick="activarVisor('perchero')"><div class="visor-overlay-inner"><div class="visor-play">▶</div><p class="visor-play-text">Activar visor 3D</p></div></div></div><div class="visor-info"><div><p class="visor-label">Visor 3D interactivo</p><h3 class="visor-name">Perchero</h3></div><span class="visor-badge">360° · Tiempo real</span></div></div>
+  </div>
+</section>
+<section id="redes">
+  <p class="section-label reveal">Seguinos</p>
+  <h2 class="section-title reveal">Nuestras redes</h2>
+  <p class="section-sub reveal">Seguí nuestras cuentas para ver los últimos trabajos, procesos y novedades de cada línea.</p>
+  <div class="ig-grid reveal">
+    <a class="ig-card" href="https://www.instagram.com/fabri.lar" target="_blank"><div class="ig-avatar">🏃</div><div><p class="ig-handle">@fabri.lar</p><p class="ig-followers">430 seguidores · Línea Gym & principal</p></div><span class="ig-arrow">↗</span></a>
+    <a class="ig-card" href="https://www.instagram.com/fabrilar.hogar/" target="_blank"><div class="ig-avatar">🏠</div><div><p class="ig-handle">@fabrilar.hogar</p><p class="ig-followers">Línea Hogar · Cuenta nueva</p></div><span class="ig-arrow">↗</span></a>
+  </div>
+</section>
+<section id="contacto">
+  <p class="section-label reveal">Contacto</p>
+  <h2 class="section-title reveal">Hablemos de tu proyecto</h2>
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <p>Contanos qué tenés en mente y te armamos un presupuesto sin compromiso. Respondemos rápido por WhatsApp.</p>
+      <a class="contact-item" href="http://wa.me/543804985423" target="_blank"><div class="contact-icon">📱</div><div><p class="contact-label">WhatsApp</p><p class="contact-value">+54 380 498-5423</p></div></a>
+      <a class="contact-item" href="https://www.instagram.com/fabri.lar" target="_blank"><div class="contact-icon">📷</div><div><p class="contact-label">Instagram principal</p><p class="contact-value">@fabri.lar</p></div></a>
+      <a class="contact-item" href="https://www.instagram.com/fabrilar.hogar/" target="_blank"><div class="contact-icon">🏠</div><div><p class="contact-label">Instagram Hogar</p><p class="contact-value">@fabrilar.hogar</p></div></a>
+      <a class="contact-item" href="mailto:hola@fabrilar.com.ar"><div class="contact-icon">✉</div><div><p class="contact-label">Email</p><p class="contact-value">hola@fabrilar.com.ar</p></div></a>
+    </div>
+    <div class="contact-form reveal">
+      <div class="form-group"><label class="form-label">Nombre</label><input class="form-input" type="text" placeholder="Tu nombre"></div>
+      <div class="form-group"><label class="form-label">Línea de interés</label><select class="form-input"><option value="" disabled selected>Seleccioná una línea</option><option>Fabrilar Gym</option><option>Fabrilar Hogar</option><option>Ambas líneas</option></select></div>
+      <div class="form-group"><label class="form-label">Producto</label><input class="form-input" type="text" placeholder="Escritorio, perchero, equipo gym..."></div>
+      <div class="form-group"><label class="form-label">Mensaje</label><textarea class="form-input" placeholder="Contanos tu idea, medidas, materiales..."></textarea></div>
+      <a class="btn-primary" href="http://wa.me/543804985423" target="_blank" style="align-self:flex-start;text-align:center">Consultar por WhatsApp</a>
+    </div>
+  </div>
+</section>
+<footer>
+  <img src="https://fabrixh.github.io/fabrilar/img/favicon.png" alt="Fabrilar">
+  <div class="footer-links"><a href="https://www.instagram.com/fabri.lar" target="_blank">@fabri.lar</a><a href="https://www.instagram.com/fabrilar.hogar/" target="_blank">@fabrilar.hogar</a><a href="http://wa.me/543804985423" target="_blank">WhatsApp</a></div>
+  <p class="footer-copy">© 2026 · fabrilar.com.ar · La Rioja</p>
+</footer>
+<div class="lightbox" id="lightbox" onclick="cerrarLightbox(event)">
+  <button class="lightbox-close" onclick="cerrarLightbox()">✕</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1);event.stopPropagation()">‹</button>
+  <img id="lightbox-img" src="" alt="">
+  <button class="lightbox-nav lightbox-next" onclick="navLightbox(1);event.stopPropagation()">›</button>
+  <div class="lightbox-info"><p class="lightbox-nombre" id="lightbox-nombre"></p><p class="lightbox-desc" id="lightbox-desc"></p></div>
+</div>
+<script>
+var galeriaItems=[],lbIndex=0;
+function abrirLightbox(src,nombre,desc,index){var lb=document.getElementById("lightbox");document.getElementById("lightbox-img").src=src;document.getElementById("lightbox-nombre").textContent=nombre;document.getElementById("lightbox-desc").textContent=desc;lbIndex=index;lb.classList.add("open");document.body.style.overflow="hidden";}
+function cerrarLightbox(e){if(!e||e.target===document.getElementById("lightbox")||e.target.classList.contains("lightbox-close")){document.getElementById("lightbox").classList.remove("open");document.body.style.overflow="";}}
+function navLightbox(dir){lbIndex=(lbIndex+dir+galeriaItems.length)%galeriaItems.length;var item=galeriaItems[lbIndex];document.getElementById("lightbox-img").src=item.src;document.getElementById("lightbox-nombre").textContent=item.nombre;document.getElementById("lightbox-desc").textContent=item.desc;}
+document.addEventListener("keydown",function(e){var lb=document.getElementById("lightbox");if(!lb.classList.contains("open"))return;if(e.key==="Escape")cerrarLightbox({target:lb});if(e.key==="ArrowRight")navLightbox(1);if(e.key==="ArrowLeft")navLightbox(-1);});
+function toggleTheme(){var html=document.documentElement;var next=html.getAttribute("data-theme")==="dark"?"light":"dark";html.setAttribute("data-theme",next);localStorage.setItem("fabrilar-theme",next);}
+(function(){var saved=localStorage.getItem("fabrilar-theme");if(saved)document.documentElement.setAttribute("data-theme",saved);})();
+function toggleMenu(){var h=document.getElementById("hamburger");var m=document.getElementById("mobileMenu");h.classList.toggle("open");m.classList.toggle("open");document.body.style.overflow=m.classList.contains("open")?"hidden":"";}
+function closeMenu(){document.getElementById("hamburger").classList.remove("open");document.getElementById("mobileMenu").classList.remove("open");document.body.style.overflow="";}
+function activarVisor(id){var iframe=document.getElementById("iframe-"+id);var overlay=document.getElementById("overlay-"+id);iframe.src=iframe.getAttribute("data-src");overlay.classList.add("hidden");}
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e,i){if(e.isIntersecting){setTimeout(function(){e.target.classList.add("visible");},i*70);}});},{threshold:0.08});
+document.querySelectorAll(".reveal").forEach(function(el){obs.observe(el);});
+document.querySelectorAll(".galeria-item").forEach(function(el,i){var img=el.querySelector("img");galeriaItems.push({src:img?img.src:"",nombre:el.getAttribute("data-nombre")||"",desc:el.getAttribute("data-desc")||""});});
+</script>
+</body>
+</html>
