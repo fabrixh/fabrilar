@@ -78,6 +78,19 @@ section{padding:5rem 3rem;transition:background 0.4s}
 .galeria-item:hover .galeria-desc{transform:translateY(0);opacity:1}
 .galeria-tag{display:inline-block;margin-top:0.5rem;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);border:0.5px solid rgba(201,168,76,0.5);padding:0.2rem 0.6rem;transform:translateY(8px);opacity:0;transition:transform 0.5s,opacity 0.5s}
 .galeria-item:hover .galeria-tag{transform:translateY(0);opacity:1}
+
+.galeria-precio{margin-top:0.6rem;display:flex;flex-direction:column;gap:0.3rem}
+.precio-variante{display:flex;align-items:center;justify-content:space-between;gap:0.8rem}
+.precio-label{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(240,237,230,0.6)}
+.precio-valor{font-size:0.95rem;font-weight:500;color:var(--gold);white-space:nowrap}
+.precio-unico{font-size:1.05rem;font-weight:500;color:var(--gold);margin-top:0.4rem}
+.precio-combo{display:flex;flex-direction:column;gap:0.2rem;border-top:0.5px solid rgba(201,168,76,0.25);padding-top:0.5rem;margin-top:0.3rem}
+.precio-combo-item{display:flex;justify-content:space-between;font-size:0.72rem;color:rgba(240,237,230,0.55)}
+.precio-combo-item span:last-child{color:rgba(201,168,76,0.75)}
+.btn-consultar{display:inline-flex;align-items:center;gap:0.5rem;margin-top:0.9rem;padding:0.55rem 1.1rem;background:transparent;border:0.5px solid rgba(201,168,76,0.5);color:var(--gold);font-family:"Jost",sans-serif;font-size:0.62rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;transition:background 0.3s,border-color 0.3s;text-decoration:none}
+.btn-consultar:hover{background:rgba(201,168,76,0.1);border-color:var(--gold)}
+.galeria-item .galeria-overlay{padding-bottom:1rem}
+
 .lightbox{position:fixed;inset:0;z-index:999;background:rgba(5,5,5,0.96);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s}
 .lightbox.open{opacity:1;pointer-events:all}
 .lightbox img{max-width:88vw;max-height:80vh;object-fit:contain;border:0.5px solid var(--border)}
@@ -200,31 +213,73 @@ footer img{height:32px;width:auto;transition:filter 0.4s}
   <p class="section-sub reveal">Equipamiento de entrenamiento diseñado y fabricado localmente. Resistencia, diseño y precio justo.</p>
   <div class="galeria reveal">    <div class="galeria-item" data-nombre="Mancuerna Hex" data-desc="Mancuernas hexagonales de hierro fundido. Agarre antideslizante, diseño compacto y resistente." onclick="abrirLightbox(this.querySelector('img').src, 'Mancuerna Hex', 'Mancuernas hexagonales de hierro fundido. Agarre antideslizante, diseño compacto y resistente.', 0)">
       <img src="https://fabrixh.github.io/fabrilar/img/MancuernaHex.jpg" alt="Mancuerna Hex" loading="lazy">
-      <div class="galeria-overlay"><p class="galeria-nombre">Mancuerna Hex</p><p class="galeria-desc">Mancuernas hexagonales de hierro fundido. Agarre antideslizante, diseño compacto y resistente.</p><span class="galeria-tag">Ver detalle</span></div>
+      <div class="galeria-overlay">
+<p class="galeria-nombre">Mancuerna Hex</p>
+<p class="galeria-desc">Mancuernas hexagonales de hierro fundido. Agarre antideslizante, diseño compacto y resistente.</p>
+<div class="galeria-precio"><div class="precio-variante"><span class="precio-label">3 kg</span><span class="precio-valor">$20.000</span></div>
+<div class="precio-variante"><span class="precio-label">5 kg</span><span class="precio-valor">$25.000</span></div>
+<div class="precio-variante"><span class="precio-label">6 kg</span><span class="precio-valor">$27.000</span></div></div>
+<button class="btn-consultar" onclick="event.stopPropagation();consultarWA('Mancuerna Hex','desde $20.000 (3kg) · $25.000 (5kg) · $27.000 (6kg)')">💬 Consultar</button>
+</div>
     </div>
     <div class="galeria-item" data-nombre="Polea Alta/Baja" data-desc="Sistema de polea de pared doble función: jalón y remo. Compacta y fácil de instalar." onclick="abrirLightbox(this.querySelector('img').src, 'Polea Alta/Baja', 'Sistema de polea de pared doble función: jalón y remo. Compacta y fácil de instalar.', 1)">
       <img src="https://fabrixh.github.io/fabrilar/img/PoleaAltaBaja.png" alt="Polea Alta/Baja" loading="lazy">
-      <div class="galeria-overlay"><p class="galeria-nombre">Polea Alta/Baja</p><p class="galeria-desc">Sistema de polea de pared doble función: jalón y remo. Compacta y fácil de instalar.</p><span class="galeria-tag">Ver detalle</span></div>
+      <div class="galeria-overlay">
+<p class="galeria-nombre">Polea Alta/Baja</p>
+<p class="galeria-desc">Sistema de polea de pared doble función: jalón y remo. Compacta y fácil de instalar.</p>
+<div class="galeria-precio"><span class="precio-unico">$179.000</span></div>
+<button class="btn-consultar" onclick="event.stopPropagation();consultarWA('Polea Alta/Baja','$179.000')">💬 Consultar</button>
+</div>
     </div>
     <div class="galeria-item" data-nombre="Banco Pecho Rebatible" data-desc="Banco plano con soporte para barra. Estructura robusta, respaldo acolchado en cuero." onclick="abrirLightbox(this.querySelector('img').src, 'Banco Pecho Rebatible', 'Banco plano con soporte para barra. Estructura robusta, respaldo acolchado en cuero.', 2)">
       <img src="https://fabrixh.github.io/fabrilar/img/BancoPechoRebatible.jpg" alt="Banco Pecho Rebatible" loading="lazy">
-      <div class="galeria-overlay"><p class="galeria-nombre">Banco Pecho Rebatible</p><p class="galeria-desc">Banco plano con soporte para barra. Estructura robusta, respaldo acolchado en cuero.</p><span class="galeria-tag">Ver detalle</span></div>
+      <div class="galeria-overlay">
+<p class="galeria-nombre">Banco Pecho Rebatible</p>
+<p class="galeria-desc">Banco plano con soporte para barra. Estructura robusta, respaldo acolchado en cuero.</p>
+<div class="galeria-precio"><span class="precio-unico">$129.000</span></div>
+<button class="btn-consultar" onclick="event.stopPropagation();consultarWA('Banco Pecho Rebatible','$129.000')">💬 Consultar</button>
+</div>
     </div>
     <div class="galeria-item" data-nombre="Smith con Rodamientos" data-desc="Máquina Smith con guías de rodamientos lineales. Movimiento suave y preciso." onclick="abrirLightbox(this.querySelector('img').src, 'Smith con Rodamientos', 'Máquina Smith con guías de rodamientos lineales. Movimiento suave y preciso.', 3)">
       <img src="https://fabrixh.github.io/fabrilar/img/SmithRodamientosLineales.png" alt="Smith con Rodamientos" loading="lazy">
-      <div class="galeria-overlay"><p class="galeria-nombre">Smith con Rodamientos</p><p class="galeria-desc">Máquina Smith con guías de rodamientos lineales. Movimiento suave y preciso.</p><span class="galeria-tag">Ver detalle</span></div>
+      <div class="galeria-overlay">
+<p class="galeria-nombre">Smith con Rodamientos</p>
+<p class="galeria-desc">Máquina Smith con guías de rodamientos lineales. Movimiento suave y preciso.</p>
+<div class="galeria-precio"><span class="precio-unico">$799.000</span></div>
+<button class="btn-consultar" onclick="event.stopPropagation();consultarWA('Jaula Smith con Rodamientos','$799.000')">💬 Consultar</button>
+</div>
     </div>
     <div class="galeria-item" data-nombre="Rack Pared + Polea" data-desc="Rack de pared multifunción con sistema de polea integrado. Ahorra espacio sin sacrificar funcionalidad." onclick="abrirLightbox(this.querySelector('img').src, 'Rack Pared + Polea', 'Rack de pared multifunción con sistema de polea integrado. Ahorra espacio sin sacrificar funcionalidad.', 4)">
       <img src="https://fabrixh.github.io/fabrilar/img/RackPared-PoleaAltaBaja.png" alt="Rack Pared + Polea" loading="lazy">
-      <div class="galeria-overlay"><p class="galeria-nombre">Rack Pared + Polea</p><p class="galeria-desc">Rack de pared multifunción con sistema de polea integrado. Ahorra espacio sin sacrificar funcionalidad.</p><span class="galeria-tag">Ver detalle</span></div>
+      <div class="galeria-overlay">
+<p class="galeria-nombre">Rack Pared + Polea</p>
+<p class="galeria-desc">Rack de pared multifunción con sistema de polea integrado. Ahorra espacio sin sacrificar funcionalidad.</p>
+<div class="galeria-precio"><div class="precio-combo">
+<div class="precio-combo-item"><span>Rack de Pared</span><span>$499.000</span></div>
+<div class="precio-combo-item"><span>Polea Alta/Baja</span><span>$179.000</span></div>
+</div>
+<div class="precio-variante" style="margin-top:0.5rem"><span class="precio-label">Combo total</span><span class="precio-valor">$678.000</span></div></div>
+<button class="btn-consultar" onclick="event.stopPropagation();consultarWA('Rack Pared + Polea (combo)','$678.000 (Rack $499.000 + Polea $179.000)')">💬 Consultar</button>
+</div>
     </div>
     <div class="galeria-item" data-nombre="Hack 45°" data-desc="Prensa hack a 45 grados. Estructura de hierro macizo, plataforma antideslizante." onclick="abrirLightbox(this.querySelector('img').src, 'Hack 45°', 'Prensa hack a 45 grados. Estructura de hierro macizo, plataforma antideslizante.', 5)">
       <img src="https://fabrixh.github.io/fabrilar/img/Hack45.png" alt="Hack 45°" loading="lazy">
-      <div class="galeria-overlay"><p class="galeria-nombre">Hack 45°</p><p class="galeria-desc">Prensa hack a 45 grados. Estructura de hierro macizo, plataforma antideslizante.</p><span class="galeria-tag">Ver detalle</span></div>
+      <div class="galeria-overlay">
+<p class="galeria-nombre">Hack 45°</p>
+<p class="galeria-desc">Prensa hack a 45 grados. Estructura de hierro macizo, plataforma antideslizante.</p>
+<div class="galeria-precio"><span class="precio-unico">$850.000</span></div>
+<button class="btn-consultar" onclick="event.stopPropagation();consultarWA('Hack 45°','$850.000')">💬 Consultar</button>
+</div>
     </div>
     <div class="galeria-item" data-nombre="Rack Pared Multiuso" data-desc="Estación completa de pared: dominadas, paralelas, soporte ajustable y espacio para polea." onclick="abrirLightbox(this.querySelector('img').src, 'Rack Pared Multiuso', 'Estación completa de pared: dominadas, paralelas, soporte ajustable y espacio para polea.', 6)">
       <img src="https://fabrixh.github.io/fabrilar/img/4.png" alt="Rack Pared Multiuso" loading="lazy">
-      <div class="galeria-overlay"><p class="galeria-nombre">Rack Pared Multiuso</p><p class="galeria-desc">Estación completa de pared: dominadas, paralelas, soporte ajustable y espacio para polea.</p><span class="galeria-tag">Ver detalle</span></div>
+      <div class="galeria-overlay">
+<p class="galeria-nombre">Barra Dominadas Multiuso</p>
+<p class="galeria-desc">Estación completa de pared: dominadas, paralelas, soporte ajustable y espacio para polea.</p>
+<div class="galeria-precio"><div class="precio-variante"><span class="precio-label">Estándar</span><span class="precio-valor">$69.000</span></div>
+<div class="precio-variante"><span class="precio-label">Tapizada</span><span class="precio-valor">$99.000</span></div></div>
+<button class="btn-consultar" onclick="event.stopPropagation();consultarWA('Barra Dominadas Multiuso','desde $69.000 (estándar) · $99.000 (tapizada)')">💬 Consultar</button>
+</div>
     </div></div>
 </section>
 <section id="hogar">
@@ -233,15 +288,31 @@ footer img{height:32px;width:auto;transition:filter 0.4s}
   <p class="section-sub reveal">Muebles y accesorios para el hogar fabricados con madera y materiales premium. Diseño que perdura.</p>
   <div class="galeria reveal">    <div class="galeria-item" data-nombre="Estante Industrial" data-desc="Estantería con estructura de hierro y tablas de madera maciza. Diseño industrial moderno." onclick="abrirLightbox(this.querySelector('img').src, 'Estante Industrial', 'Estantería con estructura de hierro y tablas de madera maciza. Diseño industrial moderno.', 0)">
       <img src="https://fabrixh.github.io/fabrilar/img/Estante.png" alt="Estante Industrial" loading="lazy">
-      <div class="galeria-overlay"><p class="galeria-nombre">Estante Industrial</p><p class="galeria-desc">Estantería con estructura de hierro y tablas de madera maciza. Diseño industrial moderno.</p><span class="galeria-tag">Ver detalle</span></div>
+      <div class="galeria-overlay">
+<p class="galeria-nombre">Estante Industrial</p>
+<p class="galeria-desc">Estantería con estructura de hierro y tablas de madera maciza. Diseño industrial moderno.</p>
+<div class="galeria-precio"><div class="precio-variante"><span class="precio-label">190×100 cm</span><span class="precio-valor">$140.000</span></div>
+<div class="precio-variante"><span class="precio-label">190×150 cm</span><span class="precio-valor">$180.000</span></div></div>
+<button class="btn-consultar" onclick="event.stopPropagation();consultarWA('Estante Industrial','desde $140.000 (190×100cm) · $180.000 (190×150cm)')">💬 Consultar</button>
+</div>
     </div>
     <div class="galeria-item" data-nombre="Mesa Ratonera" data-desc="Mesa auxiliar minimalista con estructura metálica y tablero de pino. Ideal para living o dormitorio." onclick="abrirLightbox(this.querySelector('img').src, 'Mesa Ratonera', 'Mesa auxiliar minimalista con estructura metálica y tablero de pino. Ideal para living o dormitorio.', 1)">
       <img src="https://fabrixh.github.io/fabrilar/img/MesaRatonera.png" alt="Mesa Ratonera" loading="lazy">
-      <div class="galeria-overlay"><p class="galeria-nombre">Mesa Ratonera</p><p class="galeria-desc">Mesa auxiliar minimalista con estructura metálica y tablero de pino. Ideal para living o dormitorio.</p><span class="galeria-tag">Ver detalle</span></div>
+      <div class="galeria-overlay">
+<p class="galeria-nombre">Mesa Ratonera</p>
+<p class="galeria-desc">Mesa auxiliar minimalista con estructura metálica y tablero de pino. Ideal para living o dormitorio.</p>
+<div class="galeria-precio"><span class="precio-unico">$100.000</span></div>
+<button class="btn-consultar" onclick="event.stopPropagation();consultarWA('Mesa Ratonera','$100.000')">💬 Consultar</button>
+</div>
     </div>
     <div class="galeria-item" data-nombre="Organizador Lavarropas" data-desc="Mueble organizador sobre lavarropas con estantes de madera y estructura de hierro. Funcional y estético." onclick="abrirLightbox(this.querySelector('img').src, 'Organizador Lavarropas', 'Mueble organizador sobre lavarropas con estantes de madera y estructura de hierro. Funcional y estético.', 2)">
       <img src="https://fabrixh.github.io/fabrilar/img/OrgLavarropa.png" alt="Organizador Lavarropas" loading="lazy">
-      <div class="galeria-overlay"><p class="galeria-nombre">Organizador Lavarropas</p><p class="galeria-desc">Mueble organizador sobre lavarropas con estantes de madera y estructura de hierro. Funcional y estético.</p><span class="galeria-tag">Ver detalle</span></div>
+      <div class="galeria-overlay">
+<p class="galeria-nombre">Organizador Lavarropas</p>
+<p class="galeria-desc">Mueble organizador sobre lavarropas con estantes de madera y estructura de hierro. Funcional y estético.</p>
+<div class="galeria-precio"><span class="precio-unico">$69.000</span></div>
+<button class="btn-consultar" onclick="event.stopPropagation();consultarWA('Organizador Lavarropas','$69.000')">💬 Consultar</button>
+</div>
     </div></div>
 </section>
 <section id="visores">
@@ -296,6 +367,17 @@ footer img{height:32px;width:auto;transition:filter 0.4s}
   <div class="lightbox-info"><p class="lightbox-nombre" id="lightbox-nombre"></p><p class="lightbox-desc" id="lightbox-desc"></p></div>
 </div>
 <script>
+
+function consultarWA(producto, precio) {
+  var msg = encodeURIComponent(
+    '¡Hola! Me interesa el siguiente producto de Fabrilar:\n\n' +
+    '📦 ' + producto + '\n' +
+    '💰 ' + precio + '\n\n' +
+    '¿Podría darme más información y disponibilidad?'
+  );
+  window.open('https://wa.me/543804985423?text=' + msg, '_blank');
+}
+
 var galeriaItems=[],lbIndex=0;
 function abrirLightbox(src,nombre,desc,index){var lb=document.getElementById("lightbox");document.getElementById("lightbox-img").src=src;document.getElementById("lightbox-nombre").textContent=nombre;document.getElementById("lightbox-desc").textContent=desc;lbIndex=index;lb.classList.add("open");document.body.style.overflow="hidden";}
 function cerrarLightbox(e){if(!e||e.target===document.getElementById("lightbox")||e.target.classList.contains("lightbox-close")){document.getElementById("lightbox").classList.remove("open");document.body.style.overflow="";}}
