@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Depósito Exterior 3D – Fabrilar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#101012;
+    --panel:rgba(20,20,23,.88);
+    --line:rgba(201,168,76,.28);
+    --text:#f0ede6;
+    --muted:#9a958a;
+    --accent:#C9A84C;
+    --btn:rgba(255,255,255,.05);
+    --btn-hover:rgba(201,168,76,.15);
+  }
+  .light{
+    --bg:#f2f0ec;
+    --panel:rgba(255,255,255,.92);
+    --line:rgba(140,110,40,.30);
+    --text:#191713;
+    --muted:#6e685c;
+    --accent:#A07F28;
+    --btn:rgba(0,0,0,.05);
+    --btn-hover:rgba(160,127,40,.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;overflow:hidden}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Barlow',system-ui,sans-serif;
+    transition:background .4s,color .4s;
+  }
+  #scene{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none}
+
+  /* ---------- header ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:10;
+    padding:14px 18px 10px;
+    display:flex;flex-direction:column;gap:6px;
+    pointer-events:none;
+  }
+  .brand{
+    pointer-events:auto;
+    text-decoration:none;
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:700;font-size:15px;letter-spacing:.42em;
+    color:var(--accent);
+  }
+  h1{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:700;font-size:clamp(28px,7vw,44px);
+    letter-spacing:.06em;line-height:1;
+  }
+  .sub{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:500;font-size:12px;letter-spacing:.3em;
+    color:var(--muted);
+  }
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+  .chip{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:11px;font-weight:600;letter-spacing:.14em;
+    padding:4px 9px;border:1px solid var(--line);border-radius:3px;
+    color:var(--text);background:var(--btn);
+  }
+  .chip b{color:var(--accent);font-weight:700}
+
+  /* ---------- controls ---------- */
+  .hint{
+    position:fixed;left:0;right:0;bottom:96px;z-index:10;
+    text-align:center;font-family:'Barlow Condensed',sans-serif;
+    font-size:11px;letter-spacing:.28em;color:var(--muted);
+    pointer-events:none;
+  }
+  nav{
+    position:fixed;left:0;right:0;bottom:0;z-index:10;
+    display:flex;gap:6px;justify-content:flex-start;
+    padding:10px 14px calc(14px + env(safe-area-inset-bottom));
+    overflow-x:auto;scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+  nav::-webkit-scrollbar{display:none}
+  nav button{
+    flex:0 0 auto;
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:12px;font-weight:600;letter-spacing:.16em;
+    color:var(--text);background:var(--panel);
+    border:1px solid var(--line);border-radius:4px;
+    padding:9px 13px;cursor:pointer;
+    backdrop-filter:blur(8px);
+    transition:background .2s,color .2s,border-color .2s;
+  }
+  nav button:hover{background:var(--btn-hover)}
+  nav button.on{color:var(--accent);border-color:var(--accent)}
+  nav button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  /* ---------- sun panel ---------- */
+  #sunPanel{
+    position:fixed;left:14px;right:14px;bottom:calc(66px + env(safe-area-inset-bottom));
+    z-index:12;display:none;max-width:430px;margin:0 auto;
+    background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    padding:12px 16px;backdrop-filter:blur(10px);
+  }
+  #sunPanel.open{display:block}
+  .sun-label{
+    font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;
+    letter-spacing:.18em;color:var(--accent);text-align:center;margin-bottom:8px;
+  }
+  .sun-row{display:flex;align-items:center;gap:10px;margin:7px 0}
+  .sun-row span{
+    font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;
+    letter-spacing:.14em;color:var(--muted);width:58px;flex:none;
+  }
+  .sun-row input{flex:1;accent-color:var(--accent);min-height:22px}
+
+  /* ---------- info panel ---------- */
+  #info{
+    position:fixed;inset:0;z-index:20;display:none;
+    align-items:flex-end;justify-content:center;
+    background:rgba(0,0,0,.45);
+  }
+  #info.open{display:flex}
+  .sheet{
+    width:min(560px,100%);max-height:78vh;overflow-y:auto;
+    background:var(--panel);backdrop-filter:blur(14px);
+    border:1px solid var(--line);border-bottom:none;
+    border-radius:14px 14px 0 0;
+    padding:20px 22px calc(24px + env(safe-area-inset-bottom));
+  }
+  .sheet h2{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:18px;font-weight:700;letter-spacing:.24em;
+    color:var(--accent);margin-bottom:14px;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .sheet h2 button{
+    background:none;border:none;color:var(--muted);
+    font-family:inherit;font-size:13px;letter-spacing:.16em;cursor:pointer;
+  }
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  td{padding:8px 4px;border-bottom:1px solid var(--line);vertical-align:top}
+  td:first-child{color:var(--muted);width:42%;font-weight:500}
+  td:last-child{font-weight:600}
+  .sheet p{margin-top:14px;font-size:13px;color:var(--muted);line-height:1.5}
+
+  /* ---------- whatsapp ---------- */
+  .wa{
+    position:fixed;right:14px;bottom:calc(64px + env(safe-area-inset-bottom));z-index:11;
+    width:48px;height:48px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--panel);border:1px solid var(--accent);
+    backdrop-filter:blur(8px);
+    transition:transform .2s;
+  }
+  .wa:hover{transform:scale(1.08)}
+  .wa svg{width:24px;height:24px;fill:var(--accent)}
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important}
+  }
+</style>
+</head>
+<body>
+<canvas id="scene"></canvas>
+
+<header>
+  <a class="brand" href="https://www.instagram.com/fabri.lar/" target="_blank" rel="noopener">FABRILAR</a>
+  <h1>DEPÓSITO EXTERIOR 3D</h1>
+  <div class="sub">200 × 80 × 216 CM · FABRICACIÓN A MEDIDA · LA RIOJA</div>
+  <div class="chips">
+    <span class="chip">ESTRUCTURA <b>CAÑO 40×40</b></span>
+    <span class="chip" id="chipChapa">CHAPA <b>ACANALADA</b></span>
+    <span class="chip"><b>2 PUERTAS</b> + PORTACANDADO</span>
+    <span class="chip">TECHO CON <b>VOLADIZO</b></span>
+  </div>
+</header>
+
+<div class="hint">ARRASTRÁ PARA ROTAR · SCROLL O PELLIZCÁ PARA ZOOM</div>
+
+<nav>
+  <button id="bAuto" class="on">⟳ AUTO</button>
+  <button data-view="iso">ISO</button>
+  <button data-view="front">FRENTE</button>
+  <button data-view="side">LATERAL</button>
+  <button data-view="top">SUPERIOR</button>
+  <button id="bDoors">ABRIR PUERTAS</button>
+  <button id="bColor">⬜ BLANCO</button>
+  <button id="bProfile">▤ TRAPEZOIDAL</button>
+  <button id="bFrame">ESTRUCTURA</button>
+  <button id="bSun">☀ SOL</button>
+  <button id="bEnv">🌄 AMBIENTE</button>
+  <button id="bInfo">INFO</button>
+  <button id="bTheme">☀ CLARO</button>
+</nav>
+
+<div id="sunPanel">
+  <div class="sun-label" id="sunLabel">☀ JULIO · 12:00 HS</div>
+  <div class="sun-row"><span>MES</span><input type="range" id="sMonth" min="0" max="11" step="1" value="6"></div>
+  <div class="sun-row"><span>HORA</span><input type="range" id="sHour" min="7" max="19" step="0.5" value="12"></div>
+  <div class="sun-row"><span>ORIENT.</span><input type="range" id="sOrient" min="0" max="355" step="5" value="0"></div>
+</div>
+
+<a class="wa" href="https://wa.me/543804985423?text=Hola!%20Me%20interesa%20el%20dep%C3%B3sito%20exterior%20de%20200x80x216" target="_blank" rel="noopener" aria-label="Consultar por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 .5C5.7.5.6 5.6.6 11.9c0 2 .5 4 1.5 5.7L.5 23.5l6.1-1.6c1.7.9 3.5 1.4 5.4 1.4 6.3 0 11.4-5.1 11.4-11.4C23.4 5.6 18.3.5 12 .5zm0 20.8c-1.7 0-3.4-.5-4.8-1.3l-.3-.2-3.6 1 1-3.5-.2-.4c-1-1.5-1.5-3.2-1.5-5 0-5.2 4.2-9.4 9.4-9.4s9.4 4.2 9.4 9.4-4.2 9.4-9.4 9.4zm5.2-7c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.8-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>
+</a>
+
+<div id="info">
+  <div class="sheet">
+    <h2>ESPECIFICACIONES <button id="bClose">✕ CERRAR</button></h2>
+    <table>
+      <tr><td>Tipo</td><td>Depósito exterior de chapa</td></tr>
+      <tr><td>Estructura</td><td>Caño estructural 40×40×1.2 mm</td></tr>
+      <tr><td>Revestimiento</td><td id="specChapa">Chapa acanalada galvanizada C25</td></tr>
+      <tr><td>Techo</td><td>Chapa acanalada con voladizo y caída</td></tr>
+      <tr><td>Puertas</td><td>2 hojas con bisagras reforzadas</td></tr>
+      <tr><td>Cierre</td><td>Portacandado central</td></tr>
+      <tr><td>Terminación</td><td>Esmalte 3en1 negro mate</td></tr>
+      <tr><td>Ancho</td><td>200 cm</td></tr>
+      <tr><td>Profundidad</td><td>80 cm</td></tr>
+      <tr><td>Alto</td><td>216 cm</td></tr>
+    </table>
+    <p>Fabricación a medida: se adaptan medidas, cantidad de puertas y estantería interior según necesidad. Consultá por WhatsApp.</p>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  const W=200, D=80, H=216, T=4;           // cm
+  const canvas=document.getElementById('scene');
+  const renderer=new THREE.WebGLRenderer({canvas,antialias:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  renderer.shadowMap.enabled=true;
+  renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(42,1,1,9000);
+  const target=new THREE.Vector3(0,H*0.48,0);
+
+  /* ---------- lights ---------- */
+  const hemi=new THREE.HemisphereLight(0xffffff,0x333333,0.85);
+  scene.add(hemi);
+  const key=new THREE.DirectionalLight(0xfff2dd,1.15);
+  key.position.set(260,420,240);
+  key.castShadow=true;
+  key.shadow.mapSize.set(2048,2048);
+  key.shadow.camera.left=-520; key.shadow.camera.right=520;
+  key.shadow.camera.top=520;  key.shadow.camera.bottom=-520;
+  key.shadow.camera.far=2500;
+  key.shadow.bias=-0.0004;
+  scene.add(key);
+  const rim=new THREE.DirectionalLight(0xc9d4ff,0.35);
+  rim.position.set(-300,180,-260);
+  scene.add(rim);
+
+  /* ---------- materials ---------- */
+  const matSheet=new THREE.MeshStandardMaterial({color:0x1c1c1e,metalness:0.55,roughness:0.42,side:THREE.DoubleSide});
+  const matTrim =new THREE.MeshStandardMaterial({color:0x141416,metalness:0.6,roughness:0.35});
+  const matFrame=new THREE.MeshStandardMaterial({color:0x8f8f92,metalness:0.85,roughness:0.32});
+  const matHinge=new THREE.MeshStandardMaterial({color:0xb8b8bc,metalness:0.9,roughness:0.25});
+
+  /* ---------- helpers ---------- */
+  const profiles={
+    acanalada:{label:'ACANALADA',res:1.4,fn:x=>Math.sin((x/7.6)*Math.PI*2)*0.9},
+    trapezoidal:{label:'TRAPEZOIDAL',res:2.2,fn:x=>{
+      const P=15,A=2.4,t=(((x%P)+P)%P)/P;
+      if(t<0.40)return 0;
+      if(t<0.52)return A*(t-0.40)/0.12;
+      if(t<0.88)return A;
+      return A*(1-(t-0.88)/0.12);
+    }}
+  };
+  let profile='acanalada';
+  function sheetGeo(w,h){
+    const pr=profiles[profile];
+    const segs=Math.max(24,Math.round(w*pr.res));
+    const g=new THREE.PlaneGeometry(w,h,segs,1);
+    const p=g.attributes.position;
+    for(let i=0;i<p.count;i++)p.setZ(i,pr.fn(p.getX(i)));
+    g.computeVertexNormals();
+    return g;
+  }
+  function bar(sx,sy,sz,x,y,z,mat,parent){
+    const m=new THREE.Mesh(new THREE.BoxGeometry(sx,sy,sz),mat);
+    m.position.set(x,y,z);
+    m.castShadow=true;
+    parent.add(m);
+    return m;
+  }
+
+  const shed=new THREE.Group(); scene.add(shed);
+  const frame=new THREE.Group(); shed.add(frame);
+  const clad=new THREE.Group();  shed.add(clad);
+  const doorsG=new THREE.Group(); shed.add(doorsG);
+
+  /* ---------- frame (caño 40x40) ---------- */
+  const x1=-W/2+T/2, x2=W/2-T/2, z1=-D/2+T/2, z2=D/2-T/2;
+  // verticals: 4 corners + 2 intermediate back (front opening stays clear for doors)
+  [[x1,z1],[x2,z1],[x1,z2],[x2,z2],[-W/6,z1],[W/6,z1]]
+    .forEach(([x,z])=>bar(T,H,T,x,H/2,z,matFrame,frame));
+  // base + top perimeter
+  [T/2,H-T/2].forEach(y=>{
+    bar(W-2*T,T,T,0,y,z1,matFrame,frame);
+    bar(W-2*T,T,T,0,y,z2,matFrame,frame);
+    bar(T,T,D,x1,y,0,matFrame,frame);
+    bar(T,T,D,x2,y,0,matFrame,frame);
+  });
+  // mid rail (sides + back)
+  const ym=H*0.55;
+  bar(W-2*T,T,T,0,ym,z1,matFrame,frame);
+  bar(T,T,D-2*T,x1,ym,0,matFrame,frame);
+  bar(T,T,D-2*T,x2,ym,0,matFrame,frame);
+  // roof cross members
+  [-W/6,W/6].forEach(x=>bar(T,T,D-2*T,x,H-T/2,0,matFrame,frame));
+
+  /* ---------- cladding ---------- */
+  const AMP=0.9;
+  const panels=[];
+  function sheetMesh(w,h){
+    const m=new THREE.Mesh(sheetGeo(w,h),matSheet);
+    m.castShadow=true; m.receiveShadow=true;
+    panels.push({m,w,h});
+    return m;
+  }
+  // back
+  const back=sheetMesh(W,H-6);
+  back.position.set(0,(H-6)/2,-D/2-AMP); back.rotation.y=Math.PI;
+  clad.add(back);
+  // sides
+  const sideL=sheetMesh(D,H-6);
+  sideL.position.set(-W/2-AMP,(H-6)/2,0); sideL.rotation.y=-Math.PI/2;
+  clad.add(sideL);
+  const sideR=sheetMesh(D,H-6);
+  sideR.position.set(W/2+AMP,(H-6)/2,0); sideR.rotation.y=Math.PI/2;
+  clad.add(sideR);
+  // roof: overhang + slight fall to the back
+  const roof=sheetMesh(W+16,D+14);
+  roof.rotation.x=-Math.PI/2+0.035;
+  roof.position.set(0,H+AMP+1.2,1.5);
+  clad.add(roof);
+
+  /* ---------- doors ---------- */
+  const doorW=(W-3*T)/2, doorH=H-10;
+  const doors=[];
+  function makeDoor(sideSign){
+    const pivot=new THREE.Group();
+    pivot.position.set(sideSign*(W/2-T),doorH/2+3,D/2+AMP+0.5);
+    const leaf=new THREE.Group();
+    leaf.position.x=-sideSign*doorW/2;
+    pivot.add(leaf);
+    // corrugated panel
+    const panel=sheetMesh(doorW-8,doorH-8);
+    leaf.add(panel);
+    // trim border
+    bar(doorW,4.5,2.4,0, doorH/2-2.2,0,matTrim,leaf);
+    bar(doorW,4.5,2.4,0,-doorH/2+2.2,0,matTrim,leaf);
+    bar(4.5,doorH-9,2.4,-doorW/2+2.2,0,0,matTrim,leaf);
+    bar(4.5,doorH-9,2.4, doorW/2-2.2,0,0,matTrim,leaf);
+    // hinges on outer edge
+    [0.78,0.5,0.22].forEach(f=>{
+      bar(3,9,3.4,sideSign*(doorW/2-1.4),doorH*(f-0.5),1.2,matHinge,leaf);
+    });
+    doorsG.add(pivot);
+    doors.push({pivot,sign:sideSign,panel});
+    return leaf;
+  }
+  const leafL=makeDoor(-1);
+  const leafR=makeDoor(1);
+  // portacandado on right leaf, near center
+  const hasp=new THREE.Group();
+  hasp.position.set(-doorW/2+5,0,2.2);
+  const plate=new THREE.Mesh(new THREE.BoxGeometry(9,4,1),matHinge);
+  hasp.add(plate);
+  const lock=new THREE.Mesh(new THREE.BoxGeometry(4.5,5.5,2),new THREE.MeshStandardMaterial({color:0xC9A84C,metalness:0.7,roughness:0.35}));
+  lock.position.set(0,-4.5,0.6);
+  hasp.add(lock);
+  leafR.add(hasp);
+
+  /* ---------- ground ---------- */
+  const groundMat=new THREE.MeshStandardMaterial({color:0x141416,roughness:1,metalness:0});
+  const ground=new THREE.Mesh(new THREE.CircleGeometry(2600,64),groundMat);
+  ground.rotation.x=-Math.PI/2;
+  ground.receiveShadow=true;
+  scene.add(ground);
+
+  // north marker (visible in sun mode)
+  const cv=document.createElement('canvas');cv.width=cv.height=128;
+  const cx2=cv.getContext('2d');
+  cx2.fillStyle='#C9A84C';
+  cx2.font='bold 84px Barlow Condensed, Arial, sans-serif';
+  cx2.textAlign='center';cx2.textBaseline='middle';
+  cx2.fillText('N',64,52);
+  cx2.beginPath();cx2.moveTo(64,10);cx2.lineTo(50,110);cx2.lineTo(78,110);cx2.closePath();
+  cx2.globalAlpha=0.25;cx2.fill();
+  const compass=new THREE.Mesh(
+    new THREE.PlaneGeometry(70,70),
+    new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false})
+  );
+  compass.rotation.x=-Math.PI/2;
+  compass.position.set(0,0.6,-360);
+  compass.visible=false;
+  scene.add(compass);
+
+  /* ---------- environment: sky dome + dirt ground ---------- */
+  const skyUni={
+    topColor:{value:new THREE.Color(0x3f83d6)},
+    horizonColor:{value:new THREE.Color(0xdcecfa)},
+    sunDir:{value:new THREE.Vector3(0.4,0.7,0.5)},
+    sunColor:{value:new THREE.Color(0xfff4e0)},
+    sunIntensity:{value:1.0}
+  };
+  const sky=new THREE.Mesh(
+    new THREE.SphereGeometry(5200,32,20),
+    new THREE.ShaderMaterial({
+      uniforms:skyUni,
+      side:THREE.BackSide,
+      depthWrite:false,
+      fog:false,
+      vertexShader:`
+        varying vec3 vDir;
+        void main(){
+          vDir=normalize(position);
+          gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);
+        }`,
+      fragmentShader:`
+        uniform vec3 topColor,horizonColor,sunDir,sunColor;
+        uniform float sunIntensity;
+        varying vec3 vDir;
+        void main(){
+          vec3 d=normalize(vDir);
+          float t=clamp(d.y,0.0,1.0);
+          vec3 col=mix(horizonColor,topColor,pow(t,0.55));
+          float s=max(dot(d,normalize(sunDir)),0.0);
+          col+=sunColor*(pow(s,900.0)*3.0+pow(s,50.0)*0.3)*sunIntensity;
+          gl_FragColor=vec4(col,1.0);
+        }`
+    })
+  );
+  sky.visible=false;
+  scene.add(sky);
+
+  const gc=document.createElement('canvas');gc.width=gc.height=256;
+  const g2=gc.getContext('2d');
+  g2.fillStyle='#8b8264';g2.fillRect(0,0,256,256);
+  for(let i=0;i<9000;i++){
+    g2.fillStyle='rgba('+(90+Math.random()*70|0)+','+(80+Math.random()*60|0)+','+(48+Math.random()*45|0)+','+(0.12+Math.random()*0.25)+')';
+    const s=1+Math.random()*2.5;
+    g2.fillRect(Math.random()*256,Math.random()*256,s,s);
+  }
+  const dirtTex=new THREE.CanvasTexture(gc);
+  dirtTex.wrapS=dirtTex.wrapT=THREE.RepeatWrapping;
+  dirtTex.repeat.set(18,18);
+
+  /* ---------- mountains to the west (Sierra de Velasco) ---------- */
+  function ridge(R,a0,a1,Hmax,segs,seed){
+    let s=seed;
+    const rnd=()=>{s=(s*16807)%2147483647;return s/2147483647;};
+    const p1=rnd()*6.28,p2=rnd()*6.28,p3=rnd()*6.28;
+    const k1=2.5+rnd()*1.5,k2=6+rnd()*3,k3=13+rnd()*6;
+    const pos=[],idx=[];
+    for(let i=0;i<=segs;i++){
+      const t=i/segs;
+      const A=(a0+(a1-a0)*t)*Math.PI/180;
+      const fade=Math.pow(Math.sin(Math.PI*t),0.6);   // se funden en el horizonte
+      let h=Hmax*(0.5+0.28*Math.sin(k1*t*6.28+p1)+0.16*Math.sin(k2*t*6.28+p2)+0.07*Math.sin(k3*t*6.28+p3));
+      h=Math.max(24,h)*fade;
+      const x=R*Math.sin(A), z=-R*Math.cos(A);
+      pos.push(x,-25,z, x,h,z);
+      if(i<segs){const b=i*2;idx.push(b,b+1,b+2, b+1,b+3,b+2);}
+    }
+    const g=new THREE.BufferGeometry();
+    g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));
+    g.setIndex(idx);
+    return g;
+  }
+  const matFar2=new THREE.MeshBasicMaterial({color:0xa9bcd6,side:THREE.DoubleSide,fog:false});
+  const matMid2=new THREE.MeshBasicMaterial({color:0x7b91b3,side:THREE.DoubleSide,fog:false});
+  const matFar=new THREE.MeshBasicMaterial({color:0x8fa7c4,side:THREE.DoubleSide,fog:false});
+  const matNear=new THREE.MeshBasicMaterial({color:0x55688a,side:THREE.DoubleSide,fog:false});
+  const mountains=new THREE.Group();
+  mountains.add(new THREE.Mesh(ridge(2080,193,347,540,170,77777),matFar2));
+  mountains.add(new THREE.Mesh(ridge(1760,203,337,430,160,33333),matMid2));
+  mountains.add(new THREE.Mesh(ridge(1480,213,327,345,150,12345),matFar));
+  mountains.add(new THREE.Mesh(ridge(1180,231,309,195,120,54321),matNear));
+  mountains.visible=false;
+  scene.add(mountains);
+
+  /* ---------- vegetation & rocks (monte riojano) ---------- */
+  const mFarVeg=new THREE.MeshBasicMaterial({color:0x39452e,fog:false});
+  const mFarVeg2=new THREE.MeshBasicMaterial({color:0x46523a,fog:false});
+  const veg=new THREE.Group();
+  {
+    let vs=98765;
+    const rnd=()=>{vs=(vs*16807)%2147483647;return vs/2147483647;};
+    const mTrunk=new THREE.MeshStandardMaterial({color:0x6b4a32,roughness:.95,flatShading:true});
+    const mLeaf =new THREE.MeshStandardMaterial({color:0x5c6e3c,roughness:.9,flatShading:true});
+    const mLeaf2=new THREE.MeshStandardMaterial({color:0x74854a,roughness:.9,flatShading:true});
+    const mBush =new THREE.MeshStandardMaterial({color:0x6a743f,roughness:.95,flatShading:true});
+    const mCact =new THREE.MeshStandardMaterial({color:0x4f7a4a,roughness:.85,flatShading:true});
+    const mRock =new THREE.MeshStandardMaterial({color:0x8a8074,roughness:1,flatShading:true});
+    function spot(minR,maxR){const a=rnd()*Math.PI*2,r=minR+rnd()*(maxR-minR);return [r*Math.sin(a),r*Math.cos(a)];}
+    // algarrobos
+    for(let i=0;i<14;i++){
+      const [x,z]=spot(400,880), t=new THREE.Group();
+      const h=40+rnd()*20;
+      const tr=new THREE.Mesh(new THREE.CylinderGeometry(3.5,6,h,6),mTrunk);
+      tr.position.y=h/2;tr.castShadow=true;t.add(tr);
+      const nf=2+Math.round(rnd());
+      for(let j=0;j<nf;j++){
+        const r=24+rnd()*16;
+        const f=new THREE.Mesh(new THREE.IcosahedronGeometry(r,0),rnd()<.5?mLeaf:mLeaf2);
+        f.position.set((rnd()-.5)*34,h+r*.5+rnd()*12,(rnd()-.5)*34);
+        f.scale.y=.55+rnd()*.15;
+        f.rotation.y=rnd()*Math.PI;
+        f.castShadow=true;t.add(f);
+      }
+      t.position.set(x,0,z);t.rotation.y=rnd()*6.28;
+      veg.add(t);
+    }
+    // jarillas
+    for(let i=0;i<38;i++){
+      const [x,z]=spot(400,920), r=8+rnd()*8;
+      const b=new THREE.Mesh(new THREE.IcosahedronGeometry(r,0),mBush);
+      b.position.set(x,r*.45,z);
+      b.scale.y=.6+rnd()*.2;
+      b.rotation.y=rnd()*6.28;
+      b.castShadow=true;veg.add(b);
+    }
+    // cardones
+    for(let i=0;i<8;i++){
+      const [x,z]=spot(410,860), c=new THREE.Group();
+      const h=55+rnd()*35;
+      const body=new THREE.Mesh(new THREE.CylinderGeometry(4.5,5.5,h,7),mCact);
+      body.position.y=h/2;body.castShadow=true;c.add(body);
+      const na=1+Math.round(rnd());
+      for(let j=0;j<na;j++){
+        const side=rnd()<.5?1:-1, ay=h*(.4+rnd()*.25);
+        const ha=new THREE.Mesh(new THREE.CylinderGeometry(3,3,12,6),mCact);
+        ha.rotation.z=Math.PI/2;ha.position.set(side*9,ay,0);ha.castShadow=true;c.add(ha);
+        const va=new THREE.Mesh(new THREE.CylinderGeometry(3,3,20+rnd()*12,6),mCact);
+        va.position.set(side*14,ay+12,0);va.castShadow=true;c.add(va);
+      }
+      c.position.set(x,0,z);c.rotation.y=rnd()*6.28;
+      veg.add(c);
+    }
+    // rocas
+    for(let i=0;i<18;i++){
+      const [x,z]=spot(400,940), r=7+rnd()*13;
+      const k=new THREE.Mesh(new THREE.IcosahedronGeometry(r,0),mRock);
+      k.position.set(x,r*.35,z);
+      k.scale.set(1+rnd()*.6,.55+rnd()*.3,1+rnd()*.6);
+      k.rotation.set(rnd(),rnd()*6.28,rnd());
+      k.castShadow=true;veg.add(k);
+    }
+    // pasto seco
+    const mGrass=new THREE.MeshStandardMaterial({color:0xb8a55f,side:THREE.DoubleSide,flatShading:true,roughness:1});
+    for(let i=0;i<30;i++){
+      const [x,z]=spot(390,930), g=new THREE.Group();
+      for(let j=0;j<2;j++){
+        const p=new THREE.Mesh(new THREE.PlaneGeometry(10+rnd()*6,8+rnd()*7),mGrass);
+        p.rotation.y=j*Math.PI/2+rnd()*.5;
+        p.position.y=5;
+        g.add(p);
+      }
+      g.position.set(x,0,z);g.rotation.y=rnd()*6.28;
+      veg.add(g);
+    }
+    // chañares secos (árboles sin hojas)
+    const mDry=new THREE.MeshStandardMaterial({color:0x7a6a55,roughness:1,flatShading:true});
+    for(let i=0;i<5;i++){
+      const [x,z]=spot(420,900), t=new THREE.Group();
+      const h=35+rnd()*25;
+      const tr=new THREE.Mesh(new THREE.CylinderGeometry(2.2,4,h,5),mDry);
+      tr.position.y=h/2;tr.castShadow=true;t.add(tr);
+      const nb=2+Math.round(rnd());
+      for(let j=0;j<nb;j++){
+        const bl=14+rnd()*14;
+        const g=new THREE.CylinderGeometry(1.1,1.9,bl,4);
+        g.translate(0,bl/2,0);
+        const br=new THREE.Mesh(g,mDry);
+        br.position.y=h*(.55+rnd()*.3);
+        br.rotation.set(0,rnd()*6.28,(rnd()-.5)*1.7);
+        br.castShadow=true;t.add(br);
+      }
+      t.position.set(x,0,z);t.rotation.y=rnd()*6.28;
+      veg.add(t);
+    }
+    // tunas (pencas)
+    const mTuna=new THREE.MeshStandardMaterial({color:0x5d8452,roughness:.9,flatShading:true});
+    for(let i=0;i<6;i++){
+      const [x,z]=spot(400,880), t=new THREE.Group();
+      const np=3+Math.round(rnd()*2);
+      for(let j=0;j<np;j++){
+        const r=7+rnd()*5;
+        const p=new THREE.Mesh(new THREE.SphereGeometry(r,7,6),mTuna);
+        p.scale.set(1,1.25,.28);
+        p.position.set((rnd()-.5)*14,r*.9+j*7,(rnd()-.5)*6);
+        p.rotation.y=(rnd()-.5)*1.2;
+        p.rotation.z=(rnd()-.5)*.7;
+        p.castShadow=true;t.add(p);
+      }
+      t.position.set(x,0,z);t.rotation.y=rnd()*6.28;
+      veg.add(t);
+    }
+    // chaguares (roseta espinosa)
+    const mAgave=new THREE.MeshStandardMaterial({color:0x77836a,roughness:.9,flatShading:true});
+    for(let i=0;i<6;i++){
+      const [x,z]=spot(410,900), t=new THREE.Group();
+      const nl=6+Math.round(rnd()*3);
+      for(let j=0;j<nl;j++){
+        const ll=14+rnd()*10;
+        const g=new THREE.ConeGeometry(2.4,ll,4);
+        g.translate(0,ll/2,0);
+        const leaf=new THREE.Mesh(g,mAgave);
+        leaf.rotation.x=.45+rnd()*.5;
+        leaf.castShadow=true;
+        const lg=new THREE.Group();
+        lg.rotation.y=(j/nl)*6.28+rnd()*.3;
+        lg.add(leaf);t.add(lg);
+      }
+      t.position.set(x,0,z);
+      veg.add(t);
+    }
+    // retamos
+    const mRetamo=new THREE.MeshStandardMaterial({color:0x8a9448,roughness:.95,flatShading:true});
+    for(let i=0;i<8;i++){
+      const [x,z]=spot(400,930), r=6+rnd()*6;
+      const b=new THREE.Mesh(new THREE.IcosahedronGeometry(r,0),mRetamo);
+      b.position.set(x,r*1.1,z);
+      b.scale.y=1.7+rnd()*.5;
+      b.rotation.y=rnd()*6.28;
+      b.castShadow=true;veg.add(b);
+    }
+    // monte intermedio
+    const mMid=new THREE.MeshStandardMaterial({color:0x55603a,roughness:1,flatShading:true});
+    for(let i=0;i<90;i++){
+      const [x,z]=spot(860,1140), r=4+rnd()*7;
+      const b=new THREE.Mesh(new THREE.IcosahedronGeometry(r,0),mMid);
+      b.position.set(x,r*.4,z);b.scale.y=.6;b.rotation.y=rnd()*6.28;
+      veg.add(b);
+    }
+    // monte al pie de las sierras (oeste)
+    for(let i=0;i<90;i++){
+      const A=(205+rnd()*130)*Math.PI/180, R=1000+rnd()*160, r=3.5+rnd()*5;
+      const b=new THREE.Mesh(new THREE.IcosahedronGeometry(r,0),mFarVeg);
+      b.position.set(R*Math.sin(A),r*.35,-R*Math.cos(A));
+      b.scale.y=.6;b.rotation.y=rnd()*6.28;
+      veg.add(b);
+    }
+    // monte lejano entre cordones
+    for(let i=0;i<70;i++){
+      const A=(200+rnd()*140)*Math.PI/180, R=1240+rnd()*220, r=4+rnd()*6;
+      const b=new THREE.Mesh(new THREE.IcosahedronGeometry(r,0),mFarVeg2);
+      b.position.set(R*Math.sin(A),r*.35,-R*Math.cos(A));
+      b.scale.y=.6;
+      veg.add(b);
+    }
+  }
+  veg.visible=false;
+  scene.add(veg);
+
+  function updateSky(){
+    if(!sky.visible)return;
+    const dir=key.position.clone().normalize();
+    skyUni.sunDir.value.copy(dir);
+    const sa=dir.y;
+    const t=Math.min(1,Math.max(0,sa/0.5));
+    if(sa<=0.05){
+      skyUni.topColor.value.set(0x0a1526);
+      skyUni.horizonColor.value.set(0x1d2b46);
+      skyUni.sunIntensity.value=0.0;
+    }else{
+      skyUni.topColor.value.set(0x1f4f8f).lerp(new THREE.Color(0x3f83d6),t);
+      skyUni.horizonColor.value.set(0xffa25e).lerp(new THREE.Color(0xdcecfa),t);
+      skyUni.sunIntensity.value=1.0;
+    }
+    skyUni.sunColor.value.copy(key.color);
+    matFar2.color.copy(skyUni.horizonColor.value).lerp(new THREE.Color(0x2b3a58),0.3);
+    matMid2.color.copy(skyUni.horizonColor.value).lerp(new THREE.Color(0x27334e),0.42);
+    matFar.color.copy(skyUni.horizonColor.value).lerp(new THREE.Color(0x232f4a),0.5);
+    matNear.color.copy(skyUni.horizonColor.value).lerp(new THREE.Color(0x131a2c),0.72);
+    mFarVeg.color.copy(skyUni.horizonColor.value).lerp(new THREE.Color(0x2c3a26),0.62);
+    mFarVeg2.color.copy(skyUni.horizonColor.value).lerp(new THREE.Color(0x2e3b2a),0.45);
+    scene.background=null;
+    scene.fog=new THREE.Fog(skyUni.horizonColor.value.getHex(),1500,2600);
+  }
+
+  /* ---------- camera control ---------- */
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let theta=0.65, phi=1.28, radius=460;
+  let tTheta=theta, tPhi=phi, tRadius=radius;
+  let auto=!reduce;
+  const views={
+    iso:  {theta:0.65, phi:1.28, r:460},
+    front:{theta:0.0,  phi:1.42, r:420},
+    side: {theta:Math.PI/2, phi:1.42, r:380},
+    top:  {theta:0.5,  phi:0.28, r:480}
+  };
+  function applyCam(){
+    theta+=(tTheta-theta)*0.08;
+    phi  +=(tPhi-phi)*0.08;
+    radius+=(tRadius-radius)*0.08;
+    camera.position.set(
+      target.x+radius*Math.sin(phi)*Math.sin(theta),
+      target.y+radius*Math.cos(phi),
+      target.z+radius*Math.sin(phi)*Math.cos(theta)
+    );
+    camera.lookAt(target);
+    if(scene.fog){
+      scene.fog.near=radius+1000;
+      scene.fog.far=radius+3200;
+    }
+  }
+
+  /* pointer input (drag + pinch) */
+  const pts=new Map();
+  let pinchDist=0;
+  canvas.addEventListener('pointerdown',e=>{
+    canvas.setPointerCapture(e.pointerId);
+    pts.set(e.pointerId,{x:e.clientX,y:e.clientY});
+    if(pts.size===2){
+      const [a,b]=[...pts.values()];
+      pinchDist=Math.hypot(a.x-b.x,a.y-b.y);
+    }
+  });
+  canvas.addEventListener('pointermove',e=>{
+    if(!pts.has(e.pointerId))return;
+    const prev=pts.get(e.pointerId);
+    if(pts.size===1){
+      setAuto(false);
+      tTheta-= (e.clientX-prev.x)*0.006;
+      tPhi   =Math.min(1.53,Math.max(0.18,tPhi-(e.clientY-prev.y)*0.004));
+    }
+    pts.set(e.pointerId,{x:e.clientX,y:e.clientY});
+    if(pts.size===2){
+      const [a,b]=[...pts.values()];
+      const d=Math.hypot(a.x-b.x,a.y-b.y);
+      tRadius=Math.min(3000,Math.max(200,tRadius*(pinchDist/d)));
+      pinchDist=d;
+    }
+  });
+  ['pointerup','pointercancel'].forEach(ev=>
+    canvas.addEventListener(ev,e=>pts.delete(e.pointerId)));
+  canvas.addEventListener('wheel',e=>{
+    e.preventDefault();
+    tRadius=Math.min(3000,Math.max(200,tRadius+e.deltaY*0.5));
+  },{passive:false});
+
+  /* ---------- UI ---------- */
+  const bAuto=document.getElementById('bAuto');
+  function setAuto(v){auto=v;bAuto.classList.toggle('on',v);}
+  bAuto.onclick=()=>setAuto(!auto);
+  setAuto(auto);
+
+  document.querySelectorAll('nav button[data-view]').forEach(b=>{
+    b.onclick=()=>{
+      const v=views[b.dataset.view];
+      setAuto(false);
+      tTheta=v.theta; tPhi=v.phi; tRadius=v.r;
+    };
+  });
+
+  let doorsOpen=false, doorAngle=0;
+  const bDoors=document.getElementById('bDoors');
+  bDoors.onclick=()=>{
+    doorsOpen=!doorsOpen;
+    bDoors.classList.toggle('on',doorsOpen);
+    bDoors.textContent=doorsOpen?'CERRAR PUERTAS':'ABRIR PUERTAS';
+  };
+
+  const bColor=document.getElementById('bColor');
+  let white=false;
+  bColor.onclick=()=>{
+    white=!white;
+    bColor.textContent=white?'⬛ NEGRO':'⬜ BLANCO';
+    matSheet.color.set(white?0xe9e8e3:0x1c1c1e);
+    matSheet.metalness=white?0.35:0.55;
+    matSheet.roughness=white?0.55:0.42;
+    matTrim.color.set(white?0xd6d5d0:0x141416);
+    matTrim.metalness=white?0.4:0.6;
+  };
+
+  const bProfile=document.getElementById('bProfile');
+  bProfile.onclick=()=>{
+    profile=profile==='acanalada'?'trapezoidal':'acanalada';
+    bProfile.textContent=profile==='acanalada'?'▤ TRAPEZOIDAL':'≋ ACANALADA';
+    panels.forEach(p=>{
+      p.m.geometry.dispose();
+      p.m.geometry=sheetGeo(p.w,p.h);
+    });
+    const lbl=profiles[profile].label;
+    document.getElementById('chipChapa').innerHTML='CHAPA <b>'+lbl+'</b>';
+    document.getElementById('specChapa').textContent='Chapa '+lbl.toLowerCase()+' galvanizada C25';
+  };
+
+  const bFrame=document.getElementById('bFrame');
+  let structureMode=false;
+  bFrame.onclick=()=>{
+    structureMode=!structureMode;
+    clad.visible=!structureMode;
+    doors.forEach(d=>{d.panel.visible=!structureMode;});
+    bFrame.classList.toggle('on',structureMode);
+  };
+
+  /* ---------- sun simulation (La Rioja, lat -29.4°) ---------- */
+  const LAT=-29.4*Math.PI/180;
+  const MESES=['ENERO','FEBRERO','MARZO','ABRIL','MAYO','JUNIO','JULIO','AGOSTO','SEPTIEMBRE','OCTUBRE','NOVIEMBRE','DICIEMBRE'];
+  const RUMBOS=['NORTE','NORESTE','ESTE','SUDESTE','SUR','SUDOESTE','OESTE','NOROESTE'];
+  const bSun=document.getElementById('bSun');
+  const sunPanel=document.getElementById('sunPanel');
+  const sunLabel=document.getElementById('sunLabel');
+  const sMonth=document.getElementById('sMonth');
+  const sHour=document.getElementById('sHour');
+  const sOrient=document.getElementById('sOrient');
+  let sunMode=false;
+  const keyHome={pos:key.position.clone(),color:key.color.clone(),intensity:key.intensity};
+  const cSunset=new THREE.Color(0xff8c42), cNoon=new THREE.Color(0xfff4e0);
+
+  function updateSun(){
+    const m=+sMonth.value, h=+sHour.value, o=+sOrient.value;
+    shed.rotation.y=o*Math.PI/180;
+    // solar declination for mid-month day
+    const N=Math.round(m*30.4+15);
+    const dec=-23.44*Math.PI/180*Math.cos(2*Math.PI*(N+10)/365);
+    const HA=(h-12)*15*Math.PI/180;
+    const sinAlt=Math.sin(LAT)*Math.sin(dec)+Math.cos(LAT)*Math.cos(dec)*Math.cos(HA);
+    const alt=Math.asin(sinAlt);
+    let cosAz=(Math.sin(dec)-sinAlt*Math.sin(LAT))/(Math.cos(alt)*Math.cos(LAT));
+    cosAz=Math.min(1,Math.max(-1,cosAz));
+    let az=Math.acos(cosAz);          // 0..π desde el norte
+    if(HA>0)az=2*Math.PI-az;          // tarde → lado oeste
+    // norte = -z, este = +x
+    const R=620, ce=Math.cos(alt);
+    key.position.set(R*ce*Math.sin(az), R*Math.max(sinAlt,0.03), -R*ce*Math.cos(az));
+    const up=Math.max(sinAlt,0), t=Math.min(1,up/0.5);
+    key.color.copy(cSunset).lerp(cNoon,t);
+    key.intensity=sinAlt<=0?0.05:0.55+0.9*t;
+    hemi.intensity=sinAlt<=0?0.25:0.4+0.35*t;
+    // label
+    const hh=Math.floor(h), mm=h%1?'30':'00';
+    const bearing=(180-o+360)%360;
+    const rumbo=RUMBOS[Math.round(bearing/45)%8];
+    sunLabel.textContent=(sinAlt<=0?'🌙 ':'☀ ')+MESES[m]+' · '+hh+':'+mm+' HS · PUERTAS AL '+rumbo;
+    updateSky();
+  }
+  [sMonth,sHour,sOrient].forEach(s=>s.addEventListener('input',()=>{if(sunMode)updateSun();}));
+  bSun.onclick=()=>{
+    sunMode=!sunMode;
+    bSun.classList.toggle('on',sunMode);
+    sunPanel.classList.toggle('open',sunMode);
+    compass.visible=sunMode;
+    if(sunMode){
+      updateSun();
+    }else{
+      key.position.copy(keyHome.pos);
+      key.color.copy(keyHome.color);
+      key.intensity=keyHome.intensity;
+      hemi.intensity=document.body.classList.contains('light')?1.0:0.85;
+      shed.rotation.y=0;
+      updateSky();
+    }
+  };
+
+  const bEnv=document.getElementById('bEnv');
+  let envMode=false;
+  bEnv.onclick=()=>{
+    envMode=!envMode;
+    bEnv.classList.toggle('on',envMode);
+    sky.visible=envMode;
+    mountains.visible=envMode;
+    veg.visible=envMode;
+    if(envMode){
+      groundMat.map=dirtTex;
+      groundMat.color.set(0xffffff);
+      groundMat.needsUpdate=true;
+      updateSky();
+    }else{
+      groundMat.map=null;
+      groundMat.needsUpdate=true;
+      const l=document.body.classList.contains('light');
+      groundMat.color.set(l?0xe4e1da:0x141416);
+      scene.background=new THREE.Color(l?0xf2f0ec:0x101012);
+      scene.fog=new THREE.Fog(l?0xf2f0ec:0x101012,1500,2800);
+    }
+  };
+
+  const info=document.getElementById('info');
+  document.getElementById('bInfo').onclick=()=>info.classList.add('open');
+  document.getElementById('bClose').onclick=()=>info.classList.remove('open');
+  info.addEventListener('click',e=>{if(e.target===info)info.classList.remove('open');});
+
+  const bTheme=document.getElementById('bTheme');
+  let light=false;
+  bTheme.onclick=()=>{
+    light=!light;
+    document.body.classList.toggle('light',light);
+    bTheme.textContent=light?'☾ OSCURO':'☀ CLARO';
+    if(!envMode){
+      scene.background=new THREE.Color(light?0xf2f0ec:0x101012);
+      scene.fog=new THREE.Fog(light?0xf2f0ec:0x101012,1500,2800);
+      groundMat.color.set(light?0xe4e1da:0x141416);
+    }
+    if(!sunMode)hemi.intensity=light?1.0:0.85;
+  };
+  scene.background=new THREE.Color(0x101012);
+  scene.fog=new THREE.Fog(0x101012,1500,2800);
+
+  /* ---------- resize + loop ---------- */
+  function resize(){
+    renderer.setSize(window.innerWidth,window.innerHeight);
+    camera.aspect=window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+  }
+  window.addEventListener('resize',resize);
+  resize();
+
+  function animate(){
+    requestAnimationFrame(animate);
+    if(auto)tTheta+=0.0032;
+    applyCam();
+    const goal=doorsOpen?1.9:0;               // ~109°
+    doorAngle+=(goal-doorAngle)*(reduce?1:0.07);
+    doors.forEach(d=>{d.pivot.rotation.y=d.sign*doorAngle;});
+    renderer.render(scene,camera);
+  }
+  animate();
+})();
+</script>
+</body>
+</html>
