@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="https://fabrixh.github.io/fabrilar/img/favicon.png">
+<link rel="apple-touch-icon" href="https://fabrixh.github.io/fabrilar/img/favicon.png">
+<title>Fabrilar Gym — Catálogo completo · La Rioja</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+[data-theme="dark"]{--gold:#C9A84C;--gold-light:#E8C97A;--bg:#0A0A0A;--bg2:#111111;--bg3:#161616;--surface:#1A1A1A;--border:rgba(201,168,76,0.18);--border-hover:rgba(201,168,76,0.5);--text:#F0EDE6;--text-muted:#888880;--text-dim:#555550;--nav-bg:rgba(10,10,10,0.95);--card-hover:#1D1D1D;--section-alt:#111111;--section-alt2:#161616;--section-vis:#0D0D0D;--overlay-end:rgba(10,10,10,0.88);--overlay-start:rgba(10,10,10,0)}
+[data-theme="light"]{--gold:#A07830;--gold-light:#C9A84C;--bg:#F8F5F0;--bg2:#FFFFFF;--bg3:#F2EDE6;--surface:#FFFFFF;--border:rgba(160,120,48,0.2);--border-hover:rgba(160,120,48,0.5);--text:#1A1714;--text-muted:#6B6560;--text-dim:#A09A94;--nav-bg:rgba(248,245,240,0.96);--card-hover:#F5F0E8;--section-alt:#FFFFFF;--section-alt2:#F2EDE6;--section-vis:#EDE8E0;--overlay-end:rgba(30,20,10,0.82);--overlay-start:rgba(248,245,240,0)}
+html{scroll-behavior:smooth}
+body{font-family:"Jost",sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;font-weight:300;letter-spacing:0.02em;transition:background 0.4s,color 0.4s}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0.8rem 3rem;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:0.5px solid var(--border);transition:background 0.4s;gap:1rem}
+.nav-logo img{height:42px;width:auto;display:block;flex-shrink:0;transition:filter 0.4s}
+[data-theme="light"] .nav-logo img{filter:brightness(0) saturate(100%) invert(25%) sepia(15%) saturate(500%) hue-rotate(10deg)}
+.nav-links{display:flex;gap:1.8rem;list-style:none;align-items:center}
+.nav-links a{font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.3s;white-space:nowrap}
+.nav-links a:hover{color:var(--gold)}
+.nav-dropdown{position:relative}
+.nav-dropdown-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);background:var(--surface);border:0.5px solid var(--border);min-width:150px;padding:0.5rem 0;opacity:0;pointer-events:none;transition:opacity 0.2s;z-index:50}
+.nav-dropdown:hover .nav-dropdown-menu{opacity:1;pointer-events:auto}
+.nav-dropdown-menu a{display:block;padding:0.55rem 1.2rem;font-size:0.65rem}
+.nav-pill{background:var(--gold)!important;color:#fff!important;padding:0.45rem 1.1rem;font-weight:500}
+.theme-switch{display:flex;align-items:center;gap:0.5rem;cursor:pointer;padding:0.3rem 0.7rem;border:0.5px solid var(--border);transition:border-color 0.3s;flex-shrink:0}
+.theme-switch:hover{border-color:var(--gold)}
+.switch-track{width:32px;height:18px;background:var(--surface);border:0.5px solid var(--border);border-radius:9px;position:relative;transition:background 0.3s;flex-shrink:0}
+[data-theme="light"] .switch-track{background:var(--gold)}
+.switch-thumb{position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:var(--text-dim);transition:transform 0.3s}
+[data-theme="light"] .switch-thumb{transform:translateX(14px);background:#fff}
+.switch-icon{font-size:0.8rem;line-height:1}
+.icon-moon{opacity:1}.icon-sun{opacity:0.4}
+[data-theme="light"] .icon-moon{opacity:0.4}[data-theme="light"] .icon-sun{opacity:1}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;flex-shrink:0}
+.hamburger span{width:22px;height:1.5px;background:var(--text-muted);transition:all 0.3s;display:block}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;opacity:0;transition:opacity 0.3s}
+.mobile-menu.open{display:flex;opacity:1}
+.mobile-menu a{font-size:1.2rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.3s}
+.mobile-menu a:hover{color:var(--gold)}
+.mobile-menu .nav-pill{background:var(--gold)!important;color:#fff!important;padding:0.7rem 2rem}
+
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:8rem 3rem 5rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 55% 60% at 75% 40%,rgba(201,168,76,0.07) 0%,transparent 65%)}
+.hero-eyebrow{font-size:0.68rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;opacity:0;animation:fadeUp 0.8s 0.2s forwards;display:flex;align-items:center;gap:1rem}
+.hero-eyebrow::before{content:"";display:inline-block;width:32px;height:1px;background:var(--gold)}
+.hero-title{font-family:"Cormorant Garamond",serif;font-size:clamp(3rem,8vw,7.5rem);font-weight:300;line-height:0.92;color:var(--text);opacity:0;animation:fadeUp 0.8s 0.35s forwards}
+.hero-title em{font-style:normal;color:var(--gold);display:block}
+.hero-sub{max-width:500px;font-size:0.93rem;line-height:1.85;color:var(--text-muted);margin-top:2.5rem;margin-bottom:3rem;opacity:0;animation:fadeUp 0.8s 0.5s forwards}
+.hero-cta{display:flex;gap:1rem;align-items:center;opacity:0;animation:fadeUp 0.8s 0.65s forwards;flex-wrap:wrap}
+.btn-primary{padding:0.85rem 2.2rem;background:var(--gold);color:#fff;border:none;cursor:pointer;font-family:"Jost",sans-serif;font-size:0.72rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;transition:background 0.3s,transform 0.2s;text-decoration:none;display:inline-block}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-1px)}
+.btn-ghost{padding:0.85rem 2.2rem;background:transparent;color:var(--text-muted);border:0.5px solid var(--border);cursor:pointer;font-family:"Jost",sans-serif;font-size:0.72rem;font-weight:300;letter-spacing:0.18em;text-transform:uppercase;transition:border-color 0.3s,color 0.3s;text-decoration:none;display:inline-block}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeIn 1s 1.3s forwards}
+.hero-scroll span{font-size:0.58rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-dim)}
+.scroll-bar{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2s ease-in-out infinite}
+section{padding:5rem 3rem;transition:background 0.4s}
+.section-label{font-size:0.62rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;display:flex;align-items:center;gap:1rem}
+.section-label::before{content:"";display:inline-block;width:28px;height:1px;background:var(--gold)}
+.section-title{font-family:"Cormorant Garamond",serif;font-size:clamp(1.8rem,4vw,3.2rem);font-weight:300;color:var(--text);line-height:1.1;margin-bottom:0.75rem}
+.section-sub{font-size:0.88rem;color:var(--text-muted);line-height:1.8;max-width:520px;margin-bottom:3rem}
+#gym{background:var(--section-alt)}#hogar{background:var(--section-alt2)}#visores{background:var(--section-vis)}#redes{background:var(--section-alt)}#contacto{background:var(--section-alt2)}
+.line-header{display:flex;align-items:center;gap:1.5rem;margin-bottom:2.5rem}
+.line-logo{height:48px;width:auto;transition:filter 0.4s}
+[data-theme="light"] .gym-logo{filter:brightness(0) saturate(100%) invert(25%) sepia(15%) saturate(500%) hue-rotate(10deg)}
+[data-theme="light"] .hogar-logo{filter:brightness(0) saturate(100%) invert(25%) sepia(15%) saturate(500%) hue-rotate(10deg)}
+.line-divider{flex:1;height:0.5px;background:var(--border)}
+.galeria{columns:3;column-gap:4px;margin-bottom:2rem}
+.galeria-item{break-inside:avoid;position:relative;overflow:hidden;margin-bottom:4px;cursor:pointer;background:var(--surface)}
+.galeria-item img{width:100%;display:block;transition:transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);filter:saturate(0.85)}
+.galeria-item:hover img{transform:scale(1.06);filter:saturate(1)}
+.galeria-overlay{position:absolute;inset:0;background:linear-gradient(to top,var(--overlay-end) 0%,var(--overlay-start) 55%);opacity:0;transition:opacity 0.4s;display:flex;flex-direction:column;justify-content:flex-end;padding:1.4rem 1.2rem}
+.galeria-item:hover .galeria-overlay{opacity:1}
+.galeria-nombre{font-family:"Cormorant Garamond",serif;font-size:1.1rem;color:#F0EDE6;margin-bottom:0.3rem;transform:translateY(6px);transition:transform 0.4s}
+.galeria-item:hover .galeria-nombre{transform:translateY(0)}
+.galeria-desc{font-size:0.72rem;line-height:1.5;color:rgba(240,237,230,0.75);transform:translateY(8px);transition:transform 0.45s;opacity:0}
+.galeria-item:hover .galeria-desc{transform:translateY(0);opacity:1}
+.galeria-tag{display:inline-block;margin-top:0.5rem;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);border:0.5px solid rgba(201,168,76,0.5);padding:0.2rem 0.6rem;transform:translateY(8px);opacity:0;transition:transform 0.5s,opacity 0.5s}
+.galeria-item:hover .galeria-tag{transform:translateY(0);opacity:1}
+
+.galeria-precio{margin-top:0.6rem;display:flex;flex-direction:column;gap:0.3rem}
+.precio-variante{display:flex;align-items:center;justify-content:space-between;gap:0.8rem}
+.precio-label{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(240,237,230,0.6)}
+.precio-valor{font-size:0.95rem;font-weight:500;color:var(--gold);white-space:nowrap}
+.precio-unico{font-size:1.05rem;font-weight:500;color:var(--gold);margin-top:0.4rem}
+.precio-combo{display:flex;flex-direction:column;gap:0.2rem;border-top:0.5px solid rgba(201,168,76,0.25);padding-top:0.5rem;margin-top:0.3rem}
+.precio-combo-item{display:flex;justify-content:space-between;font-size:0.72rem;color:rgba(240,237,230,0.55)}
+.precio-combo-item span:last-child{color:rgba(201,168,76,0.75)}
+.btn-consultar{display:inline-flex;align-items:center;gap:0.5rem;margin-top:0.9rem;padding:0.55rem 1.1rem;background:transparent;border:0.5px solid rgba(201,168,76,0.5);color:var(--gold);font-family:"Jost",sans-serif;font-size:0.62rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;transition:background 0.3s,border-color 0.3s;text-decoration:none}
+.btn-consultar:hover{background:rgba(201,168,76,0.1);border-color:var(--gold)}
+.galeria-item .galeria-overlay{padding-bottom:1rem}
+
+.lightbox{position:fixed;inset:0;z-index:999;background:rgba(5,5,5,0.96);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.lightbox.open{opacity:1;pointer-events:all}
+.lightbox img{max-width:88vw;max-height:80vh;object-fit:contain;border:0.5px solid var(--border)}
+.lightbox-info{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);text-align:center;width:90%;max-width:500px}
+.lightbox-nombre{font-family:"Cormorant Garamond",serif;font-size:1.3rem;color:#F0EDE6;margin-bottom:0.3rem}
+.lightbox-desc{font-size:0.78rem;color:rgba(240,237,230,0.6)}
+.lightbox-close{position:absolute;top:1.2rem;right:1.5rem;font-size:1.5rem;color:var(--text-muted);cursor:pointer;transition:color 0.3s;background:none;border:none;padding:0.5rem}
+.lightbox-close:hover{color:var(--gold)}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:2rem;color:var(--text-muted);cursor:pointer;background:none;border:none;transition:color 0.3s;padding:1rem}
+.lightbox-nav:hover{color:var(--gold)}
+.lightbox-prev{left:0.5rem}.lightbox-next{right:0.5rem}
+.visor-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.visor-card{border:0.5px solid var(--border);background:var(--surface);overflow:hidden;display:flex;flex-direction:column}
+.visor-frame-wrap{position:relative;width:100%;aspect-ratio:16/9;background:var(--bg)}
+.visor-frame-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none;display:block}
+.visor-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(10,10,10,0.65);cursor:pointer;transition:opacity 0.3s;z-index:2}
+[data-theme="light"] .visor-overlay{background:rgba(240,235,228,0.75)}
+.visor-overlay.hidden{opacity:0;pointer-events:none}
+.visor-overlay-inner{display:flex;flex-direction:column;align-items:center;gap:0.8rem}
+.visor-play{width:52px;height:52px;border:0.5px solid var(--gold);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.4rem}
+.visor-play-text{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold)}
+.visor-info{padding:1.2rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.visor-label{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem}
+.visor-name{font-family:"Cormorant Garamond",serif;font-size:1.15rem;color:var(--text)}
+.visor-badge{font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;background:rgba(201,168,76,0.08);color:var(--gold);border:0.5px solid rgba(201,168,76,0.25);padding:0.25rem 0.6rem;white-space:nowrap}
+.visor-fs-btn{position:absolute;top:0.6rem;right:0.6rem;z-index:3;display:none;width:36px;height:36px;align-items:center;justify-content:center;background:rgba(10,10,10,0.6);color:var(--gold);border:0.5px solid rgba(201,168,76,0.4);cursor:pointer;font-size:1.1rem;transition:background 0.2s}
+.visor-fs-btn:hover{background:rgba(201,168,76,0.25)}
+.visor-frame-wrap.active .visor-fs-btn{display:flex}
+.visor-frame-wrap:fullscreen{aspect-ratio:auto;width:100vw;height:100vh;background:#000}
+.visor-frame-wrap:-webkit-full-screen{aspect-ratio:auto;width:100vw;height:100vh;background:#000}
+.ig-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:3rem}
+.ig-card{border:0.5px solid var(--border);background:var(--surface);padding:1.5rem;display:flex;align-items:center;gap:1rem;text-decoration:none;color:inherit;transition:border-color 0.3s,background 0.3s}
+.ig-card:hover{border-color:var(--border-hover);background:var(--card-hover)}
+.ig-avatar{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;border:0.5px solid var(--border)}
+.ig-handle{font-size:0.9rem;color:var(--text);margin-bottom:0.2rem}
+.ig-followers{font-size:0.7rem;color:var(--text-muted)}
+.ig-arrow{margin-left:auto;color:var(--text-dim);font-size:1rem;transition:all 0.3s;flex-shrink:0}
+.ig-card:hover .ig-arrow{color:var(--gold);transform:translate(2px,-2px)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-info p{font-size:0.88rem;line-height:1.9;color:var(--text-muted);margin-bottom:2rem}
+.contact-item{display:flex;align-items:center;gap:1rem;padding:1rem 0;border-bottom:0.5px solid var(--border);text-decoration:none;color:inherit;transition:border-color 0.3s}
+.contact-item:hover{border-bottom-color:var(--gold)}
+.contact-item:first-of-type{border-top:0.5px solid var(--border)}
+.contact-icon{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border:0.5px solid var(--border);color:var(--gold);font-size:0.95rem;flex-shrink:0;transition:border-color 0.3s}
+.contact-item:hover .contact-icon{border-color:var(--gold)}
+.contact-label{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:0.15rem}
+.contact-value{font-size:0.85rem;color:var(--text)}
+.contact-form{display:flex;flex-direction:column;gap:1rem}
+.form-group{display:flex;flex-direction:column;gap:0.4rem}
+.form-label{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim)}
+.form-input{background:var(--surface);border:0.5px solid var(--border);color:var(--text);padding:0.85rem 1rem;font-family:"Jost",sans-serif;font-size:0.88rem;font-weight:300;outline:none;transition:border-color 0.3s,background 0.4s;width:100%}
+.form-input:focus{border-color:var(--gold)}
+.form-input::placeholder{color:var(--text-dim)}
+textarea.form-input{resize:vertical;min-height:90px}
+footer{padding:2rem 3rem;border-top:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--bg);transition:background 0.4s;flex-wrap:wrap;gap:1rem}
+footer img{height:32px;width:auto;transition:filter 0.4s}
+[data-theme="light"] footer img{filter:brightness(0) saturate(100%) invert(25%) sepia(15%) saturate(500%) hue-rotate(10deg)}
+.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+.footer-links a{font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);text-decoration:none;transition:color 0.3s}
+.footer-links a:hover{color:var(--gold)}
+.footer-copy{font-size:0.62rem;color:var(--text-dim)}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:768px){
+  nav{padding:0.8rem 1.2rem}
+  .nav-links{display:none}.theme-switch{display:none}.hamburger{display:flex}
+  .hero{padding:7rem 1.5rem 4rem}
+  .hero-sub{font-size:0.88rem}
+  .hero-cta{flex-direction:column;align-items:flex-start;gap:0.8rem}
+  .btn-primary,.btn-ghost{width:100%;text-align:center;padding:1rem}
+  section{padding:4rem 1.5rem}
+  .line-logo{height:40px}
+  .galeria{columns:2}
+  .visor-grid{grid-template-columns:1fr}
+  .visor-info{flex-direction:column;align-items:flex-start;gap:0.5rem}
+  .ig-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr;gap:2.5rem}
+  footer{flex-direction:column;align-items:flex-start;padding:2rem 1.5rem}
+}
+@media(max-width:420px){.galeria{columns:1}.hero-title{font-size:2.8rem}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes scrollPulse{0%,100%{opacity:0.3}50%{opacity:1}}
+
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo"><img src="https://fabrixh.github.io/fabrilar/img/favicon.png" alt="Fabrilar"></a>
+  <ul class="nav-links">
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/hogar">Línea Hogar</a></li>
+    <li><a href="/#visores">Visores 3D</a></li>
+    <li><a href="/deposito">Depósito 3D Realista</a></li>
+    <li><a href="/#nosotros">Sobre Nosotros</a></li>
+    <li><a href="/#contacto" class="nav-pill">Contacto</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:0.8rem">
+    <div class="theme-switch" onclick="toggleTheme()"><span class="switch-icon icon-moon">🌙</span><div class="switch-track"><div class="switch-thumb"></div></div><span class="switch-icon icon-sun">☀️</span></div>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/" onclick="closeMenu()">Inicio</a>
+  <a href="/hogar" onclick="closeMenu()">Línea Hogar</a>
+  <a href="/#visores" onclick="closeMenu()">Visores 3D</a>
+  <a href="/deposito" onclick="closeMenu()">Depósito 3D Realista</a>
+  <a href="/#nosotros" onclick="closeMenu()">Sobre Nosotros</a>
+  <a href="/#contacto" class="nav-pill" onclick="closeMenu()">Contacto</a>
+  <div onclick="toggleTheme()" style="display:flex;align-items:center;gap:1rem;cursor:pointer;margin-top:0.5rem;padding:0.6rem 1.2rem;border:0.5px solid var(--border);border-radius:2px">
+    <span style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted)">🌙 Modo</span>
+    <div class="switch-track"><div class="switch-thumb"></div></div>
+    <span style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted)">☀️</span>
+  </div>
+</div>
+
+<section class="hero" style="min-height:38vh;padding-top:7rem">
+  <p class="hero-eyebrow">La Rioja, Argentina · Catálogo completo</p>
+  <h1 class="hero-title" style="font-size:2.8rem">Catálogo Gym</h1>
+  <p class="hero-sub">Equipamiento de entrenamiento diseñado y fabricado localmente. Resistencia, diseño y precio justo.</p>
+</section>
+<section id="gym">
+  <div class="galeria reveal">    <div class="galeria-item" data-nombre="Mancuerna Hex" data-desc="Mancuernas hexagonales de hierro fundido. Agarre antideslizante, diseño compacto y resistente." onclick="abrirLightbox(this.querySelector('img').src, 'Mancuerna Hex', 'Mancuernas hexagonales de hierro fundido. Agarre antideslizante, diseño compacto y resistente.', 0)">
+      <img src="https://fabrixh.github.io/fabrilar/img/MancuernaHex.jpg" alt="Mancuerna Hex" loading="lazy">
+      <div class="galeria-overlay">
+<p class="galeria-nombre">Mancuerna Hex</p>
+<p class="galeria-desc">Mancuernas hexagonales de hierro fundido. Agarre antideslizante, diseño compacto y resistente.</p>
+<div class="galeria-precio"><div class="precio-variante"><span class="precio-label">3 kg</span><span class="precio-valor">$20.000</span></div>
+<div class="precio-variante"><span class="precio-label">5 kg</span><span class="precio-valor">$25.000</span></div>
+<div class="precio-variante"><span class="precio-label">6 kg</span><span class="precio-valor">$27.000</span></div></div>
+<button class="btn-consultar" onclick="event.stopPropagation();consultarWA('Mancuerna Hex','desde $20.000 (3kg) · $25.000 (5kg) · $27.000 (6kg)')">💬 Consultar</button>
+</div>
+    </div>
+    <div class="galeria-item" data-nombre="Polea Alta/Baja" data-desc="Sistema de polea de pared doble función: jalón y remo. Compacta y fácil de instalar." onclick="abrirLightbox(this.querySelector('img').src, 'Polea Alta/Baja', 'Sistema de polea de pared doble función: jalón y remo. Compacta y fácil de instalar.', 1)">
+      <img src="https://fabrixh.github.io/fabrilar/img/PoleaAltaBaja.png" alt="Polea Alta/Baja" loading="lazy">
+      <div class="galeria-overlay">
+<p class="galeria-nombre">Polea Alta/Baja</p>
+<p class="galeria-desc">Sistema de polea de pared doble función: jalón y remo. Compacta y fácil de instalar.</p>
+<div class="galeria-precio"><span class="precio-unico">$179.000</span></div>
+<button class="btn-consultar" onclick="event.stopPropagation();consultarWA('Polea Alta/Baja','$179.000')">💬 Consultar</button>
+</div>
+    </div>
+    <div class="galeria-item" data-nombre="Banco Pecho Rebatible" data-desc="Banco plano con soporte para barra. Estructura robusta, respaldo acolchado en cuero." onclick="abrirLightbox(this.querySelector('img').src, 'Banco Pecho Rebatible', 'Banco plano con soporte para barra. Estructura robusta, respaldo acolchado en cuero.', 2)">
+      <img src="https://fabrixh.github.io/fabrilar/img/BancoPechoRebatible.jpg" alt="Banco Pecho Rebatible" loading="lazy">
+      <div class="galeria-overlay">
+<p class="galeria-nombre">Banco Pecho Rebatible</p>
+<p class="galeria-desc">Banco plano con soporte para barra. Estructura robusta, respaldo acolchado en cuero.</p>
+<div class="galeria-precio"><span class="precio-unico">$129.000</span></div>
+<button class="btn-consultar" onclick="event.stopPropagation();consultarWA('Banco Pecho Rebatible','$129.000')">💬 Consultar</button>
+</div>
+    </div>
+    <div class="galeria-item" data-nombre="Smith con Rodamientos" data-desc="Máquina Smith con guías de rodamientos lineales. Movimiento suave y preciso." onclick="abrirLightbox(this.querySelector('img').src, 'Smith con Rodamientos', 'Máquina Smith con guías de rodamientos lineales. Movimiento suave y preciso.', 3)">
+      <img src="https://fabrixh.github.io/fabrilar/img/SmithRodamientosLineales.png" alt="Smith con Rodamientos" loading="lazy">
+      <div class="galeria-overlay">
+<p class="galeria-nombre">Smith con Rodamientos</p>
+<p class="galeria-desc">Máquina Smith con guías de rodamientos lineales. Movimiento suave y preciso.</p>
+<div class="galeria-precio"><span class="precio-unico">$799.000</span></div>
+<button class="btn-consultar" onclick="event.stopPropagation();consultarWA('Jaula Smith con Rodamientos','$799.000')">💬 Consultar</button>
+</div>
+    </div>
+    <div class="galeria-item" data-nombre="Rack Pared + Polea" data-desc="Rack de pared multifunción con sistema de polea integrado. Ahorra espacio sin sacrificar funcionalidad." onclick="abrirLightbox(this.querySelector('img').src, 'Rack Pared + Polea', 'Rack de pared multifunción con sistema de polea integrado. Ahorra espacio sin sacrificar funcionalidad.', 4)">
+      <img src="https://fabrixh.github.io/fabrilar/img/RackPared-PoleaAltaBaja.png" alt="Rack Pared + Polea" loading="lazy">
+      <div class="galeria-overlay">
+<p class="galeria-nombre">Rack Pared + Polea</p>
+<p class="galeria-desc">Rack de pared multifunción con sistema de polea integrado. Ahorra espacio sin sacrificar funcionalidad.</p>
+<div class="galeria-precio"><div class="precio-combo">
+<div class="precio-combo-item"><span>Rack de Pared</span><span>$499.000</span></div>
+<div class="precio-combo-item"><span>Polea Alta/Baja</span><span>$179.000</span></div>
+</div>
+<div class="precio-variante" style="margin-top:0.5rem"><span class="precio-label">Combo total</span><span class="precio-valor">$678.000</span></div></div>
+<button class="btn-consultar" onclick="event.stopPropagation();consultarWA('Rack Pared + Polea (combo)','$678.000 (Rack $499.000 + Polea $179.000)')">💬 Consultar</button>
+</div>
+    </div>
+    <div class="galeria-item" data-nombre="Hack 45°" data-desc="Prensa hack a 45 grados. Estructura de hierro macizo, plataforma antideslizante." onclick="abrirLightbox(this.querySelector('img').src, 'Hack 45°', 'Prensa hack a 45 grados. Estructura de hierro macizo, plataforma antideslizante.', 5)">
+      <img src="https://fabrixh.github.io/fabrilar/img/Hack45.png" alt="Hack 45°" loading="lazy">
+      <div class="galeria-overlay">
+<p class="galeria-nombre">Hack 45°</p>
+<p class="galeria-desc">Prensa hack a 45 grados. Estructura de hierro macizo, plataforma antideslizante.</p>
+<div class="galeria-precio"><span class="precio-unico">$850.000</span></div>
+<button class="btn-consultar" onclick="event.stopPropagation();consultarWA('Hack 45°','$850.000')">💬 Consultar</button>
+</div>
+    </div>
+    <div class="galeria-item" data-nombre="Rack Pared Multiuso" data-desc="Estación completa de pared: dominadas, paralelas, soporte ajustable y espacio para polea." onclick="abrirLightbox(this.querySelector('img').src, 'Rack Pared Multiuso', 'Estación completa de pared: dominadas, paralelas, soporte ajustable y espacio para polea.', 6)">
+      <img src="https://fabrixh.github.io/fabrilar/img/4.png" alt="Rack Pared Multiuso" loading="lazy">
+      <div class="galeria-overlay">
+<p class="galeria-nombre">Barra Dominadas Multiuso</p>
+<p class="galeria-desc">Estación completa de pared: dominadas, paralelas, soporte ajustable y espacio para polea.</p>
+<div class="galeria-precio"><div class="precio-variante"><span class="precio-label">Estándar</span><span class="precio-valor">$69.000</span></div>
+<div class="precio-variante"><span class="precio-label">Tapizada</span><span class="precio-valor">$99.000</span></div></div>
+<button class="btn-consultar" onclick="event.stopPropagation();consultarWA('Barra Dominadas Multiuso','desde $69.000 (estándar) · $99.000 (tapizada)')">💬 Consultar</button>
+</div>
+    </div></div>
+</section>
+<footer>
+  <img src="https://fabrixh.github.io/fabrilar/img/favicon.png" alt="Fabrilar">
+  <div class="footer-links"><a href="https://www.instagram.com/fabri.lar" target="_blank">@fabri.lar</a><a href="https://www.instagram.com/fabrilar.hogar/" target="_blank">@fabrilar.hogar</a><a href="http://wa.me/543804985423" target="_blank">WhatsApp</a></div>
+  <p class="footer-copy">© 2026 · fabrilar.com.ar · La Rioja</p>
+</footer>
+<div class="lightbox" id="lightbox" onclick="cerrarLightbox(event)">
+  <button class="lightbox-close" onclick="cerrarLightbox()">✕</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1);event.stopPropagation()">‹</button>
+  <img id="lightbox-img" src="" alt="">
+  <button class="lightbox-nav lightbox-next" onclick="navLightbox(1);event.stopPropagation()">›</button>
+  <div class="lightbox-info"><p class="lightbox-nombre" id="lightbox-nombre"></p><p class="lightbox-desc" id="lightbox-desc"></p></div>
+</div>
+<script>
+
+
+function consultarWA(producto, precio) {
+  var msg = encodeURIComponent(
+    '¡Hola! Me interesa el siguiente producto de Fabrilar:\n\n' +
+    '📦 ' + producto + '\n' +
+    '💰 ' + precio + '\n\n' +
+    '¿Podría darme más información y disponibilidad?'
+  );
+  window.open('https://wa.me/543804985423?text=' + msg, '_blank');
+}
+
+var galeriaItems=[],lbIndex=0;
+function abrirLightbox(src,nombre,desc,index){var lb=document.getElementById("lightbox");document.getElementById("lightbox-img").src=src;document.getElementById("lightbox-nombre").textContent=nombre;document.getElementById("lightbox-desc").textContent=desc;lbIndex=index;lb.classList.add("open");document.body.style.overflow="hidden";}
+function cerrarLightbox(e){if(!e||e.target===document.getElementById("lightbox")||e.target.classList.contains("lightbox-close")){document.getElementById("lightbox").classList.remove("open");document.body.style.overflow="";}}
+function navLightbox(dir){lbIndex=(lbIndex+dir+galeriaItems.length)%galeriaItems.length;var item=galeriaItems[lbIndex];document.getElementById("lightbox-img").src=item.src;document.getElementById("lightbox-nombre").textContent=item.nombre;document.getElementById("lightbox-desc").textContent=item.desc;}
+document.addEventListener("keydown",function(e){var lb=document.getElementById("lightbox");if(!lb.classList.contains("open"))return;if(e.key==="Escape")cerrarLightbox({target:lb});if(e.key==="ArrowRight")navLightbox(1);if(e.key==="ArrowLeft")navLightbox(-1);});
+function toggleTheme(){var html=document.documentElement;var next=html.getAttribute("data-theme")==="dark"?"light":"dark";html.setAttribute("data-theme",next);localStorage.setItem("fabrilar-theme",next);}
+(function(){var saved=localStorage.getItem("fabrilar-theme");if(saved)document.documentElement.setAttribute("data-theme",saved);})();
+function toggleMenu(){var h=document.getElementById("hamburger");var m=document.getElementById("mobileMenu");h.classList.toggle("open");m.classList.toggle("open");document.body.style.overflow=m.classList.contains("open")?"hidden":"";}
+function closeMenu(){document.getElementById("hamburger").classList.remove("open");document.getElementById("mobileMenu").classList.remove("open");document.body.style.overflow="";}
+function activarVisor(id){var iframe=document.getElementById("iframe-"+id);var overlay=document.getElementById("overlay-"+id);var wrap=document.getElementById("wrap-"+id);iframe.src=iframe.getAttribute("data-src");overlay.classList.add("hidden");wrap.classList.add("active");}
+function pantallaCompleta(id){var iframe=document.getElementById("iframe-"+id);var req=iframe.requestFullscreen||iframe.webkitRequestFullscreen||iframe.mozRequestFullScreen||iframe.msRequestFullscreen;if(req){req.call(iframe);}}
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e,i){if(e.isIntersecting){setTimeout(function(){e.target.classList.add("visible");},i*70);}});},{threshold:0.08});
+document.querySelectorAll(".reveal").forEach(function(el){obs.observe(el);});
+document.querySelectorAll(".galeria-item").forEach(function(el,i){var img=el.querySelector("img");galeriaItems.push({src:img?img.src:"",nombre:el.getAttribute("data-nombre")||"",desc:el.getAttribute("data-desc")||""});});
+
+</script>
+</body>
+</html>
