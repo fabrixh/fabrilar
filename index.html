@@ -56,6 +56,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .btn-primary:hover{background:var(--gold-light);transform:translateY(-1px)}
 .btn-ghost{padding:0.85rem 2.2rem;background:transparent;color:var(--text-muted);border:0.5px solid var(--border);cursor:pointer;font-family:"Jost",sans-serif;font-size:0.72rem;font-weight:300;letter-spacing:0.18em;text-transform:uppercase;transition:border-color 0.3s,color 0.3s;text-decoration:none;display:inline-block}
 .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.ver-catalogo{text-align:center;margin-top:2.5rem}
 .hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeIn 1s 1.3s forwards}
 .hero-scroll span{font-size:0.58rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-dim)}
 .scroll-bar{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2s ease-in-out infinite}
@@ -304,6 +305,7 @@ footer img{height:32px;width:auto;transition:filter 0.4s}
 <button class="btn-consultar" onclick="event.stopPropagation();consultarWA('Barra Dominadas Multiuso','desde $69.000 (estándar) · $99.000 (tapizada)')">💬 Consultar</button>
 </div>
     </div></div>
+  <div class="ver-catalogo reveal"><a class="btn-ghost" href="/gym">Ver catálogo completo Gym →</a></div>
 </section>
 <section id="hogar">
   <p class="section-label reveal">Línea Hogar</p>
@@ -337,6 +339,7 @@ footer img{height:32px;width:auto;transition:filter 0.4s}
 <button class="btn-consultar" onclick="event.stopPropagation();consultarWA('Organizador Lavarropas','$69.000')">💬 Consultar</button>
 </div>
     </div></div>
+  <div class="ver-catalogo reveal"><a class="btn-ghost" href="/hogar">Ver catálogo completo Hogar →</a></div>
 </section>
 <section id="visores">
   <p class="section-label reveal">Tecnología</p>
