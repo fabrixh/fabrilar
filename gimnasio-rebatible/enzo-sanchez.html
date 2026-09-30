@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fabrilar | Gimnasio rebatible para Enzo Sánchez</title>
+<meta name="description" content="Diseño exclusivo de su gimnasio rebatible para exterior. Miralo en 3D.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fabrilar | Gimnasio rebatible para Enzo Sánchez">
+<meta property="og:description" content="Diseño exclusivo de su gimnasio rebatible para exterior. Miralo en 3D.">
+<meta property="og:url" content="https://fabrilar.com.ar/gimnasio-rebatible/enzo-sanchez.html">
+<meta property="og:image" content="https://fabrilar.com.ar/gimnasio-rebatible/og.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://fabrilar.com.ar/gimnasio-rebatible/enzo-sanchez.html">
+<link rel="icon" href="https://fabrixh.github.io/fabrilar/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F3F1EB;--sf:#FFFFFF;--sf2:#ECE9E1;--ln:#D9D4C8;--tx:#1B1C1F;--mu:#67635A;--gd:#9A6F00;--gdb:rgba(232,184,48,.22);--scene:#E6E3DA;--grid:#C9C4B8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#16171A;--sf:#1F2024;--sf2:#26282D;--ln:#34363C;--tx:#EDEAE3;--mu:#9A968C;--gd:#E8B830;--gdb:rgba(232,184,48,.14);--scene:#1C1D21;--grid:#34363C}}
+:root[data-theme="dark"]{--bg:#16171A;--sf:#1F2024;--sf2:#26282D;--ln:#34363C;--tx:#EDEAE3;--mu:#9A968C;--gd:#E8B830;--gdb:rgba(232,184,48,.14);--scene:#1C1D21;--grid:#34363C}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.55 'IBM Plex Sans',system-ui,-apple-system,sans-serif;font-variant-numeric:tabular-nums}
+.wrap{max-width:920px;margin:0 auto;padding:18px 16px 60px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+h1{font:400 42px/1 'Bebas Neue','Oswald',Impact,'Arial Narrow',sans-serif;letter-spacing:.02em;margin:0;color:var(--gd)}
+.sub{color:var(--mu);margin:6px 0 0;max-width:60ch}
+h2{font:400 26px/1.1 'Bebas Neue','Oswald',Impact,'Arial Narrow',sans-serif;letter-spacing:.03em;margin:30px 0 10px}
+button{font:inherit;color:var(--tx);background:var(--sf);border:1px solid var(--ln);border-radius:9px;padding:8px 12px;cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible,tr:focus-visible{outline:2px solid var(--gd);outline-offset:2px}
+button.on{border-color:var(--gd);color:var(--gd);background:var(--gdb)}
+#theme{flex:none;font-size:14px}
+.viewer{position:relative;margin-top:16px;border-radius:14px;overflow:hidden;border:1px solid var(--ln);background:var(--scene);height:min(62vh,560px);min-height:360px;touch-action:none}
+.viewer canvas{display:block;width:100%;height:100%}
+.views{position:absolute;top:10px;left:10px;display:flex;flex-wrap:wrap;gap:6px;max-width:calc(100% - 20px)}
+.views button{padding:6px 10px;font-size:13px;background:color-mix(in srgb,var(--sf) 88%,transparent)}
+.info{position:absolute;left:10px;right:10px;bottom:10px;background:color-mix(in srgb,var(--sf) 94%,transparent);border:1px solid var(--ln);border-radius:10px;padding:10px 12px;font-size:14px;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.info b{font-weight:600}
+.info span.m{color:var(--mu)}
+.ctrl{display:grid;gap:14px;margin-top:14px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.slider{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center}
+input[type=range]{width:100%;accent-color:var(--gd)}
+.lbl{font-size:14px;color:var(--mu);min-width:64px}
+select{font:inherit;color:var(--tx);background:var(--sf);border:1px solid var(--ln);border-radius:9px;padding:8px 10px}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:14px}
+.sw{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:6px;border:1px solid rgba(0,0,0,.25)}
+.secs{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.sec{background:var(--sf);border:1px solid var(--ln);border-radius:12px;padding:12px 14px}
+.sec .n{font-weight:600}
+.sec .big{font:400 30px/1 'Bebas Neue','Oswald',Impact,sans-serif;margin:6px 0 2px}
+.sec .m{color:var(--mu);font-size:13px}
+.tot{display:flex;flex-wrap:wrap;gap:6px 24px;margin-top:12px;padding:12px 14px;background:var(--sf2);border-radius:12px}
+.tot b{font:400 26px/1 'Bebas Neue','Oswald',Impact,sans-serif;color:var(--gd);margin-left:6px}
+.tbl{overflow-x:auto;border:1px solid var(--ln);border-radius:12px;background:var(--sf)}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:520px}
+th{text-align:left;font-weight:500;color:var(--mu);padding:9px 10px;border-bottom:1px solid var(--ln)}
+td{padding:9px 10px;border-bottom:1px solid var(--ln)}
+td.r,th.r{text-align:right}
+tbody tr{cursor:pointer}
+tbody tr:hover{background:var(--sf2)}
+tbody tr.sel{background:var(--gdb)}
+tr.sub td{font-weight:600;background:var(--sf2);cursor:default}
+.note{color:var(--mu);font-size:13px;margin-top:10px;max-width:70ch}
+header .for{font:400 24px/1.1 'Bebas Neue','Oswald',Impact,sans-serif;letter-spacing:.03em;margin:10px 0 0}
+.stages{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.stage{background:var(--sf);border:1px solid var(--ln);border-radius:12px;padding:14px}
+.stage .sn{color:var(--gd);font-size:13px;font-weight:600}
+.stage .st{font:400 24px/1.1 'Bebas Neue','Oswald',Impact,sans-serif;letter-spacing:.02em;margin:2px 0 6px}
+.stage p,.txt{margin:0;color:var(--mu);font-size:14px;max-width:70ch}
+footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;margin-top:34px;padding-top:14px;border-top:1px solid var(--ln);font-size:14px;color:var(--mu)}
+footer a{color:var(--gd)}
+.wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.35);z-index:10}
+.wa:focus-visible{outline:2px solid var(--gd);outline-offset:3px}
+html.embed .wrap{padding:0;max-width:none}
+html.embed .wrap>header,html.embed .ctrl,html.embed h2,html.embed .stages,html.embed .txt,html.embed footer,html.embed .wa{display:none}
+html.embed .viewer{height:100vh;min-height:0;margin:0;border:0;border-radius:0}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<div>
+<h1>Fabrilar</h1>
+<p class="for">Diseño exclusivo para Enzo Sánchez</p>
+<p class="sub">Gimnasio rebatible de exterior: 2,60 m de ancho, 2,20 m de alto y 55 cm de profundidad cerrado. Giralo, abrilo y cerralo, y probá cada accesorio.</p>
+</div>
+<button id="theme" aria-label="Cambiar tema claro u oscuro">Tema</button>
+</header>
+
+<div class="viewer" id="viewer">
+<canvas id="c" aria-label="Modelo 3D del gimnasio rebatible"></canvas>
+<div class="views" id="views">
+<button data-v="iso" class="on">3/4</button>
+<button data-v="front">Frente</button>
+<button data-v="side">Lateral</button>
+<button data-v="top">Arriba</button>
+<button id="aRot">Girar</button>
+<button id="aCyc">Abrir y cerrar</button>
+</div>
+<div class="info" id="info"><span class="m">Arrastrá para girar, pellizcá o usá la rueda para acercar.</span></div>
+</div>
+
+<div class="ctrl">
+<div class="slider">
+<span class="lbl" id="angLbl">Cerrada</span>
+<input type="range" id="ang" min="0" max="90" value="90" aria-label="Apertura de la plataforma">
+<button id="play">Cerrar</button>
+</div>
+<div class="row">
+<button id="tJaula" class="on">Jaula</button>
+<button id="tPlat" class="on">Plataforma</button>
+<button id="tRev" class="on">Revestimiento</button>
+<button id="tBench" class="on">Banco multiangular</button>
+<button id="tDisc" class="on">Discos</button>
+<button id="tMal" class="on">Mecanismo eléctrico</button>
+<button id="tRack">Rack desmontable</button>
+<button id="tExp">Vista de montaje</button>
+</div>
+</div>
+
+<h2>Qué incluye tu equipo</h2>
+<div class="stages">
+<div class="stage"><div class="sn">Etapa 1</div><div class="st">Estructura</div><p>Jaula de acero anclada a tu pared de hormigón, bastidor de la plataforma, revestimiento de cincalum para exterior, pintura y fijaciones.</p></div>
+<div class="stage"><div class="sn">Etapa 2</div><div class="st">Mecanismo eléctrico</div><p>Aparejo eléctrico con freno, parada de emergencia y límite superior. La plataforma sube y baja con un botón en unos 40 segundos.</p></div>
+<div class="stage"><div class="sn">Etapa 3</div><div class="st">Plataforma de entrenamiento</div><p>Base de fenólico con goma de caucho de 10 mm en las zonas de apoyo de los discos, pegada y fijada para que no se mueva al cerrar.</p></div>
+<div class="stage"><div class="sn">Etapa 4</div><div class="st">Rack y accesorios</div><p>Rack desmontable con barra de dominadas, barras de fondos, J-hooks y brazos de seguridad, soportes para discos, espejo y banco multiangular. Todo se guarda adentro al cerrar.</p></div>
+</div>
+<h2>Cómo se instala</h2>
+<p class="txt">Lo fabricamos y probamos completo en nuestro taller. Después se desarma en módulos livianos y se arma en tu casa, anclado a la pared y nivelado. Tocá "Vista de montaje" para ver cómo se separa.</p>
+<footer><span>Fabrilar, equipamiento a medida en La Rioja</span><span><a href="https://fabrilar.com.ar/">fabrilar.com.ar</a> &nbsp; <a href="https://www.instagram.com/fabri.lar/" target="_blank" rel="noopener">@fabri.lar en Instagram</a></span></footer>
+</div>
+
+<a class="wa" href="https://wa.me/5493804985423?text=Hola%20Fabricio%2C%20soy%20Enzo.%20Vi%20el%20dise%C3%B1o%20del%20gimnasio%20rebatible%20y%20quer%C3%ADa%20consultarte." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp a Fabrilar"><svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path fill="#fff" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.9-1.7l-.4-.3-3.8 1.2 1.2-3.7-.3-.4a10.4 10.4 0 0 1-1.7-5.7C5.1 9.9 10 5.2 16 5.2s10.9 4.7 10.9 10.6S22 26.4 16 26.4zm6-7.9c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6.3-.5c.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5 2.5 1 3 .8 3.6.8.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5 0-.2-.3-.3-.6-.4z"/></svg></a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+const MM=0.001;
+const SEC={
+s60:{n:'60×60×3,2',w:60,kg:5.71,col:'#C99A1E'},
+s40:{n:'40×40×2',w:40,kg:2.386,col:'#4A4E55'},
+s30:{n:'30×30×1,6',w:30,kg:1.427,col:'#4A4E55'}
+};
+const M=[];
+function add(part,grp,sec,cut,a,b,local){M.push({part,grp,sec,cut,a,b,local:!!local})}
+
+// Jaula: z=0 pared, z=450 frente
+[15,2585].forEach(x=>[15,435].forEach(z=>add('jaula','Parante de bastidor','s30',2140,[x,30,z],[x,2170,z])));
+[350,2250].forEach(x=>add('jaula','Parante trasero porta discos y banco','s30',2140,[x,30,15],[x,2170,15]));
+[700,1900].forEach(x=>[30,420].forEach(z=>add('jaula','Parante del rack','s60',2140,[x,30,z],[x,2170,z])));
+add('jaula','Parante central del fondo','s30',2140,[1300,30,15],[1300,2170,15]);
+[15,2185].forEach(y=>[15,435].forEach(z=>add('jaula','Larguero superior e inferior','s30',2600,[0,y,z],[2600,y,z])));
+[15,2585].forEach(x=>[15,750,1450,2185].forEach(y=>add('jaula','Travesaño de profundidad','s30',390,[x,y,30],[x,y,420])));
+add('jaula','Travesaño de profundidad','s30',390,[1300,2185,30],[1300,2185,420]);
+[700,1900].forEach(x=>[15,750,1450,2185].forEach(y=>add('jaula','Travesaño de profundidad del rack','s30',330,[x,y,60],[x,y,390])));
+[750,1450].forEach(y=>add('jaula','Larguero intermedio del fondo','s30',2540,[30,y,45],[2570,y,45]));
+add('jaula','Travesaño del rack','s30',1140,[730,2050,420],[1870,2050,420]);M[M.length-1].alt='sinMal';
+add('jaula','Travesaño del rack','s30',1140,[730,1100,30],[1870,1100,30]);
+
+// Plataforma, coordenadas locales: u = ancho, v = largo desde el pivote
+[20,2080].forEach(v=>add('plataforma','Lateral de plataforma','s40',2600,[0,v,0],[2600,v,0],1));
+[20,2580].forEach(u=>add('plataforma','Larguero perimetral','s40',2020,[u,40,0],[u,2060,0],1));
+[430,850,1750,2170].forEach(u=>add('plataforma','Larguero interno','s30',2020,[u,40,0],[u,2060,0],1));
+[525,1050,1575].forEach(v=>[[40,415],[445,835],[865,1735],[1765,2155],[2185,2560]].forEach(([a,b])=>add('plataforma','Travesaño de plataforma','s30',b-a,[a,v,0],[b,v,0],1)));
+[-20,2620].forEach(x=>add('plataforma','Brazo de pivote','s40',600,[x,20,0],[x,20,610]));
+
+// Módulo portamalacate: reemplaza al travesaño delantero del rack
+add('malacate','Travesaño portamalacate','s60',1140,[730,2140,30],[1870,2140,30]);
+add('malacate','Travesaño portamalacate','s60',1140,[730,2140,420],[1870,2140,420]);
+[1000,1600].forEach(x=>add('malacate','Tramo de profundidad del módulo','s40',330,[x,2140,60],[x,2140,390]));
+add('malacate','Soporte del aparejo','s60',540,[1030,2140,225],[1570,2140,225]);
+
+M.forEach(m=>m.key=m.part+'|'+m.grp+'|'+m.sec+'|'+m.cut);
+
+// Agrupar
+let incMal=true,selKey=null,G={};
+const act=()=>M.filter(m=>(m.part!=='malacate'||incMal)&&!(incMal&&m.alt==='sinMal'));
+const fmt=(n,d=0)=>n.toLocaleString('es-AR',{minimumFractionDigits:d,maximumFractionDigits:d});
+function bars(cuts){const b=[];cuts.slice().sort((a,c)=>c-a).forEach(p=>{const f=b.find(x=>x.s+x.n*3+p<=6000);if(f){f.s+=p;f.n++}else b.push({s:p,n:1})});return b.length}
+
+function renderData(){}
+
+// Superficie de la plataforma
+let dbl=false,wood=false,onSurf=null,expl=false,explE=0,pivotBZ=510,modsReady=false;
+
+function renderSurf(){if(onSurf)onSurf()}
+
+// Módulos de transporte
+function modOf(m){if(m.part==='malacate')return'mal';if(m.part==='plataforma')return m.local?'plat':(m.a[0]<0?'latI':'latD');const x=m.a[0]===m.b[0]?m.a[0]:null;
+if(x===15)return'latI';if(x===2585)return'latD';if(x===700)return'rackI';if(x===1900)return'rackD';return'sueltos'}
+M.forEach(m=>m.mod=modOf(m));
+
+// Escena
+const cv=document.getElementById('c'),vw=document.getElementById('viewer');
+if(!window.THREE){document.getElementById('info').innerHTML='<span>No se pudo cargar el modelo 3D. Revisá la conexión y recargá la página; el despiece de abajo está completo.</span>';return}
+const R=new THREE.WebGLRenderer({canvas:cv,antialias:true});R.setPixelRatio(Math.min(devicePixelRatio,2));
+const S=new THREE.Scene();const cam=new THREE.PerspectiveCamera(40,1,0.05,100);
+S.add(new THREE.HemisphereLight(0xffffff,0x444444,0.75));
+const dl=new THREE.DirectionalLight(0xffffff,0.85);dl.position.set(3,6,5);S.add(dl);
+const dl2=new THREE.DirectionalLight(0xffffff,0.3);dl2.position.set(-4,3,-3);S.add(dl2);
+let grid;
+const cssv=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function applyTheme(){S.background=new THREE.Color(cssv('--scene'));if(grid)S.remove(grid);grid=new THREE.GridHelper(8,16,cssv('--grid'),cssv('--grid'));grid.position.set(1.3,0,1.2);S.add(grid)}
+applyTheme();
+
+const jaula=new THREE.Group(),plat=new THREE.Group(),platStatic=new THREE.Group(),pivot=new THREE.Group(),mal=new THREE.Group(),malP=new THREE.Group();
+pivot.position.set(0,40*MM,510*MM);pivot.add(plat);plat.add(malP);S.add(jaula,pivot,platStatic,mal);
+const meshes=[];
+M.forEach(m=>{const w=SEC[m.sec].w,s=[0,1,2].map(i=>Math.abs(m.b[i]-m.a[i])||w),c=[0,1,2].map(i=>(m.a[i]+m.b[i])/2);
+const mat=new THREE.MeshStandardMaterial({color:SEC[m.sec].col,metalness:.35,roughness:.55});
+const me=new THREE.Mesh(new THREE.BoxGeometry(s[0]*MM,s[1]*MM,s[2]*MM),mat);me.position.set(c[0]*MM,c[1]*MM,c[2]*MM);me.userData=m;
+const ed=new THREE.LineSegments(new THREE.EdgesGeometry(me.geometry),new THREE.LineBasicMaterial({color:0x000000,transparent:true,opacity:.25}));me.add(ed);
+(m.part==='jaula'?jaula:m.part==='malacate'?mal:(m.local?plat:platStatic)).add(me);if(m.alt==='sinMal')me.visible=!incMal;meshes.push(me)});
+meshes.forEach(me=>me.userData.bp=me.position.clone());
+const izM=new THREE.MeshStandardMaterial({color:'#5F6269',metalness:.5,roughness:.5});
+[[-75,'latI'],[2675,'latD']].forEach(([x,mod])=>[15,435].forEach(z=>{const b=new THREE.Mesh(new THREE.BoxGeometry(150*MM,10*MM,150*MM),izM);b.position.set(x*MM,200*MM,z*MM);
+const g=new THREE.Mesh(new THREE.BoxGeometry(150*MM,110*MM,10*MM),izM);g.position.set(0,-60*MM,0);b.add(g);b.userData={mod,bp:b.position.clone()};jaula.add(b);meshes.push(b)}));
+const OFF={latI:[-700,0,0],latD:[700,0,0],rackI:[-250,0,0],rackD:[250,0,0],sueltos:[0,0,0]};
+function applyExpl(){const e=explE<.5?2*explE*explE:1-Math.pow(-2*explE+2,2)/2;meshes.forEach(me=>{const md=me.userData.mod,o=OFF[md];if(!o||!me.userData.bp)return;me.position.set(me.userData.bp.x+o[0]*MM*e,me.userData.bp.y+o[1]*MM*e,me.userData.bp.z+o[2]*MM*e)});
+mal.position.y=600*MM*e;pivot.position.z=(pivotBZ+1100*e)*MM;const revOn=document.getElementById('tRev').classList.contains('on');rev.visible=revOn&&jaula.visible&&e<.01}
+
+// Aparejo en tiro doble, un cable al centro (referencia visual)
+const hwM=new THREE.MeshStandardMaterial({color:'#E0702A',metalness:.3,roughness:.5}),pulM=new THREE.MeshStandardMaterial({color:'#B8BDC4',metalness:.7,roughness:.35}),plM=new THREE.MeshStandardMaterial({color:'#5F6269',metalness:.5,roughness:.5});
+function hbox(g,mat,sx,sy,sz,x,y,z){const b=new THREE.Mesh(new THREE.BoxGeometry(sx*MM,sy*MM,sz*MM),mat);b.position.set(x*MM,y*MM,z*MM);g.add(b);return b}
+function pul(g,x,y,z){const p=new THREE.Mesh(new THREE.CylinderGeometry(40*MM,40*MM,25*MM,24),pulM);p.rotation.z=Math.PI/2;p.position.set(x*MM,y*MM,z*MM);g.add(p)}
+hbox(mal,hwM,400,190,170,1300,2005,225);[1180,1420].forEach(x=>hbox(mal,plM,30,90,90,x,2120,225));
+pul(mal,1300,1750,225);hbox(mal,plM,10,280,40,1325,1880,225);
+pul(mal,1300,1750,400);hbox(mal,plM,10,340,40,1325,1925,420);
+pul(malP,1300,1900,-60);hbox(malP,plM,60,40,40,1300,1900,-30);
+const cabM=new THREE.LineBasicMaterial({color:'#D8DCE0'});
+function seg(a,b){const g=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(...a.map(v=>v*MM)),new THREE.Vector3(...b.map(v=>v*MM))]);const l=new THREE.Line(g,cabM);mal.add(l);return l}
+seg([1300,1910,185],[1300,1750,185]);seg([1300,1710,225],[1300,1710,400]);
+hbox(mal,plM,40,30,30,1340,2095,420);
+const dyn=[{l:seg([1290,1750,440],[1290,1750,440]),u:1288},{l:seg([1340,2080,420],[1340,2080,420]),u:1312}];
+const tv=new THREE.Vector3();
+// Rack desmontable: armado sobre la plataforma abierta, guardado en la jaula al cerrar
+let rackOn=false;const rackG=new THREE.Group();rackG.visible=false;S.add(rackG);
+const rkM=new THREE.MeshStandardMaterial({color:'#C99A1E',metalness:.35,roughness:.5}),stM=new THREE.MeshStandardMaterial({color:'#C9CDD2',metalness:.8,roughness:.3}),bpM=new THREE.MeshStandardMaterial({color:'#3A3C41',metalness:.5,roughness:.5});
+const RX=new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1,0,0),Math.PI/2);
+function keep(m,sp,rotX){m.userData.a={p:m.position.clone(),q:m.quaternion.clone()};const q=m.quaternion.clone();if(rotX)q.premultiply(RX);m.userData.s={p:new THREE.Vector3(sp[0]*MM,sp[1]*MM,sp[2]*MM),q};return m}
+function rb(mat,sx,sy,sz,x,y,z,sp,rotX){const b=new THREE.Mesh(new THREE.BoxGeometry(sx*MM,sy*MM,sz*MM),mat);b.position.set(x*MM,y*MM,z*MM);b.add(new THREE.LineSegments(new THREE.EdgesGeometry(b.geometry),new THREE.LineBasicMaterial({color:0x000000,transparent:true,opacity:.2})));rackG.add(b);return keep(b,sp,rotX)}
+function rc(r,len,x,y,z,sp){const c=new THREE.Mesh(new THREE.CylinderGeometry(r*MM,r*MM,len*MM,16),stM);c.rotation.z=Math.PI/2;c.position.set(x*MM,y*MM,z*MM);rackG.add(c);return keep(c,sp,false)}
+const FZ=1420;
+[[700,900,1000,1150],[1900,1700,1600,1450]].forEach(([x,ux,ax,spx],i)=>{const sgn=i?-1:1;
+rb(rkM,60,2080,60,x,1130,FZ,[ux,1075,300]);
+rb(bpM,200,10,200,x,93,FZ,[ux,30,300]);
+rb(rkM,60,60,940,x,2140,(450+FZ-30)/2,[ax,510,150],true);
+rb(bpM,40,120,70,x+sgn*50,1400,FZ-10,[ux+sgn*70,1250,300]);
+rb(bpM,40,40,70,x+sgn*50,1350,FZ-50,[ux+sgn*70,1150,300]);
+rb(bpM,40,40,1000,x+sgn*50,700,(450+FZ)/2+10,[spx,540,300],true)});
+rb(rkM,1140,60,60,1300,2140,FZ,[1300,1250,150]);
+rc(16,1350,1300,2080,FZ+110,[1300,1350,150]);
+[640,1960].forEach(x=>rb(bpM,30,30,110,x,2080,FZ+55,[x,1350,210]));
+rc(14,2200,1300,1475,FZ-30,[1300,300,360]);
+// Barras de fondos: se enganchan al parante delantero izquierdo y se guardan de pie en el frente del rack
+rb(bpM,550,60,40,700,1150,FZ+50,[1300,1150,380]);
+[425,975].forEach((x,i)=>{const c=new THREE.Mesh(new THREE.CylinderGeometry(16*MM,16*MM,550*MM,16),stM);c.rotation.x=Math.PI/2;c.position.set(x*MM,1150*MM,(FZ+325)*MM);rackG.add(c);c.userData.a={p:c.position.clone(),q:c.quaternion.clone()};c.userData.s={p:new THREE.Vector3((1210+i*180)*MM,850*MM,380*MM),q:new THREE.Quaternion()}});
+const tq=new THREE.Quaternion();
+function updRack(k){const e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;rackG.children.forEach(m=>{const a=m.userData.a,b=m.userData.s;if(!a)return;m.position.lerpVectors(a.p,b.p,e);tq.copy(a.q).slerp(b.q,e);m.quaternion.copy(tq)})}
+const parkP=new THREE.Mesh(new THREE.CylinderGeometry(40*MM,40*MM,25*MM,24),pulM);parkP.rotation.z=Math.PI/2;parkP.position.set(1300*MM,1600*MM,440*MM);parkP.visible=false;mal.add(parkP);
+function updCables(){pivot.updateMatrixWorld();const parked=rackOn&&+ang.value>=88;parkP.visible=parked;malP.visible=mal.visible&&!parked;dyn.forEach(d=>{d.l.visible=explE===0;if(parked)tv.set(d.u*MM,1640*MM,440*MM);else{tv.set(d.u*MM,1900*MM,-60*MM);pivot.localToWorld(tv)}const p=d.l.geometry.attributes.position;p.setXYZ(1,tv.x,tv.y,tv.z);p.needsUpdate=true;d.l.geometry.computeBoundingSphere()})}
+
+// Revestimiento
+const rev=new THREE.Group();rev.visible=false;const revP=new THREE.Group();revP.visible=false;plat.add(revP);S.add(rev);
+const TC={chapa:'#B7BBC0'};
+const skinMat=new THREE.MeshStandardMaterial({color:TC.chapa,transparent:true,opacity:.35,roughness:.7,side:THREE.DoubleSide,depthWrite:false});
+const faceMat=new THREE.MeshStandardMaterial({color:TC.chapa,roughness:.7});
+function box(g,mat,sx,sy,sz,x,y,z){const b=new THREE.Mesh(new THREE.BoxGeometry(sx*MM,sy*MM,sz*MM),mat);b.position.set(x*MM,y*MM,z*MM);g.add(b)}
+box(rev,skinMat,4,2200,450,-2,1100,225);box(rev,skinMat,4,2200,450,2602,1100,225);box(rev,skinMat,2600,2200,4,1300,1100,-2);box(rev,skinMat,2600,4,450,1300,2202,225);
+box(revP,faceMat,2600,2100,20,1300,1050,30);
+box(revP,new THREE.MeshStandardMaterial({color:'#8A6A45',roughness:.8}),2600,2100,18,1300,1050,-29);
+const goma=new THREE.MeshStandardMaterial({color:'#2A2A2A',roughness:.95});
+hbox(revP,goma,850,2100,10,425,1050,-43);hbox(revP,goma,850,2100,10,2175,1050,-43);
+const dblM=[hbox(revP,goma,850,1500,10,425,1150,-53),hbox(revP,goma,850,1500,10,2175,1150,-53)];
+const woodM=hbox(revP,new THREE.MeshStandardMaterial({color:'#B98B55',roughness:.8}),900,2100,20,1300,1050,-48);
+onSurf=()=>{dblM.forEach(m=>m.visible=dbl);woodM.visible=wood;pivotBZ=dbl?520:510;applyExpl()};onSurf();
+
+// Equipamiento guardado (referencia de espacio)
+const discG=new THREE.Group(),benchG=new THREE.Group();S.add(discG,benchG);
+const discM=new THREE.MeshStandardMaterial({color:'#3B3F46',roughness:.8}),hornM=new THREE.MeshStandardMaterial({color:'#9A9A9A',metalness:.6,roughness:.4});
+[[550,[0,1]],[1250,[0,1]]].forEach(([y])=>{const h=new THREE.Mesh(new THREE.CylinderGeometry(25*MM,25*MM,250*MM,16),hornM);h.rotation.x=Math.PI/2;h.position.set(2250*MM,y*MM,155*MM);S.add(h);
+[0,1].forEach(i=>{const d=new THREE.Mesh(new THREE.CylinderGeometry(225*MM,225*MM,60*MM,40),discM);d.rotation.x=Math.PI/2;d.position.set(2250*MM,y*MM,(70+i*65)*MM);discG.add(d)})});
+const benchM=new THREE.MeshStandardMaterial({color:'#2B2B2B',roughness:.7});
+// Espejo acrílico fijo en el fondo del rack
+{const mir=new THREE.Mesh(new THREE.BoxGeometry(600*MM,1200*MM,4*MM),new THREE.MeshPhongMaterial({color:'#CFD8E0',shininess:120,specular:0xffffff}));mir.position.set(1300*MM,1050*MM,68*MM);S.add(mir);
+const fr=new THREE.MeshStandardMaterial({color:'#2B2B2B',roughness:.6});[[620,12,1300,1656],[620,12,1300,444]].forEach(([w,h,x,y])=>{const b=new THREE.Mesh(new THREE.BoxGeometry(w*MM,h*MM,10*MM),fr);b.position.set(x*MM,y*MM,68*MM);S.add(b)});[[990],[1610]].forEach(([x])=>{const b=new THREE.Mesh(new THREE.BoxGeometry(12*MM,1224*MM,10*MM),fr);b.position.set(x*MM,1050*MM,68*MM);S.add(b)})}
+// Soportes fijos del banco: bandeja de apoyo abajo y dos retenes desmontables al frente
+[750,1450].forEach(y=>{const r=new THREE.Mesh(new THREE.CylinderGeometry(12.5*MM,12.5*MM,640*MM,16),hornM);r.rotation.z=Math.PI/2;r.position.set(350*MM,y*MM,330*MM);S.add(r)});
+box(S,new THREE.MeshStandardMaterial({color:'#5F6269',metalness:.5,roughness:.5}),640,6,330,350,33,225);
+box(benchG,benchM,300,1250,90,350,1050,90);box(benchG,benchM,300,450,90,350,1850,90);box(benchG,new THREE.MeshStandardMaterial({color:'#555',metalness:.5}),80,1500,160,350,1000,215);
+
+// Cámara orbital
+const T=new THREE.Vector3(1.3,1.0,1.0);let th=.62,ph=1.13,rd=6.4,anim=null;
+const VIEWS={iso:[.62,1.13,6.4],front:[0,1.45,6.2],side:[Math.PI/2,1.45,6.2],top:[0,.12,6.8]};
+function place(){ph=Math.min(Math.max(ph,.05),1.55);rd=Math.min(Math.max(rd,1.5),14);cam.position.set(T.x+rd*Math.sin(ph)*Math.sin(th),T.y+rd*Math.cos(ph),T.z+rd*Math.sin(ph)*Math.cos(th));cam.lookAt(T)}
+function goView(v){const [a,b,c]=VIEWS[v],s={th,ph,rd},t0=performance.now(),reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+anim=t=>{const k=reduce?1:Math.min((t-t0)/450,1),e=1-Math.pow(1-k,3);th=s.th+(a-s.th)*e;ph=s.ph+(b-s.ph)*e;rd=s.rd+(c-s.rd)*e;if(k>=1)anim=null};
+document.querySelectorAll('#views button[data-v]').forEach(b=>b.classList.toggle('on',b.dataset.v===v))}
+document.getElementById('views').onclick=e=>{const b=e.target.closest('button');if(b&&b.dataset.v)goView(b.dataset.v)};
+// Animaciones automáticas
+let autoRot=false,cyc=false,cycT0=0,lastT=0;const aRot=document.getElementById('aRot'),aCyc=document.getElementById('aCyc');
+aRot.onclick=()=>{autoRot=!autoRot;aRot.classList.toggle('on',autoRot);aRot.textContent=autoRot?'Detener giro':'Girar'};
+function stopCyc(){cyc=false;aCyc.classList.remove('on');aCyc.textContent='Abrir y cerrar'}
+aCyc.onclick=()=>{if(cyc){stopCyc();return}cyc=true;pAnim=null;cycT0=performance.now()-(+ang.value>45?0:3000);aCyc.classList.add('on');aCyc.textContent='Detener'};
+function cycle(t){const MOVE=1800,HOLD=1200,P=2*(MOVE+HOLD),x=(t-cycT0)%P;let v;
+if(x<HOLD)v=90;else if(x<HOLD+MOVE){const k=(x-HOLD)/MOVE;v=90*(1-(k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2))}else if(x<2*HOLD+MOVE)v=0;else{const k=(x-2*HOLD-MOVE)/MOVE;v=90*(k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2)}setAng(v)}
+
+const P=new Map();let down=null,pinch=null;
+cv.addEventListener('pointerdown',e=>{cv.setPointerCapture(e.pointerId);P.set(e.pointerId,{x:e.clientX,y:e.clientY});anim=null;if(P.size===1)down={x:e.clientX,y:e.clientY,t:performance.now(),moved:false};if(P.size===2){const [p1,p2]=[...P.values()];pinch=Math.hypot(p1.x-p2.x,p1.y-p2.y);down=null}});
+cv.addEventListener('pointermove',e=>{if(!P.has(e.pointerId))return;const pr=P.get(e.pointerId);const dx=e.clientX-pr.x,dy=e.clientY-pr.y;P.set(e.pointerId,{x:e.clientX,y:e.clientY});
+if(P.size===1){th-=dx*.008;ph-=dy*.008;if(down&&Math.hypot(e.clientX-down.x,e.clientY-down.y)>6)down.moved=true}
+else if(P.size===2&&pinch){const [p1,p2]=[...P.values()];const d=Math.hypot(p1.x-p2.x,p1.y-p2.y);rd*=pinch/d;pinch=d}});
+function up(e){if(down&&!down.moved&&P.size===1)pick(e);P.delete(e.pointerId);if(P.size<2)pinch=null;if(!P.size)down=null}
+cv.addEventListener('pointerup',up);cv.addEventListener('pointercancel',e=>{P.delete(e.pointerId);down=null;pinch=null});
+cv.addEventListener('wheel',e=>{e.preventDefault();rd*=Math.exp(e.deltaY*.0012)},{passive:false});
+
+// Selección
+const ray=new THREE.Raycaster(),mv=new THREE.Vector2();
+const CAT={jaula:['Jaula de acero','Anclada a la pared de hormigón, con espacio para el banco y los discos.'],rack:['Rack integrado','Parantes reforzados para barra, dominadas y accesorios.'],plat:['Plataforma rebatible','Base de entrenamiento con goma que se pliega contra la pared.'],mal:['Mecanismo eléctrico','Sube y baja la plataforma con un botón.'],iz:['Placas de nivelación','Permiten levantar y nivelar el equipo durante la instalación.']};
+function catOf(u){if(!u)return null;if(u.part==='malacate')return'mal';if(u.part==='plataforma')return'plat';if(u.part==='jaula')return/rack/i.test(u.grp)?'rack':'jaula';if(u.mod)return'iz';return null}
+function highlight(k){selKey=k;meshes.forEach(me=>{const on=k&&catOf(me.userData)===k;me.material.emissive.set(on?0xE8B830:0x000000);me.material.emissiveIntensity=on?.45:0});
+const info=document.getElementById('info');
+if(!k){info.innerHTML='<span class="m">Tocá una parte del equipo para ver qué es.</span>';return}
+info.innerHTML=`<span><b>${CAT[k][0]}</b><br><span class="m">${CAT[k][1]}</span></span>`}
+function pick(e){const r=cv.getBoundingClientRect();mv.set(((e.clientX-r.left)/r.width)*2-1,-((e.clientY-r.top)/r.height)*2+1);ray.setFromCamera(mv,cam);
+const vis=meshes.filter(me=>{let o=me;while(o){if(!o.visible)return false;o=o.parent}return true});const h=ray.intersectObjects(vis,false)[0];{const c=h?catOf(h.object.userData):null;highlight(c===selKey?null:c)}}
+
+// Plataforma
+const ang=document.getElementById('ang'),angLbl=document.getElementById('angLbl'),play=document.getElementById('play');let pAnim=null;
+function setAng(v){pivot.rotation.x=THREE.MathUtils.degToRad(v);ang.value=v;angLbl.textContent=v<=2?'Cerrada':v>=88?'Abierta':Math.round(v)+'°';play.textContent=v>45?'Cerrar':'Abrir'}
+ang.oninput=()=>{pAnim=null;stopCyc();setAng(+ang.value)};
+play.onclick=()=>{stopCyc();const from=+ang.value,to=from>45?0:90,t0=performance.now(),reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;pAnim=t=>{const k=reduce?1:Math.min((t-t0)/1400,1),e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;setAng(from+(to-from)*e);if(k>=1)pAnim=null}};
+setAng(90);
+
+// Toggles
+function tog(id,fn){const b=document.getElementById(id);b.onclick=()=>{b.classList.toggle('on');fn(b.classList.contains('on'))}}
+tog('tJaula',v=>{jaula.visible=v;rev.visible=v&&document.getElementById('tRev').classList.contains('on')});
+tog('tPlat',v=>{pivot.visible=v;platStatic.visible=v});
+tog('tBench',v=>{benchG.visible=v});
+tog('tDisc',v=>{discG.visible=v});
+tog('tExp',v=>{expl=v;if(v&&!selKey)document.getElementById('info').innerHTML='<span><b>Vista de montaje</b><br><span class="m">Así se separa el equipo en módulos livianos para llevarlo y armarlo en tu casa.</span></span>';else if(!v&&!selKey)highlight(null)});
+tog('tRack',v=>{rackOn=v;if(v){if(!cyc&&+ang.value<88){const from=+ang.value,t0=performance.now(),reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;pAnim=t=>{const k=reduce?1:Math.min((t-t0)/1400,1),e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;setAng(from+(90-from)*e);if(k>=1)pAnim=null}}
+if(!selKey)document.getElementById('info').innerHTML='<span><b>Rack desmontable</b><br><span class="m">Se arma con la plataforma abierta y la polea del malacate guardada arriba. Al cerrar, cada pieza se guarda en su lugar dentro de la jaula. Apagá el Revestimiento para verlas.</span></span>'}else if(!selKey)highlight(null)});
+tog('tMal',v=>{incMal=v;mal.visible=v;malP.visible=v;meshes.forEach(me=>{if(me.userData.alt==='sinMal')me.visible=!v});if(selKey&&!act().some(m=>m.key===selKey))highlight(null);renderData()});
+tog('tRev',v=>{rev.visible=v&&jaula.visible;revP.visible=v});
+{const on=document.getElementById('tRev').classList.contains('on');revP.visible=on;rev.visible=on&&jaula.visible}
+
+// Tema
+const root=document.documentElement;
+document.getElementById('theme').onclick=()=>{const dark=getComputedStyle(root).getPropertyValue('--bg').trim().toLowerCase()==='#16171a';root.setAttribute('data-theme',dark?'light':'dark');applyTheme()};
+matchMedia('(prefers-color-scheme:dark)').addEventListener('change',applyTheme);
+
+function size(){const w=vw.clientWidth,h=vw.clientHeight;R.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()}
+new ResizeObserver(size).observe(vw);size();
+function loop(t){const dt=lastT?Math.min(t-lastT,50):16;lastT=t;if(anim)anim(t);if(autoRot&&!P.size)th+=dt*.00035;if(cyc)cycle(t);if(pAnim)pAnim(t);rackG.visible=rackOn;if(rackOn)updRack(Math.min(Math.max((90-+ang.value)/20,0),1));const tg=expl?1:0;if(explE!==tg){explE=tg?Math.min(explE+dt/900,1):Math.max(explE-dt/900,0);applyExpl()}if(mal.visible)updCables();place();R.render(S,cam);requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
