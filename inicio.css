@@ -1,0 +1,11 @@
+/* Portada coherente con los catálogos Gym y Hogar. */
+.hero{max-width:none;min-height:65vh!important;padding:5rem 3rem 4rem!important}
+.hero-title{font-size:clamp(3.4rem,7vw,6.5rem)!important}
+.hero-cta{opacity:1;animation:none}
+.hero-scroll{display:none}
+.btn-ghost{color:var(--text);border-color:var(--border-hover)}
+:is(#gym,#hogar){padding:3rem max(3rem,calc((100vw - 1344px)/2))}
+:is(#gym,#hogar) .section-sub{margin-bottom:1.5rem;font-size:.95rem}
+.line-header{margin-bottom:1.2rem}
+.nav-dropdown:focus-within .nav-dropdown-menu{opacity:1;pointer-events:auto}
+@media(max-width:768px){.hero{padding:3rem 1.5rem!important;min-height:0!important}.hero-cta{width:100%}:is(#gym,#hogar){padding:2.5rem 1.25rem}.hero-sub{margin-top:1.5rem}.mobile-menu{overflow-y:auto;justify-content:flex-start;padding:90px 1rem 2rem;gap:1rem}}

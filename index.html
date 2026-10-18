@@ -180,8 +180,11 @@ footer img{height:32px;width:auto;transition:filter 0.4s}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes scrollPulse{0%,100%{opacity:0.3}50%{opacity:1}}
 </style>
+<link rel="stylesheet" href="gym/catalogo.css?v=2">
+<link rel="stylesheet" href="inicio.css?v=1">
 </head>
 <body>
+<a class="skip-link" href="#gym">Ir a los productos</a>
 <nav>
   <div class="nav-logo"><img src="https://fabrixh.github.io/fabrilar/img/favicon.png" alt="Fabrilar"></div>
   <ul class="nav-links">
@@ -402,5 +405,6 @@ var obs=new IntersectionObserver(function(entries){entries.forEach(function(e,i)
 document.querySelectorAll(".reveal").forEach(function(el){obs.observe(el);});
 document.querySelectorAll(".galeria-item").forEach(function(el,i){var img=el.querySelector("img");galeriaItems.push({src:img?img.src:"",nombre:el.getAttribute("data-nombre")||"",desc:el.getAttribute("data-desc")||""});});
 </script>
+<script src="gym/catalogo.js?v=2"></script>
 </body>
 </html>
