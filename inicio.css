@@ -2,6 +2,8 @@
 .hero{max-width:none;min-height:65vh!important;padding:5rem 3rem 4rem!important}
 .hero-title{font-size:clamp(3.4rem,7vw,6.5rem)!important}
 .hero-cta{opacity:1;animation:none}
+.hero-bg{pointer-events:none}
+.hero > :not(.hero-bg){position:relative;z-index:1}
 .hero-scroll{display:none}
 .btn-ghost{color:var(--text);border-color:var(--border-hover)}
 :is(#gym,#hogar){padding:3rem max(3rem,calc((100vw - 1344px)/2))}
