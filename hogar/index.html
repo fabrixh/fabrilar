@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="https://fabrixh.github.io/fabrilar/img/favicon.png">
-<link rel="apple-touch-icon" href="https://fabrixh.github.io/fabrilar/img/favicon.png">
+<link rel="icon" type="image/png" href="../img/favicon.png">
+<link rel="apple-touch-icon" href="../img/favicon.png">
+<meta name="description" content="Muebles y accesorios de hierro y madera fabricados en La Rioja. Conocé estantes, mesas y organizadores de Fabrilar Hogar y consultá por WhatsApp.">
+<link rel="canonical" href="https://fabrilar.com.ar/hogar/">
 <title>Fabrilar Hogar — Catálogo completo · La Rioja</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -181,10 +183,12 @@ footer img{height:32px;width:auto;transition:filter 0.4s}
 @keyframes scrollPulse{0%,100%{opacity:0.3}50%{opacity:1}}
 
 </style>
+<link rel="stylesheet" href="../gym/catalogo.css">
 </head>
 <body>
+<a class="skip-link" href="#hogar">Ir al catálogo</a>
 <nav>
-  <a href="/" class="nav-logo"><img src="https://fabrixh.github.io/fabrilar/img/favicon.png" alt="Fabrilar"></a>
+  <a href="/" class="nav-logo"><img src="../img/favicon.png" alt="Fabrilar"></a>
   <ul class="nav-links">
     <li><a href="/">Inicio</a></li>
     <li><a href="/gym">Línea Fitness</a></li>
@@ -194,8 +198,8 @@ footer img{height:32px;width:auto;transition:filter 0.4s}
     <li><a href="/#contacto" class="nav-pill">Contacto</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:0.8rem">
-    <div class="theme-switch" onclick="toggleTheme()"><span class="switch-icon icon-moon">🌙</span><div class="switch-track"><div class="switch-thumb"></div></div><span class="switch-icon icon-sun">☀️</span></div>
-    <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    <button type="button" class="theme-switch" onclick="toggleTheme()" aria-label="Cambiar tema claro u oscuro"><span class="switch-icon icon-moon">🌙</span><span class="switch-track"><span class="switch-thumb"></span></span><span class="switch-icon icon-sun">☀️</span></button>
+    <button type="button" class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
@@ -213,14 +217,17 @@ footer img{height:32px;width:auto;transition:filter 0.4s}
   </div>
 </div>
 
-<section class="hero" style="min-height:38vh;padding-top:7rem">
+<main>
+<section class="hero">
   <p class="hero-eyebrow">La Rioja, Argentina · Catálogo completo</p>
-  <h1 class="hero-title" style="font-size:2.8rem">Catálogo Hogar</h1>
+  <h1 class="hero-title">Tu hogar. Tu estilo.</h1>
   <p class="hero-sub">Muebles y accesorios para el hogar fabricados con madera y materiales premium. Diseño que perdura.</p>
+<ul class="catalog-intro" aria-label="Sobre el catálogo"><li>Fabricación en La Rioja</li><li>Precios en pesos argentinos</li><li>Consulta directa por WhatsApp</li></ul>
 </section>
 <section id="hogar">
+<div class="catalog-wrap"><div class="catalog-heading"><h2>Muebles y accesorios Hogar</h2><p>3 productos · Diseño para tus espacios</p></div>
   <div class="galeria reveal">    <div class="galeria-item" data-nombre="Estante Industrial" data-desc="Estantería con estructura de hierro y tablas de madera maciza. Diseño industrial moderno." onclick="abrirLightbox(this.querySelector('img').src, 'Estante Industrial', 'Estantería con estructura de hierro y tablas de madera maciza. Diseño industrial moderno.', 0)">
-      <img src="https://fabrixh.github.io/fabrilar/img/Estante.png" alt="Estante Industrial" loading="lazy">
+      <img src="../img/Estante.png" alt="Estante Industrial" loading="lazy">
       <div class="galeria-overlay">
 <p class="galeria-nombre">Estante Industrial</p>
 <p class="galeria-desc">Estantería con estructura de hierro y tablas de madera maciza. Diseño industrial moderno.</p>
@@ -230,7 +237,7 @@ footer img{height:32px;width:auto;transition:filter 0.4s}
 </div>
     </div>
     <div class="galeria-item" data-nombre="Mesa Ratonera" data-desc="Mesa auxiliar minimalista con estructura metálica y tablero de pino. Ideal para living o dormitorio." onclick="abrirLightbox(this.querySelector('img').src, 'Mesa Ratonera', 'Mesa auxiliar minimalista con estructura metálica y tablero de pino. Ideal para living o dormitorio.', 1)">
-      <img src="https://fabrixh.github.io/fabrilar/img/MesaRatonera.png" alt="Mesa Ratonera" loading="lazy">
+      <img src="../img/MesaRatonera.png" alt="Mesa Ratonera" loading="lazy">
       <div class="galeria-overlay">
 <p class="galeria-nombre">Mesa Ratonera</p>
 <p class="galeria-desc">Mesa auxiliar minimalista con estructura metálica y tablero de pino. Ideal para living o dormitorio.</p>
@@ -239,7 +246,7 @@ footer img{height:32px;width:auto;transition:filter 0.4s}
 </div>
     </div>
     <div class="galeria-item" data-nombre="Organizador Lavarropas" data-desc="Mueble organizador sobre lavarropas con estantes de madera y estructura de hierro. Funcional y estético." onclick="abrirLightbox(this.querySelector('img').src, 'Organizador Lavarropas', 'Mueble organizador sobre lavarropas con estantes de madera y estructura de hierro. Funcional y estético.', 2)">
-      <img src="https://fabrixh.github.io/fabrilar/img/OrgLavarropa.png" alt="Organizador Lavarropas" loading="lazy">
+      <img src="../img/OrgLavarropa.png" alt="Organizador Lavarropas" loading="lazy">
       <div class="galeria-overlay">
 <p class="galeria-nombre">Organizador Lavarropas</p>
 <p class="galeria-desc">Mueble organizador sobre lavarropas con estantes de madera y estructura de hierro. Funcional y estético.</p>
@@ -247,9 +254,9 @@ footer img{height:32px;width:auto;transition:filter 0.4s}
 <button class="btn-consultar" onclick="event.stopPropagation();consultarWA('Organizador Lavarropas','$69.000')">💬 Consultar</button>
 </div>
     </div></div>
-</section>
+</div><aside class="purchase-help"><h2>¿Buscás un mueble para tu espacio?</h2><p>Contanos qué necesitás y las medidas de tu ambiente. <a href="https://wa.me/543804985423?text=Hola%2C%20quiero%20consultar%20por%20los%20muebles%20de%20Fabrilar%20Hogar." target="_blank" rel="noopener noreferrer">Consultá con Fabrilar ↗</a></p><p>Antes de confirmar tu pedido, consultá medidas, terminaciones, disponibilidad, plazo de fabricación o entrega, medios de pago y garantía.</p></aside></section></main>
 <footer>
-  <img src="https://fabrixh.github.io/fabrilar/img/favicon.png" alt="Fabrilar">
+  <img src="../img/favicon.png" alt="Fabrilar">
   <div class="footer-links"><a href="https://www.instagram.com/fabri.lar" target="_blank">@fabri.lar</a><a href="https://www.instagram.com/fabrilar.hogar/" target="_blank">@fabrilar.hogar</a><a href="http://wa.me/543804985423" target="_blank">WhatsApp</a></div>
   <p class="footer-copy">© 2026 · fabrilar.com.ar · La Rioja</p>
 </footer>
@@ -280,8 +287,8 @@ function navLightbox(dir){lbIndex=(lbIndex+dir+galeriaItems.length)%galeriaItems
 document.addEventListener("keydown",function(e){var lb=document.getElementById("lightbox");if(!lb.classList.contains("open"))return;if(e.key==="Escape")cerrarLightbox({target:lb});if(e.key==="ArrowRight")navLightbox(1);if(e.key==="ArrowLeft")navLightbox(-1);});
 function toggleTheme(){var html=document.documentElement;var next=html.getAttribute("data-theme")==="dark"?"light":"dark";html.setAttribute("data-theme",next);localStorage.setItem("fabrilar-theme",next);}
 (function(){var saved=localStorage.getItem("fabrilar-theme");if(saved)document.documentElement.setAttribute("data-theme",saved);})();
-function toggleMenu(){var h=document.getElementById("hamburger");var m=document.getElementById("mobileMenu");h.classList.toggle("open");m.classList.toggle("open");document.body.style.overflow=m.classList.contains("open")?"hidden":"";}
-function closeMenu(){document.getElementById("hamburger").classList.remove("open");document.getElementById("mobileMenu").classList.remove("open");document.body.style.overflow="";}
+function toggleMenu(){var h=document.getElementById("hamburger");var m=document.getElementById("mobileMenu");h.classList.toggle("open");m.classList.toggle("open");h.setAttribute("aria-expanded",m.classList.contains("open"));h.setAttribute("aria-label",m.classList.contains("open")?"Cerrar menú":"Abrir menú");document.body.style.overflow=m.classList.contains("open")?"hidden":"";}
+function closeMenu(){document.getElementById("hamburger").classList.remove("open");document.getElementById("hamburger").setAttribute("aria-expanded","false");document.getElementById("hamburger").setAttribute("aria-label","Abrir menú");document.getElementById("mobileMenu").classList.remove("open");document.body.style.overflow="";}
 function activarVisor(id){var iframe=document.getElementById("iframe-"+id);var overlay=document.getElementById("overlay-"+id);var wrap=document.getElementById("wrap-"+id);iframe.src=iframe.getAttribute("data-src");overlay.classList.add("hidden");wrap.classList.add("active");}
 function pantallaCompleta(id){var iframe=document.getElementById("iframe-"+id);var req=iframe.requestFullscreen||iframe.webkitRequestFullscreen||iframe.mozRequestFullScreen||iframe.msRequestFullscreen;if(req){req.call(iframe);}}
 var obs=new IntersectionObserver(function(entries){entries.forEach(function(e,i){if(e.isIntersecting){setTimeout(function(){e.target.classList.add("visible");},i*70);}});},{threshold:0.08});
@@ -289,5 +296,6 @@ document.querySelectorAll(".reveal").forEach(function(el){obs.observe(el);});
 document.querySelectorAll(".galeria-item").forEach(function(el,i){var img=el.querySelector("img");galeriaItems.push({src:img?img.src:"",nombre:el.getAttribute("data-nombre")||"",desc:el.getAttribute("data-desc")||""});});
 
 </script>
+<script src="../gym/catalogo.js"></script>
 </body>
 </html>
