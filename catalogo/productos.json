@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-19T04:39:30.818Z",
+  "capturedAt": "2026-10-19T06:22:59.145Z",
   "products": [
     {
       "code": "FAB-00001",
@@ -392,7 +392,7 @@
       "line": "gym",
       "category": "Discos y pesas",
       "description": "Disco PVC de 1,25 kg. Precio por unidad.",
-      "price": 3600,
+      "price": 3750,
       "currency": "ARS",
       "available": true,
       "image": null
@@ -403,7 +403,7 @@
       "line": "gym",
       "category": "Discos y pesas",
       "description": "Disco PVC de 2,5 kg. Precio por unidad.",
-      "price": 7250,
+      "price": 7500,
       "currency": "ARS",
       "available": true,
       "image": null
@@ -425,7 +425,7 @@
       "line": "gym",
       "category": "Discos y pesas",
       "description": "Disco PVC de 5 kg. Precio por unidad.",
-      "price": 14500,
+      "price": 15000,
       "currency": "ARS",
       "available": true,
       "image": null
@@ -447,7 +447,7 @@
       "line": "gym",
       "category": "Mancuernas",
       "description": "Mancuerna hexagonal PVC de 3 kg. Precio por unidad.",
-      "price": 9000,
+      "price": 12000,
       "currency": "ARS",
       "available": true,
       "image": "/img/catalogo/029bfb32a894f94a.webp"
@@ -458,7 +458,7 @@
       "line": "gym",
       "category": "Mancuernas",
       "description": "Mancuernas hexagonales PVC para entrenamiento. Precio por unidad.",
-      "price": 12500,
+      "price": 17000,
       "currency": "ARS",
       "available": true,
       "image": "/img/catalogo/e8c73142307c6a0c.webp"
@@ -469,7 +469,7 @@
       "line": "gym",
       "category": "Mancuernas",
       "description": "Mancuerna hexagonal PVC de 8 kg. Precio por unidad.",
-      "price": 21000,
+      "price": 23000,
       "currency": "ARS",
       "available": true,
       "image": null
