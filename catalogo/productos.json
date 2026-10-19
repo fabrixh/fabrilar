@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-19T06:22:59.145Z",
+  "capturedAt": "2026-10-19T07:10:33.703Z",
   "products": [
     {
       "code": "FAB-00001",
@@ -395,7 +395,7 @@
       "price": 3750,
       "currency": "ARS",
       "available": true,
-      "image": null
+      "image": "/img/catalogo/94c7b97562b61ac7.webp"
     },
     {
       "code": "FAB-00037",
