@@ -73,3 +73,10 @@ footer .footer-links a,footer .footer-copy{font-size:.75rem;color:var(--text-mut
 @media(max-width:768px){.hero{padding:2.5rem 1.25rem 2rem!important}:is(#gym,#hogar){padding:1.5rem 1.25rem 2rem}.hero-sub{margin-bottom:1.2rem}.galeria{gap:1rem}.galeria-item .galeria-overlay{padding:1rem}.theme-switch{display:flex}.nav-links{display:none}.mobile-menu{gap:1.5rem}.mobile-menu a{font-size:1rem}.lightbox img{max-width:82vw}.lightbox-nav{padding:.4rem}.lightbox-prev{left:0}.lightbox-next{right:0}}
 @media(max-width:540px){.galeria{grid-template-columns:1fr}.galeria-item img{aspect-ratio:4/3}.hero-eyebrow{font-size:.6rem}.catalog-intro{font-size:.72rem}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+
+.back-to-top[hidden]{display:none!important}
+.back-to-top{position:fixed;right:max(1rem,env(safe-area-inset-right));bottom:calc(1rem + env(safe-area-inset-bottom));z-index:90;display:flex;align-items:center;justify-content:center;gap:.45rem;min-width:48px;min-height:48px;padding:.75rem 1rem;border:1px solid var(--gold);border-radius:999px;background:var(--gold);color:#17140c;box-shadow:0 4px 18px #0004;font:500 .8rem "Jost",sans-serif;cursor:pointer}
+.back-to-top span:first-child{font-size:1.3rem;line-height:1}
+.back-to-top:hover{background:var(--gold-light)}
+.back-to-top:focus-visible{outline:3px solid var(--text);outline-offset:4px}
+body:has(.lightbox.open) .back-to-top{visibility:hidden}

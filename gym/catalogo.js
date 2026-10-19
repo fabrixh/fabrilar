@@ -137,3 +137,32 @@ if (/\/(gym|hogar)(\/|\/index\.html)?$/.test(location.pathname)) {
     filterProducts();
   });
 }
+
+ 
+// Volver al inicio sin perder los filtros elegidos.
+if (/\/(gym|hogar)(\/|\/index\.html)?$/.test(location.pathname)) {
+  const backToTop = document.createElement('button');
+  backToTop.type = 'button';
+  backToTop.className = 'back-to-top';
+  backToTop.hidden = true;
+  backToTop.setAttribute('aria-label', 'Volver arriba');
+  backToTop.innerHTML = '<span aria-hidden="true">↑</span><span>Arriba</span>';
+  document.body.append(backToTop);
+  function updateBackToTop() {
+    const hidden = window.scrollY < 500;
+    if (hidden && document.activeElement === backToTop) {
+      const target = document.querySelector('.catalog-filters input[type="search"]') || document.querySelector('h1');
+      if (target) {
+        if (!target.matches('input')) target.setAttribute('tabindex', '-1');
+        target.focus({preventScroll:true});
+      }
+    }
+    backToTop.hidden = hidden;
+  }
+  window.addEventListener('scroll', updateBackToTop, {passive:true});
+  window.addEventListener('resize', updateBackToTop);
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({top:0, behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
+  });
+  updateBackToTop();
+}
