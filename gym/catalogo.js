@@ -1,10 +1,12 @@
 // Mejora progresiva: el catálogo y los precios siguen presentes en el HTML.
 const cards = [...document.querySelectorAll('.galeria-item')];
+const photoCards = cards.filter(card => card.querySelector('img'));
 cards.forEach((card) => {
   const title = card.querySelector('.galeria-nombre').textContent;
   card.removeAttribute('onclick');
   card.dataset.nombre = title;
   const img = card.querySelector('img');
+  if (img) {
   const photo = document.createElement('button');
   photo.type = 'button';
   photo.className = 'product-photo';
@@ -16,7 +18,8 @@ cards.forEach((card) => {
   hint.textContent = 'Ampliar foto ↗';
   hint.setAttribute('aria-hidden', 'true');
   photo.append(hint);
-  photo.addEventListener('click', () => abrirLightbox(img.src, title, card.dataset.desc, cards.indexOf(card)));
+  photo.addEventListener('click', () => abrirLightbox(img.src, title, card.dataset.desc, photoCards.indexOf(card)));
+  }
   const name = card.querySelector('.galeria-nombre');
   const heading = document.createElement('h3');
   heading.className = name.className;
@@ -28,12 +31,12 @@ cards.forEach((card) => {
   link.className = consult.className;
   link.textContent = 'Consultar por WhatsApp ↗';
   link.setAttribute('aria-label', 'Consultar por WhatsApp: ' + title);
-  link.href = 'https://wa.me/543804985423?text=' + encodeURIComponent('¡Hola! Me interesa ' + title + ' de Fabrilar.\nPrecio publicado: ' + prices + '\n¿Me cuentan qué incluye, disponibilidad, plazo de entrega y medios de pago?');
+  link.href = 'https://wa.me/543804985423?text=' + encodeURIComponent('¡Hola! Me interesa ' + title + (card.dataset.codigo ? ' (' + card.dataset.codigo + ')' : '') + ' de Fabrilar.\nPrecio publicado: ' + prices + '\n¿Me cuentan qué incluye, disponibilidad, plazo de entrega y medios de pago?');
   link.target = '_blank';
   link.rel = 'noopener noreferrer';
   consult.replaceWith(link);
 });
-galeriaItems = cards.map(card => ({src:card.querySelector('img').src,nombre:card.dataset.nombre,desc:card.dataset.desc}));
+galeriaItems = photoCards.map(card => ({src:card.querySelector('img').src,nombre:card.dataset.nombre,desc:card.dataset.desc}));
 const lightbox = document.getElementById('lightbox');
 lightbox.setAttribute('role', 'dialog');
 lightbox.setAttribute('aria-modal', 'true');
