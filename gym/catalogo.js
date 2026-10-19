@@ -18,7 +18,11 @@ cards.forEach((card) => {
   hint.textContent = 'Ampliar foto ↗';
   hint.setAttribute('aria-hidden', 'true');
   photo.append(hint);
-  photo.addEventListener('click', () => abrirLightbox(img.src, title, card.dataset.desc, photoCards.indexOf(card)));
+  photo.addEventListener('click', () => {
+    const visiblePhotos = photoCards.filter(item => !item.hidden);
+    galeriaItems = visiblePhotos.map(item => ({src:item.querySelector('img').src,nombre:item.dataset.nombre,desc:item.dataset.desc}));
+    abrirLightbox(img.src, title, card.dataset.desc, visiblePhotos.indexOf(card));
+  });
   }
   const name = card.querySelector('.galeria-nombre');
   const heading = document.createElement('h3');
@@ -71,3 +75,65 @@ document.addEventListener('keydown', event => {
   else if(!event.shiftKey && document.activeElement === last){event.preventDefault();first.focus();}
 });
 document.querySelectorAll('a[target="_blank"]').forEach(link => link.rel = 'noopener noreferrer');
+
+// Los filtros se ofrecen en los catálogos completos; la portada conserva sus destacados.
+if (/\/(gym|hogar)(\/|\/index\.html)?$/.test(location.pathname)) {
+  document.querySelectorAll('.catalog-wrap').forEach(wrap => {
+    const gallery = wrap.querySelector('.galeria');
+    const products = [...gallery.querySelectorAll('.galeria-item')];
+    const normalize = value => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]/g, '');
+    const items = products.map(card => ({card,
+      category: card.querySelector('.product-category')?.textContent.trim() || 'Otros',
+      search: normalize(card.dataset.nombre + ' ' + (card.dataset.codigo || '')),
+      available: card.querySelector('.product-stock')?.textContent.trim() === 'En stock'
+    }));
+    const form = document.createElement('form');
+    form.className = 'catalog-filters';
+    form.setAttribute('role', 'search');
+    form.setAttribute('aria-label', 'Buscar productos del catálogo');
+    form.innerHTML = '<label class="catalog-search">Buscar producto<input type="search" name="buscar" placeholder="Nombre o código, por ejemplo FAB-00001" autocomplete="off"></label><label>Categoría<select name="categoria" aria-label="Categoría"><option value="">Todas las categorías</option></select></label><label class="catalog-stock"><input type="checkbox" name="stock">Solo en stock</label><button type="reset" class="catalog-reset">Limpiar filtros</button>';
+    const input = form.elements.namedItem('buscar');
+    const category = form.elements.namedItem('categoria');
+    const stock = form.elements.namedItem('stock');
+    [...new Set(items.map(item => item.category))].sort((a,b) => a.localeCompare(b,'es')).forEach(value => {
+      const option = document.createElement('option');
+      option.value = value;
+      option.textContent = value;
+      category.append(option);
+    });
+    const status = document.createElement('p');
+    status.className = 'catalog-results';
+    status.setAttribute('role', 'status');
+    status.setAttribute('aria-live', 'polite');
+    status.setAttribute('aria-atomic', 'true');
+    const empty = document.createElement('div');
+    empty.className = 'catalog-empty';
+    empty.hidden = true;
+    empty.textContent = 'No encontramos productos con esos filtros. Probá otro nombre o código, o limpiá los filtros.';
+    gallery.before(form, status);
+    gallery.after(empty);
+    function filterProducts() {
+      const words = input.value.trim().split(/\s+/).map(normalize).filter(Boolean);
+      let count = 0;
+      items.forEach(item => {
+        const show = words.every(word => item.search.includes(word)) && (!category.value || item.category === category.value) && (!stock.checked || item.available);
+        item.card.hidden = !show;
+        if (show) count++;
+      });
+      status.textContent = 'Mostrando ' + count + ' de ' + items.length + ' productos';
+      empty.hidden = count > 0;
+    }
+    form.addEventListener('submit', event => event.preventDefault());
+    input.addEventListener('input', filterProducts);
+    category.addEventListener('change', filterProducts);
+    stock.addEventListener('change', filterProducts);
+    form.addEventListener('reset', event => {
+      event.preventDefault();
+      input.value = '';
+      category.value = '';
+      stock.checked = false;
+      filterProducts();
+    });
+    filterProducts();
+  });
+}
