@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-19T07:10:33.703Z",
+  "capturedAt": "2026-10-20T05:08:40.483Z",
   "products": [
     {
       "code": "FAB-00001",
@@ -7,7 +7,7 @@
       "line": "gym",
       "category": "Bancos",
       "description": "Banco de pecho multifuncional rebatible para entrenamiento.",
-      "price": 149000,
+      "price": 150000,
       "currency": "ARS",
       "available": true,
       "image": "/img/catalogo/b77b630500ec5012.webp"
@@ -274,7 +274,7 @@
       "price": 30000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/50ef53fb2fa01976.webp"
+      "image": "/img/catalogo/b2d7e289edc94990.webp"
     },
     {
       "code": "FAB-00026",
