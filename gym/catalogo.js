@@ -1,3 +1,18 @@
+// Conserva los seis destacados aunque la planilla regenere la portada.
+(async function () {
+  if (document.querySelector('.hero-title') && document.querySelector('#gym .galeria')) {
+    try {
+      const response = await fetch('/gym/', {signal: AbortSignal.timeout(4000)});
+      if (!response.ok) throw new Error('Catálogo no disponible');
+      const catalog = new DOMParser().parseFromString(await response.text(), 'text/html');
+      const products = [...catalog.querySelectorAll('#gym .galeria-item')];
+      const principal = products.find(card => card.dataset.codigo === 'FAB-00083');
+      const selected = principal
+        ? [principal, ...products.filter(card => card !== principal).slice(0, 5)]
+        : products.slice(0, 6);
+      if (selected.length === 6) document.querySelector('#gym .galeria').replaceChildren(...selected);
+    } catch (_) { /* El HTML publicado sigue disponible sin conexión al catálogo. */ }
+  }
 // Mejora progresiva: el catálogo y los precios siguen presentes en el HTML.
 const cards = [...document.querySelectorAll('.galeria-item')];
 const photoCards = cards.filter(card => card.querySelector('img'));
@@ -166,3 +181,5 @@ if (document.querySelector('.hero-title, .catalog-wrap')) {
   });
   updateBackToTop();
 }
+
+})();
