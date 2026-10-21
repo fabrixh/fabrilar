@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-21T07:11:16.720Z",
+  "capturedAt": "2026-10-21T12:58:29.955Z",
   "products": [
     {
       "code": "FAB-00001",
@@ -589,6 +589,18 @@
       "currency": "ARS",
       "available": false,
       "image": "/img/catalogo/f6d665ec6dbcab90.webp"
+    },
+    {
+      "code": "FAB-00083",
+      "name": "Abductor/Aductor Dual — trabajá ambos movimientos en un solo equipo",
+      "line": "gym",
+      "category": "Piernas y glúteos",
+      "description": "Diseñada y fabricada íntegra en nuestro taller, esta máquina combina apertura y cierre de piernas con sistema de polea y contrapeso regulable, respaldo reclinable y apoyos acolchados ajustables para adaptarse a cada usuario.\r\n\r\n🔩 Estructura en caño de acero reforzado 2mm\r\n🪑 Tapizado premium azul, densidad para uso intensivo\r\n⚙️ Sistema de poleas de alta durabilidad\r\n📏 Regulaciones múltiples para distintos rangos de movimiento",
+      "price": 1199000,
+      "regularPrice": 1400000,
+      "currency": "ARS",
+      "available": false,
+      "image": "/img/catalogo/7420bae1312f5003.webp"
     },
     {
       "code": "FAB-00055",
