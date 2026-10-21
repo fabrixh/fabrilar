@@ -11,3 +11,6 @@
 .line-header{margin-bottom:1.2rem}
 .nav-dropdown:focus-within .nav-dropdown-menu{opacity:1;pointer-events:auto}
 @media(max-width:768px){.hero{padding:3rem 1.5rem!important;min-height:0!important}.hero-cta{width:100%}:is(#gym,#hogar){padding:2.5rem 1.25rem}.hero-sub{margin-top:1.5rem}.mobile-menu{overflow-y:auto;justify-content:flex-start;padding:90px 1rem 2rem;gap:1rem}}
+
+/* Portada de escritorio más compacta: altura determinada por el contenido. */
+@media(min-width:769px){.hero{min-height:0!important;padding:3rem 3rem 3rem!important}}
