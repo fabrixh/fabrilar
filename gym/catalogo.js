@@ -1,6 +1,7 @@
 // Conserva los seis destacados aunque la planilla regenere la portada.
 (async function () {
-  if (document.querySelector('.hero-title') && document.querySelector('#gym .galeria')) {
+  const isHomePage = /^\/(?:index\.html)?$/.test(location.pathname);
+  if (isHomePage && document.querySelector('#gym .galeria')) {
     try {
       const response = await fetch('/gym/', {signal: AbortSignal.timeout(4000)});
       if (!response.ok) throw new Error('Catálogo no disponible');
@@ -39,7 +40,7 @@ cards.forEach((card) => {
   }
   // Videos destacados solo en la portada; cada enlace conserva la foto ampliable.
   const videoUrls = {"FAB-00083":"https://www.instagram.com/p/DdNXZReBxAt/","FAB-00002":"https://www.instagram.com/p/DaGy3DtJdLw/","FAB-00017":"https://www.instagram.com/p/DW7_s2tDpbM/"};
-  if (document.querySelector('.hero-title') && card.closest('#gym') && videoUrls[card.dataset.codigo]) {
+  if (isHomePage && card.closest('#gym') && videoUrls[card.dataset.codigo]) {
     card.querySelector('.product-video')?.remove();
     const video = document.createElement('a');
     video.className = 'product-video';
