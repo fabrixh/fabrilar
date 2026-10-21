@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-20T05:08:40.483Z",
+  "capturedAt": "2026-10-21T05:25:45.747Z",
   "products": [
     {
       "code": "FAB-00001",
@@ -7,7 +7,8 @@
       "line": "gym",
       "category": "Bancos",
       "description": "Banco de pecho multifuncional rebatible para entrenamiento.",
-      "price": 150000,
+      "price": 135000,
+      "regularPrice": 150000,
       "currency": "ARS",
       "available": true,
       "image": "/img/catalogo/b77b630500ec5012.webp"
@@ -18,7 +19,8 @@
       "line": "gym",
       "category": "Bancos",
       "description": "Banco de pecho multifuncional rebatible con accesorio para entrenamiento de piernas.",
-      "price": 179000,
+      "price": 169000,
+      "regularPrice": 179000,
       "currency": "ARS",
       "available": true,
       "image": "/img/catalogo/14ee1b2e47c397a1.webp"
@@ -29,7 +31,8 @@
       "line": "gym",
       "category": "Bancos",
       "description": "Banco multiangular con respaldo regulable para entrenamiento.",
-      "price": 140000,
+      "price": 130000,
+      "regularPrice": 140000,
       "currency": "ARS",
       "available": true,
       "image": "/img/catalogo/4a29666b46650b1d.webp"
@@ -40,7 +43,8 @@
       "line": "gym",
       "category": "Dominadas",
       "description": "Equipo de pared para dominadas con respaldo y apoyos tapizados.",
-      "price": 139000,
+      "price": 129000,
+      "regularPrice": 139000,
       "currency": "ARS",
       "available": false,
       "image": "/img/catalogo/598cdf3fe73117ee.webp"
@@ -51,7 +55,8 @@
       "line": "gym",
       "category": "Dominadas",
       "description": "Barra de dominadas para fijación a pared con distintas posiciones de agarre.",
-      "price": 89000,
+      "price": 79000,
+      "regularPrice": 89000,
       "currency": "ARS",
       "available": false,
       "image": "/img/catalogo/5373859766c782fb.webp"
@@ -62,7 +67,8 @@
       "line": "gym",
       "category": "Bancos",
       "description": "Banco Scott regulable con apoyo tapizado para entrenamiento de brazos.",
-      "price": 120000,
+      "price": 110000,
+      "regularPrice": 120000,
       "currency": "ARS",
       "available": false,
       "image": "/img/catalogo/24740c8123e2ce17.webp"
@@ -106,7 +112,8 @@
       "line": "gym",
       "category": "Poleas",
       "description": "Torre de poleas regulables para entrenamiento.",
-      "price": 650000,
+      "price": 599000,
+      "regularPrice": 650000,
       "currency": "ARS",
       "available": false,
       "image": "/img/catalogo/0099ea7248ec6a4d.webp"
@@ -117,7 +124,8 @@
       "line": "gym",
       "category": "Poleas",
       "description": "Sistema de poleas altas y bajas para fijación a pared.",
-      "price": 200000,
+      "price": 180000,
+      "regularPrice": 200000,
       "currency": "ARS",
       "available": false,
       "image": "/img/catalogo/4f0ee421e3e20098.webp"
@@ -173,6 +181,7 @@
       "category": "Piernas y glúteos",
       "description": "Prensa de piernas a 45 grados.",
       "price": 800000,
+      "regularPrice": 900000,
       "currency": "ARS",
       "available": false,
       "image": "/img/catalogo/2e5260c64a3400df.webp"
@@ -183,7 +192,8 @@
       "line": "gym",
       "category": "Piernas y glúteos",
       "description": "Máquina Hack a 45 grados para entrenamiento de piernas.",
-      "price": 850000,
+      "price": 999000,
+      "regularPrice": 1100000,
       "currency": "ARS",
       "available": false,
       "image": "/img/catalogo/8eb418bcfbee1d96.webp"
@@ -194,7 +204,8 @@
       "line": "gym",
       "category": "Racks y soportes",
       "description": "Rack de pared articulado y plegable, con J Hooks, topes de seguridad y barra de dominadas.",
-      "price": 650000,
+      "price": 649000,
+      "regularPrice": 700000,
       "currency": "ARS",
       "available": false,
       "image": "/img/catalogo/8cd5bde4bcde815e.webp"
@@ -205,7 +216,8 @@
       "line": "gym",
       "category": "Racks y soportes",
       "description": "Rack para pared con J Hooks y topes de seguridad.",
-      "price": 490000,
+      "price": 479000,
+      "regularPrice": 490000,
       "currency": "ARS",
       "available": false,
       "image": "/img/catalogo/288594b4f3683615.webp"
@@ -216,7 +228,8 @@
       "line": "gym",
       "category": "Racks y soportes",
       "description": "Soporte tipo rack para entrenamiento de sentadillas.",
-      "price": 90000,
+      "price": 79000,
+      "regularPrice": 90000,
       "currency": "ARS",
       "available": false,
       "image": "/img/catalogo/b2890a50a2072d26.webp"
@@ -238,7 +251,8 @@
       "line": "gym",
       "category": "Accesorios de entrenamiento",
       "description": "Brazos con rulemán para equipamiento de entrenamiento.",
-      "price": 380000,
+      "price": 320000,
+      "regularPrice": 380000,
       "currency": "ARS",
       "available": false,
       "image": "/img/catalogo/d4430f40d18b1a9a.webp"
@@ -249,7 +263,8 @@
       "line": "gym",
       "category": "Piernas y glúteos",
       "description": "Equipo Hip Thrust para entrenamiento de puente de glúteos.",
-      "price": 200000,
+      "price": 180000,
+      "regularPrice": 200000,
       "currency": "ARS",
       "available": false,
       "image": "/img/catalogo/0cb777bf1f2cf023.webp"
@@ -304,7 +319,8 @@
       "line": "gym",
       "category": "Barras",
       "description": "Barra recta de 180 cm de largo y 30 mm de diámetro.",
-      "price": 25000,
+      "price": 23000,
+      "regularPrice": 25000,
       "currency": "ARS",
       "available": true,
       "image": "/img/catalogo/30abc6343f680df9.webp"
