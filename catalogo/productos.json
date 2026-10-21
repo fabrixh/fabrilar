@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-21T05:25:45.747Z",
+  "capturedAt": "2026-10-21T06:36:35.553Z",
   "products": [
     {
       "code": "FAB-00001",
@@ -606,7 +606,8 @@
       "line": "hogar",
       "category": "Mesas",
       "description": "Mesa ratonera con estructura metálica y superficie de madera.",
-      "price": 100000,
+      "price": 99000,
+      "regularPrice": 120000,
       "currency": "ARS",
       "available": false,
       "image": "/img/catalogo/3afe305ec349f037.webp"
@@ -621,6 +622,138 @@
       "currency": "ARS",
       "available": false,
       "image": "/img/catalogo/b434e904b094ea30.webp"
+    },
+    {
+      "code": "FAB-00061",
+      "name": "Alacena de cocina",
+      "line": "hogar",
+      "category": "Muebles de cocina",
+      "description": "Alacena para organizar utensilios y artículos de cocina.",
+      "price": 109000,
+      "currency": "ARS",
+      "available": false,
+      "image": "/img/catalogo/d8481066d6265ac5.webp"
+    },
+    {
+      "code": "FAB-00062",
+      "name": "Escalera metálica",
+      "line": "hogar",
+      "category": "Estructuras metálicas",
+      "description": "Escalera metálica. Medidas y configuración a definir según el proyecto.",
+      "price": 800000,
+      "currency": "ARS",
+      "available": false,
+      "image": "/img/catalogo/56e71b55e915f187.webp"
+    },
+    {
+      "code": "FAB-00063",
+      "name": "Perchero para negocio",
+      "line": "hogar",
+      "category": "Percheros",
+      "description": "Perchero para organizar y exhibir prendas en locales comerciales.",
+      "price": 250000,
+      "currency": "ARS",
+      "available": false,
+      "image": "/img/catalogo/117c5579c36058e8.webp"
+    },
+    {
+      "code": "FAB-00064",
+      "name": "Kit para parrilla: palita y atizador",
+      "line": "hogar",
+      "category": "Parrillas y accesorios",
+      "description": "Kit de palita y atizador para parrilla.",
+      "price": 20000,
+      "currency": "ARS",
+      "available": false,
+      "image": "/img/catalogo/69c40baee3acb414.webp"
+    },
+    {
+      "code": "FAB-00065",
+      "name": "Parrilla simple",
+      "line": "hogar",
+      "category": "Parrillas y accesorios",
+      "description": "Parrilla simple para cocinar a las brasas.",
+      "price": 60000,
+      "currency": "ARS",
+      "available": false,
+      "image": "/img/catalogo/742bc62e2e215f92.webp"
+    },
+    {
+      "code": "FAB-00066",
+      "name": "Mesa para gimnasio",
+      "line": "hogar",
+      "category": "Mesas",
+      "description": "Mesa para uso en gimnasio.",
+      "price": 190000,
+      "currency": "ARS",
+      "available": false,
+      "image": "/img/catalogo/9b30d6c0c757d555.webp"
+    },
+    {
+      "code": "FAB-00067",
+      "name": "Mesa de trabajo — modelo 300 kg",
+      "line": "hogar",
+      "category": "Mesas de trabajo",
+      "description": "Mesa de trabajo. Medidas y capacidad de carga a confirmar.",
+      "price": 350000,
+      "currency": "ARS",
+      "available": false,
+      "image": "/img/catalogo/19aa5f577a44b847.webp"
+    },
+    {
+      "code": "FAB-00069",
+      "name": "Desayunador con banquetas",
+      "line": "hogar",
+      "category": "Mesas y banquetas",
+      "description": "Conjunto de desayunador con banquetas. Cantidad de banquetas y medidas a confirmar.",
+      "price": 99000,
+      "currency": "ARS",
+      "available": false,
+      "image": "/img/catalogo/ac35eee9ef43c428.webp"
+    },
+    {
+      "code": "FAB-00070",
+      "name": "Organizador estante para inodoro",
+      "line": "hogar",
+      "category": "Organizadores",
+      "description": "Organizador estante para ordenar artículos de baño en el espacio del inodoro.",
+      "price": 59000,
+      "currency": "ARS",
+      "available": false,
+      "image": "/img/catalogo/ee5a98ac08751f6e.webp"
+    },
+    {
+      "code": "FAB-00072",
+      "name": "Cama de una plaza",
+      "line": "hogar",
+      "category": "Camas",
+      "description": "Cama de una plaza. Medidas y terminación a confirmar.",
+      "price": 149000,
+      "currency": "ARS",
+      "available": false,
+      "image": "/img/catalogo/042baceda311ac53.webp"
+    },
+    {
+      "code": "FAB-00074",
+      "name": "Mueble eléctrico estante mesa",
+      "line": "hogar",
+      "category": "Muebles multifunción",
+      "description": "Mueble estante y mesa. Características y funcionamiento a confirmar.",
+      "price": 220000,
+      "currency": "ARS",
+      "available": false,
+      "image": "/img/catalogo/da6a8a89d409b976.webp"
+    },
+    {
+      "code": "FAB-00075",
+      "name": "Mostrador de recepción",
+      "line": "hogar",
+      "category": "Mobiliario comercial",
+      "description": "Mostrador para recepción y atención al público.",
+      "price": 350000,
+      "currency": "ARS",
+      "available": false,
+      "image": "/img/catalogo/ba2a342d8b6708fa.webp"
     }
   ]
 }
