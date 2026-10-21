@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-21T06:36:35.553Z",
+  "capturedAt": "2026-10-21T07:11:16.720Z",
   "products": [
     {
       "code": "FAB-00001",
@@ -422,7 +422,7 @@
       "price": 7500,
       "currency": "ARS",
       "available": true,
-      "image": null
+      "image": "/img/catalogo/f3e62487c910fa8d.webp"
     },
     {
       "code": "FAB-00038",
@@ -444,7 +444,7 @@
       "price": 15000,
       "currency": "ARS",
       "available": true,
-      "image": null
+      "image": "/img/catalogo/67b5e35b7c4df2ad.webp"
     },
     {
       "code": "FAB-00040",
@@ -566,6 +566,29 @@
       "currency": "ARS",
       "available": true,
       "image": null
+    },
+    {
+      "code": "FAB-00080",
+      "name": "Mancuerna hexagonal cemento x kg",
+      "line": "gym",
+      "category": "Accesorios de mancuernas",
+      "description": "Mancuerna hexagonal de cemento reforzado. Precio por kg.",
+      "price": 1700,
+      "currency": "ARS",
+      "available": false,
+      "image": "/img/catalogo/ecb88ad07cda4d95.webp"
+    },
+    {
+      "code": "FAB-00082",
+      "name": "Combos barra larga, mancuernas y discos + 10 kilos",
+      "line": "gym",
+      "category": "Discos y pesas",
+      "description": "Barra larga recta 140cm, par mancuernas y 2 discos de 5kg",
+      "price": 24900,
+      "regularPrice": 29000,
+      "currency": "ARS",
+      "available": false,
+      "image": "/img/catalogo/f6d665ec6dbcab90.webp"
     },
     {
       "code": "FAB-00055",
@@ -754,6 +777,17 @@
       "currency": "ARS",
       "available": false,
       "image": "/img/catalogo/ba2a342d8b6708fa.webp"
+    },
+    {
+      "code": "FAB-00081",
+      "name": "Perchero Loft Industrial con ruedas",
+      "line": "hogar",
+      "category": "Percheros",
+      "description": "Organizador con perchero para tu ropa con estilo, con ruedas para su facil desplazamiento",
+      "price": 200000,
+      "currency": "ARS",
+      "available": false,
+      "image": "/img/catalogo/af1d73e0e47c0e22.webp"
     }
   ]
 }
