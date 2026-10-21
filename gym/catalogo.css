@@ -80,3 +80,12 @@ footer .footer-links a,footer .footer-copy{font-size:.75rem;color:var(--text-mut
 .back-to-top:hover{background:var(--gold-light)}
 .back-to-top:focus-visible{outline:3px solid var(--text);outline-offset:4px}
 body:has(.lightbox.open) .back-to-top{visibility:hidden}
+
+/* Ofertas: el precio final también se usa para consultar por WhatsApp. */
+.price-current{display:flex;align-items:center;flex-wrap:wrap;gap:.65rem}
+.galeria-precio.has-offer{display:flex;flex-direction:column;align-items:flex-start;gap:.3rem}
+.price-before{font-size:.9rem;color:var(--text-muted);line-height:1.4}
+.price-before del{text-decoration-thickness:1px}
+.offer-badge{display:inline-block;background:#214a34;color:#d5f5dc;border:1px solid #4f8f65;border-radius:4px;font:600 .75rem/1.2 "Jost",sans-serif;padding:.3rem .5rem;white-space:nowrap}
+[data-theme="light"] .offer-badge{background:#e4f4e8;color:#18582c;border-color:#85b591}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
