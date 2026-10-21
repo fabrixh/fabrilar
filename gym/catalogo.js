@@ -6,10 +6,8 @@
       if (!response.ok) throw new Error('Catálogo no disponible');
       const catalog = new DOMParser().parseFromString(await response.text(), 'text/html');
       const products = [...catalog.querySelectorAll('#gym .galeria-item')];
-      const principal = products.find(card => card.dataset.codigo === 'FAB-00083');
-      const selected = principal
-        ? [principal, ...products.filter(card => card !== principal).slice(0, 5)]
-        : products.slice(0, 6);
+      const featuredCodes = ["FAB-00083","FAB-00017","FAB-00002","FAB-00003","FAB-00004","FAB-00022"];
+      const selected = featuredCodes.map(code => products.find(card => card.dataset.codigo === code)).filter(Boolean);
       if (selected.length === 6) document.querySelector('#gym .galeria').replaceChildren(...selected);
     } catch (_) { /* El HTML publicado sigue disponible sin conexión al catálogo. */ }
   }
@@ -40,7 +38,7 @@ cards.forEach((card) => {
   });
   }
   // Videos destacados solo en la portada; cada enlace conserva la foto ampliable.
-  const videoUrls = {"FAB-00083":"https://www.instagram.com/p/DdNXZReBxAt/","FAB-00002":"https://www.instagram.com/p/DaGy3DtJdLw/"};
+  const videoUrls = {"FAB-00083":"https://www.instagram.com/p/DdNXZReBxAt/","FAB-00002":"https://www.instagram.com/p/DaGy3DtJdLw/","FAB-00017":"https://www.instagram.com/p/DW7_s2tDpbM/"};
   if (document.querySelector('.hero-title') && card.closest('#gym') && videoUrls[card.dataset.codigo]) {
     card.querySelector('.product-video')?.remove();
     const video = document.createElement('a');
