@@ -140,7 +140,7 @@ if (/\/(gym|hogar)(\/|\/index\.html)?$/.test(location.pathname)) {
 
  
 // Volver al inicio sin perder los filtros elegidos.
-if (/\/(gym|hogar)(\/|\/index\.html)?$/.test(location.pathname)) {
+if (document.querySelector('.hero-title, .catalog-wrap')) {
   const backToTop = document.createElement('button');
   backToTop.type = 'button';
   backToTop.className = 'back-to-top';

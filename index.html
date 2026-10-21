@@ -186,7 +186,7 @@ footer img{height:32px;width:auto;transition:filter 0.4s}
 <body>
 <a class="skip-link" href="#gym">Ir a los productos</a>
 <nav>
-  <div class="nav-logo"><img src="/img/logo-fabrilar-nav.png" alt="Fabrilar"></div>
+  <a href="/" class="nav-logo" aria-label="Fabrilar · Volver al inicio"><img src="/img/logo-fabrilar-nav.png" alt="Fabrilar"></a>
   <ul class="nav-links">
     <li><a href="#gym">Gym</a></li><li><a href="#hogar">Hogar</a></li>
     <li class="nav-dropdown"><a href="#visores">Visores 3D ▾</a>
@@ -324,6 +324,6 @@ var obs=new IntersectionObserver(function(entries){entries.forEach(function(e,i)
 document.querySelectorAll(".reveal").forEach(function(el){obs.observe(el);});
 document.querySelectorAll(".galeria-item").forEach(function(el,i){var img=el.querySelector("img");galeriaItems.push({src:img?img.src:"",nombre:el.getAttribute("data-nombre")||"",desc:el.getAttribute("data-desc")||""});});
 </script>
-<script src="gym/catalogo.js?v=20261019-arriba"></script>
+<script src="gym/catalogo.js?v=20261021-inicio"></script>
 </body>
 </html>
