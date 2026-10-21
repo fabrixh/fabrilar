@@ -39,6 +39,19 @@ cards.forEach((card) => {
     abrirLightbox(img.src, title, card.dataset.desc, visiblePhotos.indexOf(card));
   });
   }
+  // Videos destacados solo en la portada; cada enlace conserva la foto ampliable.
+  const videoUrls = {"FAB-00083":"https://www.instagram.com/p/DdNXZReBxAt/","FAB-00002":"https://www.instagram.com/p/DaGy3DtJdLw/"};
+  if (document.querySelector('.hero-title') && card.closest('#gym') && videoUrls[card.dataset.codigo]) {
+    card.querySelector('.product-video')?.remove();
+    const video = document.createElement('a');
+    video.className = 'product-video';
+    video.href = videoUrls[card.dataset.codigo];
+    video.target = '_blank';
+    video.rel = 'noopener noreferrer';
+    video.textContent = '▶ VIDEO ↗';
+    video.setAttribute('aria-label', 'Ver video en Instagram de ' + title + ' (abre en otra pestaña)');
+    card.querySelector('.product-photo').after(video);
+  }
   const name = card.querySelector('.galeria-nombre');
   const heading = document.createElement('h3');
   heading.className = name.className;

@@ -98,3 +98,9 @@ body:has(.lightbox.open) .back-to-top{visibility:hidden}
 .btn-primary:hover,.nav-pill:hover,.btn-consultar:hover,.back-to-top:hover{background:var(--blue-action-hover)!important;border-color:var(--blue-action-hover)!important}
 .btn-ghost:hover{background:rgba(50,150,255,.08)}
 [data-theme="light"] .nav-logo img,[data-theme="light"] .gym-logo,[data-theme="light"] .hogar-logo{filter:brightness(0) saturate(100%) invert(26%) sepia(86%) saturate(2000%) hue-rotate(184deg)}
+
+/* Enlace a Instagram separado del botón para ampliar la foto. */
+.galeria-item:has(> .product-video){position:relative}
+.product-video{position:absolute;top:14px;left:14px;z-index:2;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid #91ceff;border-radius:6px;background:#0055ad;color:#fff;font-size:.8rem;font-weight:700;letter-spacing:.06em;text-decoration:none;box-shadow:0 2px 8px #0005}
+.product-video:hover{background:#003e80;color:#fff}
+.product-video:focus-visible{outline:3px solid #fff;outline-offset:3px}
