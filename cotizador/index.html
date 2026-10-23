@@ -138,7 +138,7 @@ input[type=range]{width:100%;accent-color:var(--accent);margin:0}
 .opt[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
 .opt:disabled{opacity:.45;cursor:not-allowed}
 .opt strong{display:block;font:400 22px/1.15 var(--display)}
-.opt small{color:var(--muted);font-size:13px}
+.opt small{display:block;color:var(--muted);font-size:13px}
 .opt .tag{display:inline-block;margin-top:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
 .ico{width:52px;height:52px;background:var(--raise);display:grid;place-items:center}
 .ico i{display:block;border:4px solid var(--fg)}
@@ -333,25 +333,61 @@ details.msg pre{margin:8px 0 0;padding:12px;background:var(--raise);border:.5px 
 <script>
 /* Precios de venta por componente · Fabrilar Hogar */
 const DEFAULT_CFG = {
-  whatsapp: "543804985423",
-  markup: 1,
-  insumos: 0,
-  redondeo: 5000,
-  desperdicioCano: 0.10,
-  desperdicioPlaca: 0.25,
-  cuotas: { 1: 0.0853, 2: 0.2398, 3: 0.29, 6: 0.445, 9: 0.6915, 12: 0.8843, 18: 1.3914 }, // recargos Mercado Pago
-  tubos: {
-    t20: { nombre: "Caño 20×20", pared: "1,6 mm", precioBarra: 48510, largoBarra: 6, maxLargo: 160, w: 2, h: 2 },
-    t40: { nombre: "Caño 40×20", pared: "1,2 mm", precioBarra: 62700, largoBarra: 6, maxLargo: 200, w: 2, h: 4 }
+  "whatsapp": "543804985423",
+  "markup": 1,
+  "insumos": 0,
+  "redondeo": 5000,
+  "desperdicioCano": 0.1,
+  "desperdicioPlaca": 0.25,
+  "cuotas": {
+    "1": 0.0853,
+    "2": 0.2398,
+    "3": 0.29,
+    "6": 0.445,
+    "9": 0.6915,
+    "12": 0.8843,
+    "18": 1.3914
   },
-  placa: { precio: 396000, ancho: 1.83, largo: 2.60 },
-  cantoPorMetro: 5940,
-  pinturaPorMetro: 4950,
-  patines: 33000,
-  fijaciones: 9900,
-  bandeja: 39600,
-  pino: { precioMetro: 5610, anchoUtil: 14, desperdicio: 0.15, terminacionM2: 26400, cola: 8250 },
-  estanteAncho: 35
+  "tubos": {
+    "t20": {
+      "nombre": "Caño 20×20",
+      "pared": "1,6 mm",
+      "precioBarra": 36382.5,
+      "largoBarra": 6,
+      "maxLargo": 160,
+      "w": 2,
+      "h": 2
+    },
+    "t40": {
+      "nombre": "Caño 40×20",
+      "pared": "1,2 mm",
+      "precioBarra": 47025.0,
+      "largoBarra": 6,
+      "maxLargo": 200,
+      "w": 2,
+      "h": 4
+    }
+  },
+  "placa": {
+    "precio": 297000.0,
+    "ancho": 1.83,
+    "largo": 2.6
+  },
+  "cantoPorMetro": 4455.0,
+  "pinturaPorMetro": 1485.0,
+  "patines": 14850.0,
+  "fijaciones": 7425.0,
+  "bandeja": 29700.0,
+  "pino": {
+    "precioMetro": 4207.5,
+    "anchoUtil": 14,
+    "desperdicio": 0.15,
+    "terminacionM2": 9900.0,
+    "masilla": 3712.5,
+    "ajuste": 0.9,
+    "travesanoDesde": 100
+  },
+  "estanteAncho": 35
 };
 
 const MATERIALES = {
@@ -368,7 +404,7 @@ const MATERIALES = {
   },
   pino: {
     nombre: "Pino macizo 1″", espesor: 2.0,
-    desc: "Tablas de pino cepillado, encoladas, lijadas y laqueadas. Veta y nudos naturales: cada tapa es única.",
+    desc: "Tablas de pino cepillado atornilladas al bastidor, lijadas y laqueadas. Juntas finas a la vista, veta y nudos naturales: cada tapa es única.",
     colores: [
       { id: "pino-natural", nombre: "Natural", base: "#e6c592", veta: "#b98a52", nudos: true },
       { id: "pino-miel",    nombre: "Miel",    base: "#d39a55", veta: "#94602d", nudos: true },
@@ -388,7 +424,7 @@ const ESTANTES = [
   { id: "no", nombre: "No" }, { id: "izq", nombre: "Izquierda" },
   { id: "der", nombre: "Derecha" }, { id: "ambos", nombre: "Ambos" }
 ];
-const PRESETS = [[100,50],[120,60],[140,70],[160,70]];
+const PRESETS = [[80,45],[100,50],[120,60],[140,70],[160,70]];
 const LIM = { L: [60,200], D: [40,80], H: [70,90] };
 const FIELDS = [["L","Largo"],["D","Profundidad"],["H","Alto total"]];
 const PAT = 1.2, INSET = 1.5, RAIL_LOW = 8, STRETCH_Y = 22;
@@ -412,14 +448,15 @@ const nEst = s => s.estante === "ambos" ? 2 : (s.estante === "no" ? 0 : 1);
 function calc(s, c = CFG){
   const t = c.tubos[s.tubo], ne = nEst(s), ea = c.estanteAncho;
   const legH = s.H - topT(s) - PAT, sideLen = s.D - 2*INSET, longLen = s.L - 2*INSET;
-  const metros = (4*legH + 4*sideLen + 3*longLen + ne*(2*ea + sideLen)) / 100;
+  const travesano = s.material === "pino" && s.L > c.pino.travesanoDesde ? sideLen : 0; // apoyo central de las tablas
+  const metros = (4*legH + 4*sideLen + 3*longLen + ne*(2*ea + sideLen) + travesano) / 100;
   const cano = metros * (1 + c.desperdicioCano) * t.precioBarra / t.largoBarra;
   const m2 = (s.L*s.D + ne*s.D*ea) / 1e4;
   let tapa, canto = 0, cantoM = 0, tablasM = 0;
   if (s.material === "pino"){
     const p = c.pino;
     tablasM = (Math.ceil(s.D / p.anchoUtil) * (s.L + 5) + ne * Math.ceil(ea / p.anchoUtil) * (s.D + 5)) / 100;
-    tapa = tablasM * (1 + p.desperdicio) * p.precioMetro + m2 * 1.3 * p.terminacionM2 + p.cola;
+    tapa = tablasM * (1 + p.desperdicio) * p.precioMetro + m2 * 1.3 * p.terminacionM2 + p.masilla;
   } else {
     tapa = m2 * (1 + c.desperdicioPlaca) * c.placa.precio / (c.placa.ancho * c.placa.largo);
     cantoM = (2*(s.L + s.D) + ne*2*(s.D + ea)) / 100;
@@ -430,7 +467,8 @@ function calc(s, c = CFG){
   const bandeja = s.bandeja ? c.bandeja : 0;
   const subtotal = cano + tapa + canto + pintura + fijos + bandeja;
   const material = subtotal * (1 + c.insumos);
-  const precio = Math.ceil(material * c.markup / c.redondeo) * c.redondeo;
+  const ajuste = s.material === "pino" ? c.pino.ajuste : 1;
+  const precio = Math.ceil(material * c.markup * ajuste / c.redondeo) * c.redondeo;
   return { metros, m2, cantoM, tablasM, cano, tapa, canto, pintura, fijos, bandeja, subtotal, material, precio };
 }
 function enforce(){
@@ -731,7 +769,9 @@ function build(){
   box(longIn, th, tw, steel, 0, yTop - th/2,  railZ);      // larguero frente
   box(longIn, th, tw, steel, 0, yTop - th/2, -railZ);      // larguero atrás
   box(longIn, th, tw, steel, 0, STRETCH_Y,   -railZ);      // larguero bajo trasero
-  if (pino){                                                // tapa de tablas encoladas
+  if (pino && s.L > CFG.pino.travesanoDesde)               // travesaño central bajo las tablas
+    box(tw, th, sideIn + 2*th, steel, 0, yTop - th/2, 0);
+  if (pino){                                                // tapa de tablas atornilladas
     const n = Math.ceil(s.D / CFG.pino.anchoUtil), bw = s.D / n, gap = 0.12;
     for (let i = 0; i < n; i++) box(s.L, T, bw - gap, woodM(i % 3), 0, s.H - T/2, -s.D/2 + bw * (i + 0.5));
   } else box(s.L, T, s.D, topM, 0, s.H - T/2, 0);          // tapa
