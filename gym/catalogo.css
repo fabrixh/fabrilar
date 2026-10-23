@@ -112,6 +112,7 @@ body:has(.lightbox.open) .back-to-top{visibility:hidden}
 .cz-txt .section-sub{margin-bottom:1.5rem}
 .cz-datos{display:flex;flex-wrap:wrap;gap:.6rem;list-style:none;margin:0 0 2rem;padding:0;font-size:.8rem;color:var(--text-muted)}
 .cz-datos li{border:1px solid var(--border);padding:.5rem .8rem}
+.cz-btns{display:flex;flex-wrap:wrap;gap:.8rem}
 .cz-fig{display:block;width:100%;max-width:440px;justify-self:center;color:var(--text)}
 .cz-fig svg{display:block;width:100%;height:auto;overflow:visible}
 .cz-f{stroke:var(--text);stroke-width:2.4;stroke-linecap:square}
