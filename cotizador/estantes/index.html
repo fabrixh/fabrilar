@@ -201,7 +201,8 @@ details.msg pre{margin:8px 0 0;padding:12px;background:var(--raise);border:.5px 
   .btn{padding-inline:14px}
 }
 @media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}.thumb{transition:none}}
-.seg.niveles{grid-template-columns:repeat(6,1fr)}
+.seg.niveles,.seg.cantidad{grid-template-columns:repeat(6,1fr)}
+.note.especial{border-left-color:var(--accent)}
 .seg.niveles button.sug:not([aria-pressed="true"]){border-color:var(--line-strong);border-style:dashed}
 .opt .tag:empty{display:none}
 </style>
@@ -292,6 +293,14 @@ details.msg pre{margin:8px 0 0;padding:12px;background:var(--raise);border:.5px 
       <p class="lead">Sumá lo que necesites. El precio se actualiza al instante.</p>
       <div class="addon">
         <div class="addon-head">
+          <div><strong>Cantidad</strong><p>¿Necesitás varios iguales? Elegí cuántos y te mostramos el total.</p></div>
+          <div class="delta" id="dCant"></div>
+        </div>
+        <div class="seg cantidad" id="cantidad" role="group" aria-label="Cantidad de estantes"></div>
+        <p class="note especial" id="cantNote" hidden></p>
+      </div>
+      <div class="addon">
+        <div class="addon-head">
           <div><strong>Anclaje a pared</strong><p>Escuadras, tarugos y tornillos para fijar el estante a la pared y evitar que se vuelque.</p></div>
           <div class="delta" id="dAnc"></div>
         </div>
@@ -312,6 +321,7 @@ details.msg pre{margin:8px 0 0;padding:12px;background:var(--raise);border:.5px 
         <p class="sub">Forma de pago</p>
         <div class="seg cuotas" id="pagos" role="group" aria-label="Forma de pago"></div>
       </div>
+      <p class="note especial" id="cantNote2" hidden></p>
       <p class="quote">Cotización N° <b id="quote"></b></p>
       <div class="actions">
         <a class="btn primary" id="wa" target="_blank" rel="noopener">Enviar por WhatsApp</a>
@@ -434,9 +444,10 @@ const MARCOS = {
 const PRESETS = [[150,60],[150,100],[190,60],[190,100],[190,150]];
 const LIM = { H: [60,220], W: [40,200] };
 const FIELDS = [["H","Alto"],["W","Ancho"]];
-const PAT = 1.2;
+const PAT = 1.2, SEP = 1.5;                // separación entre estantes iguales en el 3D
+const CANT_MAX = 6, CANT_ESPECIAL = 3;
 
-const state = { H: 190, W: 100, tablas: 2, niveles: 5, nivelesManual: false, material: "pino", tapa: "pino-natural", tubo: "c20", marco: "extremos", color: "negro", anclaje: false, pago: 0 };
+const state = { H: 190, W: 100, tablas: 2, niveles: 5, nivelesManual: false, material: "pino", tapa: "pino-natural", tubo: "c20", marco: "extremos", color: "negro", anclaje: false, cantidad: 1, pago: 0 };
 let step = 0, showDims = true;
 
 /* ---------- utilidades ---------- */
@@ -505,6 +516,8 @@ const tapaTxt = s => `${MATERIALES[s.material].nombre} · ${tapaInfo(s).nombre}`
 const colorN = id => COLORES.find(x => x.id === id).nombre;
 const cm = v => (Math.round(v * 10) / 10).toString().replace(".", ",");
 const riesgoVuelco = s => s.H > 3 * geo(s).D;
+const total = (s, r) => r.precio * s.cantidad;
+const anchoTotal = s => s.cantidad * s.W + (s.cantidad - 1) * SEP;
 function estructuraTxt(s){
   const g = geo(s);
   return `${g.t.nombre} · ${MARCOS[s.marco].nombre.toLowerCase()}${g.div ? " · con división central" : ""} · ${colorN(s.color)}`;
@@ -518,7 +531,7 @@ function renderPagos(){
   $("#pagos").innerHTML = [0, ...Object.keys(CFG.cuotas).map(Number)].map(n => `<button data-pago="${n}" aria-pressed="false">${n === 0 ? "Contado" : n + (n === 1 ? " cuota" : " cuotas")}</button>`).join("");
 }
 function message(s, r, q){
-  const plan = cuotasPlan(r.precio, s.pago), g = r.g;
+  const tot = total(s, r), plan = cuotasPlan(tot, s.pago), g = r.g;
   return [
     "Hola! Armé mi estante en el cotizador de Fabrilar Hogar 🛠️",
     `• Medidas: alto ${s.H} × ancho ${s.W} × prof. ${cm(g.D)} cm`,
@@ -526,7 +539,9 @@ function message(s, r, q){
     `• Estantes: ${tapaTxt(s)}`,
     `• Estructura: ${estructuraTxt(s)}`,
     `• Adicionales: ${s.anclaje ? "Anclaje a pared" : "Ninguno"}`,
-    `• Precio: ${fmt(r.precio)} contado / transferencia`,
+    ...(s.cantidad > 1 ? [`• Cantidad: ${s.cantidad} estantes iguales`] : []),
+    s.cantidad > 1 ? `• Precio: ${fmt(r.precio)} c/u · total ${fmt(tot)} contado / transferencia` : `• Precio: ${fmt(r.precio)} contado / transferencia`,
+    ...(s.cantidad >= CANT_ESPECIAL ? ["• Me interesa el precio especial por cantidad"] : []),
     `• Forma de pago: ${plan ? plan.txt + " con tarjeta" : "contado o transferencia"}`,
     `Cotización N° ${q}`
   ].join("\n");
@@ -551,6 +566,7 @@ $("#materiales").innerHTML = Object.entries(MATERIALES).map(([id,m]) => `<button
   <span><strong>${m.nombre}</strong><small>${m.desc}</small><span class="tag" id="dMat-${id}"></span></span>
 </button>`).join("");
 $("#colores").innerHTML = COLORES.map(c => `<button class="sw" data-color="${c.id}" aria-pressed="false"><span style="background:${c.hex}"></span>${c.nombre}</button>`).join("");
+$("#cantidad").innerHTML = Array.from({ length: CANT_MAX }, (_, i) => i + 1).map(n => `<button data-cant="${n}" aria-pressed="false">${n}</button>`).join("");
 $("#niveles").innerHTML = [2,3,4,5,6,7].map(n => `<button data-niv="${n}" aria-pressed="false">${n}</button>`).join("");
 function renderProfs(){
   $("#profs").innerHTML = PROFS.map(p => {
@@ -603,6 +619,7 @@ document.addEventListener("click", e => {
   else if (b.dataset.color){ state.color = b.dataset.color; changed(true); }
   else if (b.dataset.tubo){ state.tubo = b.dataset.tubo; changed(true); }
   else if (b.dataset.marco){ state.marco = b.dataset.marco; changed(true); }
+  else if (b.dataset.cant){ state.cantidad = +b.dataset.cant; changed(true); }
   else if (b.dataset.pago){ state.pago = +b.dataset.pago; renderUI(); }
   else if (b.dataset.go){ go(+b.dataset.go); }
   else if (b.dataset.view){ setView(b.dataset.view, true); }
@@ -679,17 +696,24 @@ function renderUI(){
   dn.textContent = `Con más de ${CFG.divisionDesde} cm de ancho lleva una división al medio (dos patas más) para que las tablas no se arqueen con el peso.`;
 
   const anc = calc({ ...s, anclaje: true }).precio - calc({ ...s, anclaje: false }).precio;
-  $("#dAnc").innerHTML = `+ ${fmt(anc)}<small>kit completo</small>`;
+  $("#dAnc").innerHTML = `+ ${fmt(anc)}<small>${s.cantidad > 1 ? "por estante" : "kit completo"}</small>`;
   $("#anclaje").setAttribute("aria-checked", s.anclaje);
   $("#anclaje").textContent = s.anclaje ? "Anclaje agregado" : "Agregar anclaje";
   const an = $("#ancNote");
   an.hidden = !riesgoVuelco(s) || s.anclaje;
   an.textContent = `Recomendado: con ${s.H} cm de alto y ${cm(g.D)} cm de profundidad, el estante puede volcarse hacia adelante si no está fijado a la pared.`;
 
-  $("#spec").textContent = `${s.H} × ${s.W} × ${cm(g.D)} cm · ${s.niveles} niveles · ${MATERIALES[s.material].nombre} · ${g.t.nombre}`;
-  $("#barPrice").textContent = fmt(r.precio);
-  $("#price").textContent = fmt(r.precio);
-  const plan = cuotasPlan(r.precio, s.pago);
+  $("#spec").textContent = `${s.cantidad > 1 ? s.cantidad + " × " : ""}${s.H} × ${s.W} × ${cm(g.D)} cm · ${s.niveles} niveles · ${MATERIALES[s.material].nombre} · ${g.t.nombre}`;
+  const tot = total(s, r);
+  $("#barPrice").textContent = fmt(tot);
+  $("#price").textContent = fmt(tot);
+  press("#cantidad button", "cant", String(s.cantidad));
+  $("#dCant").innerHTML = s.cantidad > 1 ? `${fmt(tot)}<small>${s.cantidad} × ${fmt(r.precio)}</small>` : `${fmt(r.precio)}<small>por estante</small>`;
+  const cn = $("#cantNote");
+  cn.hidden = s.cantidad < CANT_ESPECIAL;
+  cn.textContent = `¿Llevás ${CANT_ESPECIAL} o más? Escribinos por WhatsApp y te hacemos un precio especial por cantidad.`;
+  $("#cantNote2").hidden = cn.hidden; $("#cantNote2").textContent = `Pediste ${s.cantidad}: al enviarnos el WhatsApp te pasamos el precio especial por cantidad.`;
+  const plan = cuotasPlan(tot, s.pago);
   $("#cuotas").textContent = plan ? `Con tarjeta: ${plan.txt}` : "Contado o transferencia. También en cuotas con tarjeta de crédito.";
   press("#pagos button", "pago", String(s.pago));
   $("#quote").textContent = q;
@@ -698,7 +722,8 @@ function renderUI(){
     ["Niveles", `${s.niveles} · ${cm(g.luz)} cm libres entre estantes`],
     ["Estantes", tapaTxt(s)],
     ["Estructura", estructuraTxt(s)],
-    ["Adicionales", s.anclaje ? "Anclaje a pared" : "Ninguno"]
+    ["Adicionales", s.anclaje ? "Anclaje a pared" : "Ninguno"],
+    ...(s.cantidad > 1 ? [["Cantidad", `${s.cantidad} estantes · ${fmt(r.precio)} c/u`]] : [])
   ];
   $("#summary").innerHTML = rows.map(([a,b]) => `<div><dt>${a}</dt><dd>${b}</dd></div>`).join("");
   const msg = message(s, r, q);
@@ -783,7 +808,8 @@ function woodTex(t, v = 0){
   return texCache[key] = tx;
 }
 function clearGroup(gr){
-  gr.children.slice().forEach(o => { o.geometry && o.geometry.dispose(); o.material && o.material.dispose && o.material.dispose(); gr.remove(o); });
+  gr.traverse(o => { if (o !== gr){ o.geometry && o.geometry.dispose(); o.material && o.material.dispose && o.material.dispose(); } });
+  gr.children.slice().forEach(o => gr.remove(o));
 }
 
 function build(){
@@ -796,7 +822,8 @@ function build(){
   const woodM = v => new THREE.MeshStandardMaterial({ map: woodTex(tp, v), roughness: pino ? 0.72 : 0.62 });
   const plainM = tp.veta ? woodM(0) : new THREE.MeshStandardMaterial({ color: lin(tp.base), roughness: 0.5 });
   const padM = new THREE.MeshStandardMaterial({ color: lin("#2a2a2a"), roughness: 0.8 });
-  const box = (w, h, d, m, x, y, z) => { const o = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), m); o.position.set(x, y, z); o.castShadow = o.receiveShadow = true; gr.add(o); return o; };
+  const unit = new THREE.Group();                                           // un estante; si son varios se repite al lado
+  const box = (w, h, d, m, x, y, z) => { const o = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), m); o.position.set(x, y, z); o.castShadow = o.receiveShadow = true; unit.add(o); return o; };
 
   const c = g.lado, W = s.W, D = g.D;
   const px = W/2 - c/2, pz = D/2 - c/2;
@@ -804,7 +831,7 @@ function build(){
   xs.forEach(x => [-1, 1].forEach(sz => {
     box(c, s.H - PAT, c, steel, x, PAT + (s.H - PAT)/2, sz * pz);          // pata
     const p = new THREE.Mesh(new THREE.CylinderGeometry(c * 0.55, c * 0.62, PAT, 16), padM);
-    p.position.set(x, PAT/2, sz * pz); p.castShadow = true; gr.add(p);
+    p.position.set(x, PAT/2, sz * pz); p.castShadow = true; unit.add(p);
   }));
   g.ys.forEach((y, i) => {
     xs.forEach(x => box(c, c, g.madera, steel, x, y, 0));                  // travesaños de cada nivel
@@ -821,12 +848,18 @@ function build(){
     const y = g.ys[g.ys.length - 1];
     [-1, 1].forEach(sx => box(4, 4, 0.4, steel, sx * (W/2 - c - 6), y - 2, -D/2 - 0.2));
   }
+  const AT = anchoTotal(s);
+  for (let i = 0; i < s.cantidad; i++){
+    const u = i === 0 ? unit : unit.clone();
+    u.position.x = -AT/2 + W/2 + i * (W + SEP);
+    gr.add(u);
+  }
   buildDims();
 }
 
 function buildDims(){
   if (!three) return;
-  const s = state, d = three.dims, D = geo(s).D, W = s.W; clearGroup(d);
+  const s = state, d = three.dims, D = geo(s).D, W = anchoTotal(s); clearGroup(d);
   const M = new THREE.LineBasicMaterial({ color: lin(cssVar("--accent") || "#65b8ff") });
   const V = (x, y, z) => new THREE.Vector3(x, y, z);
   const seg = (a, b) => d.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([a, b]), M));
@@ -847,7 +880,7 @@ function buildDims(){
 
 function fitPose(dirVec){
   const s = state, c = three.camera, D = geo(s).D;
-  const r = 0.5 * Math.hypot(s.W + 30, D + 20, s.H + 16);
+  const r = 0.5 * Math.hypot(anchoTotal(s) + 30, D + 20, s.H + 16);
   const fv = c.fov * Math.PI / 180, fh = 2 * Math.atan(Math.tan(fv/2) * c.aspect);
   const angosto = c.aspect < 1.1;                          // en celular deja aire para los botones de arriba
   const dist = r / Math.sin(Math.min(fv, fh) / 2) * (angosto ? 1.32 : 1.0);
@@ -877,7 +910,7 @@ function scheduleBuild(){
 const tmpV = () => new THREE.Vector3();
 function placeLabels(){
   const { el, camera, anchors } = three, w = el.clientWidth, h = el.clientHeight;
-  const vals = { L: state.W + " cm", D: cm(geo(state).D) + " cm", H: state.H + " cm" }, pts = [];
+  const vals = { L: state.cantidad > 1 ? `${anchoTotal(state)} cm (${state.cantidad} × ${state.W})` : state.W + " cm", D: cm(geo(state).D) + " cm", H: state.H + " cm" }, pts = [];
   ["L", "D", "H"].forEach(k => {
     const lab = $("#dim" + k);
     if (!showDims || !anchors[k]){ lab.hidden = true; return; }
