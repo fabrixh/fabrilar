@@ -1,0 +1,930 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cotizador de estantes · Fabrilar Hogar</title>
+<meta name="description" content="Armá tu estante a medida y conocé el precio al instante: alto, ancho, niveles, estantes de pino o melamina y caño a elección. Fabricado en La Rioja.">
+<link rel="canonical" href="https://fabrilar.com.ar/cotizador/estantes/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="Fabrilar">
+<meta property="og:title" content="Armá tu estante a medida · Fabrilar Hogar">
+<meta property="og:description" content="Elegí medidas, niveles y estructura, miralo en 3D y conocé el precio al instante.">
+<meta property="og:url" content="https://fabrilar.com.ar/cotizador/estantes/">
+<meta property="og:image" content="https://fabrilar.com.ar/img/Fabrilarhogar.png">
+<meta name="theme-color" content="#080d13">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/favicon.png">
+<script>try{var t=localStorage.getItem("fabrilar-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@300;400;500&display=swap">
+<style>
+/* Layout: visor 3D fijo arriba (a la izquierda en pantallas grandes), pasos debajo, barra de precio fija abajo. Identidad azul de fabrilar.com.ar. */
+:root{
+  --bg:#080d13; --surface:#141e29; --raise:#0e151e; --field:#131e2a;
+  --line:rgba(101,184,255,.24); --line-strong:rgba(101,184,255,.65);
+  --fg:#f1f5fa; --muted:#b8c4d1; --accent:#65b8ff;
+  --action:#006bd6; --action-hover:#0055ad; --on-action:#ffffff;
+  --stage:#0b121b; --warn:#e0a94a;
+  --display:"Cormorant Garamond", Garamond, "Times New Roman", serif;
+  --body:"Jost", Futura, system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#f6f9fd; --surface:#ffffff; --raise:#edf3fa; --field:#ffffff;
+    --line:rgba(0,95,184,.24); --line-strong:rgba(0,95,184,.6);
+    --fg:#152334; --muted:#4e6073; --accent:#005fb8;
+    --action:#0065c7; --action-hover:#004e9c; --on-action:#ffffff;
+    --stage:#e5eef8; --warn:#a8670f; color-scheme:light;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#f6f9fd; --surface:#ffffff; --raise:#edf3fa; --field:#ffffff;
+  --line:rgba(0,95,184,.24); --line-strong:rgba(0,95,184,.6);
+  --fg:#152334; --muted:#4e6073; --accent:#005fb8;
+  --action:#0065c7; --action-hover:#004e9c; --on-action:#ffffff;
+  --stage:#e5eef8; --warn:#a8670f; color-scheme:light;
+}
+*{box-sizing:border-box}
+:root{padding-top:env(safe-area-inset-top,0px)}
+body{margin:0}
+[hidden]{display:none!important}
+img{max-width:100%}
+.brand{color:inherit;text-decoration:none}
+.top-right{display:flex;align-items:center;gap:14px}
+.toplink{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);text-decoration:none}
+.toplink:hover{color:var(--accent)}
+.brand span{white-space:nowrap}
+@media (max-width:520px){.toplink{display:none}.brand span{letter-spacing:.22em;font-size:9px}}
+body{
+  background:var(--bg); color:var(--fg); font:300 15px/1.55 var(--body); letter-spacing:.02em;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+  -webkit-tap-highlight-color:transparent;
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+button{font:inherit;color:inherit;letter-spacing:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.num-font{font-variant-numeric:lining-nums tabular-nums}
+
+.top{max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:14px 12px}
+.brand{display:grid;gap:2px}
+.brand b{font:500 15px/1 var(--body);letter-spacing:.34em}
+.brand span{font:400 10px/1 var(--body);letter-spacing:.35em;text-transform:uppercase;color:var(--accent)}
+.theme{display:flex;align-items:center;gap:8px;padding:6px 10px;border:.5px solid var(--line);background:transparent;cursor:pointer;color:var(--muted)}
+.theme:hover{border-color:var(--accent)}
+.theme svg{width:14px;height:14px;fill:currentColor}
+.track{position:relative;width:30px;height:16px;border-radius:999px;background:var(--line)}
+.thumb{position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:var(--fg);transition:transform .25s}
+.theme[aria-checked="true"] .track{background:var(--accent)}
+.theme[aria-checked="true"] .thumb{transform:translateX(14px);background:#fff}
+
+.layout{max-width:1240px;margin:0 auto;display:grid;gap:18px;padding-bottom:130px}
+
+/* Visor */
+.stage{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--stage);border:.5px solid var(--line);height:clamp(250px,44vh,440px);overflow:hidden}
+#gl{position:absolute;inset:0}
+#gl canvas{display:block;width:100%;height:100%;touch-action:none}
+.glfail{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;color:var(--muted)}
+.stage-head,.stage-foot{position:absolute;left:12px;right:12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;z-index:2;pointer-events:none}
+.stage-head{top:10px;justify-content:space-between}
+.stage-foot{bottom:10px}
+.stage-head>*,.stage-foot>*{pointer-events:auto}
+.spec{margin:0;font-size:12px;color:var(--muted);min-width:0;font-variant-numeric:lining-nums tabular-nums}
+.views{display:flex;gap:6px}
+.chip{font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;padding:8px 10px;border:.5px solid var(--line);background:var(--surface);border-radius:2px;cursor:pointer}
+.chip:hover{border-color:var(--line-strong)}
+.chip[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
+.hint{font-size:11px;color:var(--muted);margin-left:auto;pointer-events:none}
+.dim{position:absolute;left:0;top:0;transform:translate(-50%,-50%);background:var(--fg);color:var(--bg);font-size:12px;font-weight:500;padding:3px 8px;border-radius:2px;pointer-events:none;white-space:nowrap;z-index:1;font-variant-numeric:lining-nums tabular-nums}
+
+/* Panel */
+.panel{min-width:0;display:grid;gap:18px;align-content:start}
+.steps{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-block:2px}
+.steps::-webkit-scrollbar{display:none}
+.step{flex:none;display:flex;align-items:center;gap:8px;padding:9px 14px 9px 10px;border:.5px solid var(--line);border-radius:2px;background:transparent;cursor:pointer;font-size:11px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.step b{font:400 17px/1 var(--display);letter-spacing:0;color:var(--muted);font-variant-numeric:lining-nums}
+.step.done{color:var(--fg)}
+.step.done b{color:var(--accent)}
+.step[aria-current="step"]{border-color:var(--accent);color:var(--fg);background:var(--surface)}
+.step[aria-current="step"] b{color:var(--accent)}
+
+.pane{display:grid;gap:14px}
+.eyebrow{margin:0;font-size:10px;letter-spacing:.35em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px}
+.eyebrow::after{content:"";height:.5px;width:40px;background:var(--accent);opacity:.6}
+.pane h2{margin:-6px 0 0;font:300 42px/1.05 var(--display);text-wrap:balance}
+.lead{margin:-4px 0 0;color:var(--muted);max-width:60ch}
+.sub{font-size:10px;font-weight:400;letter-spacing:.35em;text-transform:uppercase;color:var(--accent);margin:6px 0 0}
+
+.presets{display:flex;gap:6px;flex-wrap:wrap}
+.preset{font-size:13px;font-weight:400;padding:7px 12px;border-radius:2px;border:.5px solid var(--line);background:transparent;cursor:pointer;font-variant-numeric:lining-nums tabular-nums}
+.preset:hover{border-color:var(--line-strong)}
+.preset[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
+
+.field{display:grid;gap:8px;padding-block:12px;border-top:.5px solid var(--line)}
+.field-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.field label{font-weight:400}
+.num{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:13px}
+.num input{width:92px;font:300 26px/1 var(--display);text-align:right;background:var(--field);color:var(--fg);border:.5px solid var(--line);border-radius:0;padding:6px 10px;font-variant-numeric:lining-nums tabular-nums}
+input[type=range]{width:100%;accent-color:var(--accent);margin:0}
+.ends{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);font-variant-numeric:lining-nums tabular-nums}
+
+.opts{display:grid;gap:10px}
+.opt{display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:center;text-align:left;padding:14px;border:.5px solid var(--line);border-radius:2px;background:var(--surface);cursor:pointer}
+.opt:hover{border-color:var(--line-strong)}
+.opt[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.opt:disabled{opacity:.45;cursor:not-allowed}
+.opt strong{display:block;font:400 22px/1.15 var(--display)}
+.opt small{display:block;color:var(--muted);font-size:13px}
+.opt .tag{display:inline-block;margin-top:6px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+.ico{width:52px;height:52px;background:var(--raise);display:grid;place-items:center}
+.ico i{display:block;border:4px solid var(--fg)}
+.note{margin:0;padding:10px 12px;border-left:2px solid var(--warn);background:var(--raise);font-size:13px}
+
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:10px}
+.sw{display:grid;justify-items:center;gap:6px;padding:8px 4px;border:0;background:transparent;cursor:pointer;font-size:13px}
+.sw span{width:46px;height:46px;border-radius:50%;border:.5px solid var(--line)}
+.sw[aria-pressed="true"] span{box-shadow:0 0 0 3px var(--bg),0 0 0 4px var(--accent)}
+.sw[aria-pressed="true"]{color:var(--accent);font-weight:400}
+
+.addon{display:grid;gap:12px;padding:16px;border:.5px solid var(--line);border-radius:2px;background:var(--surface)}
+.addon-head{display:flex;justify-content:space-between;gap:12px;align-items:start}
+.addon-head strong{font:400 22px/1.15 var(--display)}
+.addon-head p{margin:4px 0 0;color:var(--muted);font-size:13px}
+.delta{font-size:15px;font-weight:500;color:var(--accent);white-space:nowrap;text-align:right;font-variant-numeric:lining-nums tabular-nums}
+.delta small{display:block;font-size:11px;color:var(--muted);font-weight:300}
+.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.seg button,.toggle{padding:10px 6px;border:.5px solid var(--line);border-radius:2px;background:transparent;cursor:pointer;font-size:13px}
+.seg button:hover,.toggle:hover{border-color:var(--line-strong)}
+.seg button[aria-pressed="true"],.toggle[aria-checked="true"]{background:var(--action);color:var(--on-action);border-color:var(--action)}
+.toggle{justify-self:start;padding-inline:18px}
+.pane-group{display:grid;gap:10px}
+.seg.cuotas button{font-variant-numeric:lining-nums tabular-nums}
+
+.summary{margin:0;display:grid;border-top:.5px solid var(--line)}
+.summary div{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:.5px solid var(--line)}
+.summary dt{color:var(--muted)}
+.summary dd{margin:0;text-align:right;font-weight:400}
+.total{display:grid;gap:6px;padding:18px;border:.5px solid var(--accent);background:var(--surface)}
+.total .row{display:flex;justify-content:space-between;align-items:end;gap:12px}
+.total strong{font:300 52px/1 var(--display);font-variant-numeric:lining-nums tabular-nums}
+.lbl{font-size:10px;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+.fine{margin:0;color:var(--muted);font-size:13px}
+.quote{font-size:13px;color:var(--muted);letter-spacing:.06em}
+.quote b{color:var(--fg);font-weight:500}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+details.msg summary{cursor:pointer;color:var(--muted);font-size:13px}
+details.msg pre{margin:8px 0 0;padding:12px;background:var(--raise);border:.5px solid var(--line);white-space:pre-wrap;font:300 13px/1.6 var(--body);overflow-x:auto}
+
+.btn{font:500 11px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;padding:14px 18px;border:.5px solid var(--line);border-radius:0;background:transparent;color:var(--muted);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.primary{background:var(--action);color:var(--on-action);border-color:var(--action)}
+.btn.primary:hover{background:var(--action-hover);border-color:var(--action-hover);color:var(--on-action)}
+
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--surface);border-top:.5px solid var(--line);padding-top:10px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.bar-in{max-width:1240px;margin:0 auto;display:flex;align-items:center;gap:10px}
+.bar-price{flex:1;min-width:0;display:grid;gap:2px}
+#barPrice{font:400 30px/1 var(--display);font-variant-numeric:lining-nums tabular-nums}
+
+
+@media (min-width:900px){
+  .layout{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);align-items:start}
+  .stage{top:calc(env(safe-area-inset-top,0px) + 16px);height:calc(100vh - 160px);min-height:440px}
+  .pane h2{font-size:50px}
+}
+@media (max-width:420px){
+  .hint{display:none}
+  .stage-head .spec{flex-basis:100%}
+  .btn{padding-inline:14px}
+}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}.thumb{transition:none}}
+.seg.niveles{grid-template-columns:repeat(6,1fr)}
+.seg.niveles button.sug:not([aria-pressed="true"]){border-color:var(--line-strong);border-style:dashed}
+.opt .tag:empty{display:none}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="/" aria-label="Fabrilar · Volver al inicio"><b>FABRILAR</b><span>Hogar · Estantes a medida</span></a>
+  <div class="top-right">
+  <a class="toplink" href="/cotizador/">Otros cotizadores</a>
+  <button class="theme" id="theme" role="switch" aria-checked="false" aria-label="Modo claro">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+    <span class="track"><span class="thumb"></span></span>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+  </button>
+  </div>
+</header>
+
+<div class="layout">
+  <section class="stage" aria-label="Vista 3D del estante">
+    <div id="gl">
+      <div class="dim" id="dimL"></div>
+      <div class="dim" id="dimD"></div>
+      <div class="dim" id="dimH"></div>
+    </div>
+    <div class="stage-head">
+      <p class="spec" id="spec"></p>
+      <div class="views" role="group" aria-label="Vista">
+        <button class="chip" data-view="iso" aria-pressed="true">3/4</button>
+        <button class="chip" data-view="frente" aria-pressed="false">Frente</button>
+        <button class="chip" data-view="lateral" aria-pressed="false">Lateral</button>
+      </div>
+    </div>
+    <div class="stage-foot">
+      <button class="chip" id="btnDims" aria-pressed="true">Medidas</button>
+      <button class="chip" id="btnCenter">Centrar</button>
+      <span class="hint">Arrastrá para girar · pellizcá para zoom</span>
+    </div>
+  </section>
+
+  <main class="panel">
+    <nav class="steps" id="steps" aria-label="Pasos del cotizador">
+      <button class="step" data-go="0"><b>1</b>Medidas</button>
+      <button class="step" data-go="1"><b>2</b>Estantes</button>
+      <button class="step" data-go="2"><b>3</b>Estructura</button>
+      <button class="step" data-go="3"><b>4</b>Adicionales</button>
+      <button class="step" data-go="4"><b>5</b>Resumen</button>
+    </nav>
+
+    <section class="pane" data-pane="0">
+      <p class="eyebrow">Paso 1 de 5</p>
+      <h2>Medidas</h2>
+      <p class="lead">Elegí alto y ancho al centímetro. La profundidad depende de cuántas tablas lleva cada estante.</p>
+      <div class="presets" id="presets" role="group" aria-label="Medidas frecuentes (alto × ancho)"></div>
+      <div id="fields"></div>
+      <p class="sub">Profundidad</p>
+      <div class="opts" id="profs" role="group" aria-label="Profundidad"></div>
+      <p class="sub">Niveles</p>
+      <div class="seg niveles" id="niveles" role="group" aria-label="Cantidad de niveles"></div>
+      <p class="fine" id="nivelInfo"></p>
+      <p class="note" id="nivelNote" hidden></p>
+    </section>
+
+    <section class="pane" data-pane="1" hidden>
+      <p class="eyebrow">Paso 2 de 5</p>
+      <h2>Estantes</h2>
+      <p class="lead">Elegí el material y el color de los estantes. El precio se ajusta al instante.</p>
+      <div class="opts" id="materiales" role="group" aria-label="Material de los estantes"></div>
+      <p class="sub">Color</p>
+      <div class="swatches" id="tapas" role="group" aria-label="Color de los estantes"></div>
+    </section>
+
+    <section class="pane" data-pane="2" hidden>
+      <p class="eyebrow">Paso 3 de 5</p>
+      <h2>Estructura</h2>
+      <p class="lead">Caño de hierro soldado con pintura y patines. Elegí el caño, el marco de cada nivel y el color.</p>
+      <div class="opts" id="tubos" role="group" aria-label="Caño"></div>
+      <p class="sub">Marco de cada nivel</p>
+      <div class="opts" id="marcos" role="group" aria-label="Marco de cada nivel"></div>
+      <p class="note" id="divNote" hidden></p>
+      <p class="sub">Color de estructura</p>
+      <div class="swatches" id="colores" role="group" aria-label="Color de estructura"></div>
+    </section>
+
+    <section class="pane" data-pane="3" hidden>
+      <p class="eyebrow">Paso 4 de 5</p>
+      <h2>Adicionales</h2>
+      <p class="lead">Sumá lo que necesites. El precio se actualiza al instante.</p>
+      <div class="addon">
+        <div class="addon-head">
+          <div><strong>Anclaje a pared</strong><p>Escuadras, tarugos y tornillos para fijar el estante a la pared y evitar que se vuelque.</p></div>
+          <div class="delta" id="dAnc"></div>
+        </div>
+        <button class="toggle" id="anclaje" role="switch" aria-checked="false">Agregar anclaje</button>
+        <p class="note" id="ancNote" hidden></p>
+      </div>
+    </section>
+
+    <section class="pane" data-pane="4" hidden>
+      <p class="eyebrow">Paso 5 de 5</p>
+      <h2>Tu estante</h2>
+      <dl class="summary" id="summary"></dl>
+      <div class="total">
+        <div class="row"><span class="lbl">Precio final</span><strong id="price"></strong></div>
+        <p class="fine" id="cuotas"></p>
+      </div>
+      <div class="pane-group">
+        <p class="sub">Forma de pago</p>
+        <div class="seg cuotas" id="pagos" role="group" aria-label="Forma de pago"></div>
+      </div>
+      <p class="quote">Cotización N° <b id="quote"></b></p>
+      <div class="actions">
+        <a class="btn primary" id="wa" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+        <button class="btn" id="copy">Copiar mensaje</button>
+      </div>
+      <p class="fine" id="copyStatus" role="status"></p>
+      <details class="msg"><summary>Ver el mensaje</summary><pre id="msg"></pre></details>
+      <p class="fine">Precio de contado o transferencia, válido por 7 días. Fabricamos en La Rioja; confirmamos medidas y plazo de entrega por WhatsApp.</p>
+    </section>
+  </main>
+</div>
+
+<footer class="bar">
+  <div class="bar-in">
+    <div class="bar-price"><span class="lbl">Precio final</span><span id="barPrice"></span></div>
+    <button class="btn" id="prev">Atrás</button>
+    <button class="btn primary" id="next">Siguiente</button>
+    <a class="btn primary" id="waBar" target="_blank" rel="noopener" hidden>WhatsApp</a>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+/* Precios de venta por componente · Fabrilar Hogar */
+const DEFAULT_CFG = {
+  "whatsapp": "543804985423",
+  "markup": 1,
+  "insumos": 0,
+  "redondeo": 5000,
+  "desperdicioCano": 0.1,
+  "desperdicioPlaca": 0.25,
+  "cuotas": {
+    "1": 0.0853,
+    "2": 0.2398,
+    "3": 0.29,
+    "6": 0.445,
+    "9": 0.6915,
+    "12": 0.8843,
+    "18": 1.3914
+  },
+  "tubos": {
+    "c20": {
+      "nombre": "Caño 20×20",
+      "lado": 2,
+      "precioBarra": 26169.0,
+      "largoBarra": 6
+    },
+    "c25": {
+      "nombre": "Caño 25×25",
+      "lado": 2.5,
+      "precioBarra": 30673.5,
+      "largoBarra": 6
+    },
+    "c30": {
+      "nombre": "Caño 30×30",
+      "lado": 3,
+      "precioBarra": 42900.0,
+      "largoBarra": 6
+    }
+  },
+  "placa": {
+    "precio": 257400.0,
+    "ancho": 1.83,
+    "largo": 2.6
+  },
+  "cantoPorMetro": 3861.0,
+  "pinturaPorMetro": 1287.0,
+  "patinPorPata": 3217.5,
+  "tornillosPorNivel": 1287.0,
+  "anclaje": 6435.0,
+  "pino": {
+    "precioMetro": 3646.5,
+    "anchoTabla": 15,
+    "desperdicio": 0.1,
+    "terminacionM2": 8580.0,
+    "masilla": 3217.5
+  },
+  "divisionDesde": 120,
+  "vueltaFactor": 0.4662004662004662,
+  "alturaBase": 12
+};
+
+const MATERIALES = {
+  pino: {
+    nombre: "Pino macizo 1″", espesor: 2.0,
+    desc: "Tablas de pino cepillado atornilladas al marco, lijadas y laqueadas. Veta y nudos naturales.",
+    colores: [
+      { id: "pino-natural", nombre: "Natural", base: "#e6c592", veta: "#b98a52", nudos: true },
+      { id: "pino-miel",    nombre: "Miel",    base: "#d39a55", veta: "#94602d", nudos: true },
+      { id: "pino-nogal",   nombre: "Nogal",   base: "#7b5133", veta: "#43291a", nudos: true }
+    ]
+  },
+  melamina: {
+    nombre: "Melamina 18 mm", espesor: 1.8,
+    desc: "Placa lisa con canto ABS de 2 mm al frente y a los lados. Fácil de limpiar.",
+    colores: [
+      { id: "blanco",  nombre: "Blanco",  base: "#f1efe9" },
+      { id: "roble",   nombre: "Roble",   base: "#c9a47a", veta: "#8a6743" },
+      { id: "nogal",   nombre: "Nogal",   base: "#6e4b33", veta: "#3b2717" },
+      { id: "grafito", nombre: "Grafito", base: "#47474b" },
+      { id: "negro",   nombre: "Negro",   base: "#1e1d1c" }
+    ]
+  }
+};
+const COLORES = [
+  { id: "negro",  nombre: "Negro",         hex: "#171717" },
+  { id: "blanco", nombre: "Blanco",        hex: "#ecebe7" },
+  { id: "gris",   nombre: "Gris aluminio", hex: "#8c8f93" }
+];
+const PROFS = [
+  { tablas: 1, desc: "Para libros, plantas o pasillos angostos." },
+  { tablas: 2, desc: "La más pedida. Cocina, living, depósito.", tag: "La más pedida" },
+  { tablas: 3, desc: "Para cajas grandes, herramientas o depósito." }
+];
+const MARCOS = {
+  extremos: { nombre: "Marco en los extremos", desc: "Caño a los costados de cada estante. Liviano y prolijo, como el de las fotos." },
+  vuelta:   { nombre: "Marco a la vuelta",     desc: "Caño en los cuatro lados de cada estante. Más firme y con frente de caño." }
+};
+const PRESETS = [[150,60],[150,100],[190,60],[190,100],[190,150]];
+const LIM = { H: [60,220], W: [40,200] };
+const FIELDS = [["H","Alto"],["W","Ancho"]];
+const PAT = 1.2;
+
+const state = { H: 190, W: 100, tablas: 2, niveles: 5, nivelesManual: false, material: "pino", tapa: "pino-natural", tubo: "c20", marco: "extremos", color: "negro", anclaje: false, pago: 0 };
+let step = 0, showDims = true;
+
+/* ---------- utilidades ---------- */
+const $ = s => document.querySelector(s);
+const fmt = n => "$ " + Math.round(n).toLocaleString("es-AR");
+const clone = o => JSON.parse(JSON.stringify(o));
+const getP = (o,p) => p.split(".").reduce((x,k) => x[k], o);
+const setP = (o,p,v) => { const ks = p.split("."); const last = ks.pop(); ks.reduce((x,k) => x[k], o)[last] = v; };
+function merge(a,b){ for (const k in b){ if (b[k] && typeof b[k] === "object" && a[k] && typeof a[k] === "object") merge(a[k], b[k]); else if (k in a) a[k] = b[k]; } return a; }
+const LS = "fabrilar-cotizador-estantes-cfg-v1";
+let CFG = clone(DEFAULT_CFG);
+const reduceMotion = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- geometría compartida por el precio y el 3D ---------- */
+const nivelesSugeridos = H => Math.max(2, Math.min(7, Math.round((H - 10) / 45) + 1));
+function geo(s, c = CFG){
+  const t = c.tubos[s.tubo], lado = t.lado;
+  const madera = s.tablas * c.pino.anchoTabla;      // ancho útil de cada estante
+  const D = madera + 2 * lado;                         // profundidad total
+  const T = MATERIALES[s.material].espesor;
+  const div = s.W > c.divisionDesde;
+  const yTopBar = s.H - T - lado / 2;                  // centro del marco superior
+  const yBase = c.alturaBase - T - lado / 2;           // centro del marco inferior
+  const n = s.niveles, ys = [];
+  for (let i = 0; i < n; i++) ys.push(yBase + (yTopBar - yBase) * i / (n - 1));
+  const luz = (yTopBar - yBase) / (n - 1) - T - lado; // espacio libre entre estantes
+  return { t, lado, madera, D, T, div, ys, luz, patas: div ? 6 : 4 };
+}
+
+/* ---------- motor de precios ---------- */
+function calc(s, c = CFG){
+  const g = geo(s, c), n = s.niveles;
+  const largoInt = s.W - 2 * g.lado;                   // largueros frente/atrás entre patas
+  // el nivel de arriba siempre lleva marco completo; el resto solo en los extremos
+  const metros = (g.patas * s.H + n * (g.div ? 3 : 2) * g.madera + 2 * largoInt) / 100;
+  const cano = metros * (1 + c.desperdicioCano) * g.t.precioBarra / g.t.largoBarra;
+  // marco a la vuelta: solo el caño extra (frente y atrás de los demás niveles) con su desperdicio, al costo
+  const vueltaM = s.marco === "vuelta" ? (n - 1) * 2 * largoInt / 100 : 0;
+  const vuelta = vueltaM * (1 + c.desperdicioCano) * g.t.precioBarra / g.t.largoBarra;
+  const m2 = n * s.W * g.madera / 1e4;
+  let estantes, canto = 0, tablasM = 0, cantoM = 0;
+  if (s.material === "pino"){
+    const p = c.pino;
+    tablasM = n * s.tablas * s.W / 100;
+    estantes = tablasM * (1 + p.desperdicio) * p.precioMetro + m2 * 1.3 * p.terminacionM2 + p.masilla;
+  } else {
+    estantes = m2 * (1 + c.desperdicioPlaca) * c.placa.precio / (c.placa.ancho * c.placa.largo);
+    cantoM = n * (s.W + 2 * g.madera) / 100;
+    canto = cantoM * c.cantoPorMetro;
+  }
+  const pintura = metros * c.pinturaPorMetro;
+  const fijos = g.patas * c.patinPorPata + n * c.tornillosPorNivel;
+  const anclaje = s.anclaje ? c.anclaje : 0;
+  const subtotal = cano + estantes + canto + pintura + fijos + anclaje;
+  const material = subtotal * (1 + c.insumos);
+  const precio = Math.ceil((material * c.markup + vuelta * c.vueltaFactor) / c.redondeo) * c.redondeo;
+  return { metros, m2, tablasM, cantoM, cano, estantes, canto, pintura, fijos, anclaje, subtotal, material, vueltaM, vuelta, precio, g };
+}
+function quoteNo(s){
+  let h = 7; const str = JSON.stringify({ ...s, pago: undefined, nivelesManual: undefined });
+  for (let i = 0; i < str.length; i++) h = (h * 31 + str.charCodeAt(i)) % 1000003;
+  return `FH-${1000 + h % 9000}-EST-${s.H}x${s.W}`;
+}
+const tapaInfo = s => MATERIALES[s.material].colores.find(x => x.id === s.tapa) || MATERIALES[s.material].colores[0];
+const tapaTxt = s => `${MATERIALES[s.material].nombre} · ${tapaInfo(s).nombre}`;
+const colorN = id => COLORES.find(x => x.id === id).nombre;
+const cm = v => (Math.round(v * 10) / 10).toString().replace(".", ",");
+const riesgoVuelco = s => s.H > 3 * geo(s).D;
+function estructuraTxt(s){
+  const g = geo(s);
+  return `${g.t.nombre} · ${MARCOS[s.marco].nombre.toLowerCase()}${g.div ? " · con división central" : ""} · ${colorN(s.color)}`;
+}
+function cuotasPlan(precio, n){
+  if (!n || !(n in CFG.cuotas)) return null;
+  const cuota = Math.ceil(precio * (1 + CFG.cuotas[n]) / n / 100) * 100;
+  return { cuota, total: cuota * n, txt: n === 1 ? `1 cuota de ${fmt(cuota)}` : `${n} cuotas de ${fmt(cuota)} (total ${fmt(cuota * n)})` };
+}
+function renderPagos(){
+  $("#pagos").innerHTML = [0, ...Object.keys(CFG.cuotas).map(Number)].map(n => `<button data-pago="${n}" aria-pressed="false">${n === 0 ? "Contado" : n + (n === 1 ? " cuota" : " cuotas")}</button>`).join("");
+}
+function message(s, r, q){
+  const plan = cuotasPlan(r.precio, s.pago), g = r.g;
+  return [
+    "Hola! Armé mi estante en el cotizador de Fabrilar Hogar 🛠️",
+    `• Medidas: alto ${s.H} × ancho ${s.W} × prof. ${cm(g.D)} cm`,
+    `• Niveles: ${s.niveles} (espacio libre de ${cm(g.luz)} cm entre estantes)`,
+    `• Estantes: ${tapaTxt(s)}`,
+    `• Estructura: ${estructuraTxt(s)}`,
+    `• Adicionales: ${s.anclaje ? "Anclaje a pared" : "Ninguno"}`,
+    `• Precio: ${fmt(r.precio)} contado / transferencia`,
+    `• Forma de pago: ${plan ? plan.txt + " con tarjeta" : "contado o transferencia"}`,
+    `Cotización N° ${q}`
+  ].join("\n");
+}
+
+/* ---------- construcción de la interfaz ---------- */
+$("#presets").innerHTML = PRESETS.map(([h,w]) => `<button class="preset" data-h="${h}" data-w="${w}" aria-pressed="false">${h}×${w}</button>`).join("");
+$("#fields").innerHTML = FIELDS.map(([k,n]) => `
+  <div class="field">
+    <div class="field-head"><label for="n${k}">${n}</label>
+      <div class="num"><input id="n${k}" type="number" inputmode="numeric" min="${LIM[k][0]}" max="${LIM[k][1]}" step="1"><span>cm</span></div>
+    </div>
+    <input id="r${k}" type="range" min="${LIM[k][0]}" max="${LIM[k][1]}" step="1" aria-label="${n}">
+    <div class="ends"><span>${LIM[k][0]} cm</span><span>${LIM[k][1]} cm</span></div>
+  </div>`).join("");
+const swBg = t => t.veta ? `repeating-linear-gradient(100deg, ${t.base} 0 5px, ${t.veta} 6px 7px, ${t.base} 8px 12px)` : t.base;
+function renderTapas(){
+  $("#tapas").innerHTML = MATERIALES[state.material].colores.map(t => `<button class="sw" data-tapa="${t.id}" aria-pressed="false"><span style="background:${swBg(t)}"></span>${t.nombre}</button>`).join("");
+}
+$("#materiales").innerHTML = Object.entries(MATERIALES).map(([id,m]) => `<button class="opt" data-mat="${id}" aria-pressed="false">
+  <span class="ico" style="background:${swBg(m.colores[id === "pino" ? 0 : 1])}"></span>
+  <span><strong>${m.nombre}</strong><small>${m.desc}</small><span class="tag" id="dMat-${id}"></span></span>
+</button>`).join("");
+$("#colores").innerHTML = COLORES.map(c => `<button class="sw" data-color="${c.id}" aria-pressed="false"><span style="background:${c.hex}"></span>${c.nombre}</button>`).join("");
+$("#niveles").innerHTML = [2,3,4,5,6,7].map(n => `<button data-niv="${n}" aria-pressed="false">${n}</button>`).join("");
+function renderProfs(){
+  $("#profs").innerHTML = PROFS.map(p => {
+    const g = geo({ ...state, tablas: p.tablas });
+    const w = 10 + p.tablas * 10;
+    return `<button class="opt" data-tablas="${p.tablas}" aria-pressed="false">
+      <span class="ico"><i style="width:${w}px;height:8px;border-width:3px"></i></span>
+      <span><strong>${cm(g.D)} cm</strong><small>${p.tablas} ${p.tablas === 1 ? "tabla" : "tablas"} de ${CFG.pino.anchoTabla} cm · ${p.desc}</small><span class="tag" id="dProf-${p.tablas}"></span></span>
+    </button>`;
+  }).join("");
+}
+function renderTubos(){
+  $("#tubos").innerHTML = Object.entries(CFG.tubos).map(([id,t]) => {
+    const px = 12 + t.lado * 6;
+    const desc = id === "c20" ? "El de siempre: liviano y prolijo." : id === "c25" ? "Un poco más robusto para estantes anchos o cargados." : "El más firme, para depósito o mucho peso.";
+    return `<button class="opt" data-tubo="${id}" aria-pressed="false">
+      <span class="ico"><i style="width:${px}px;height:${px}px"></i></span>
+      <span><strong>${t.nombre}</strong><small>${desc}</small><span class="tag" id="dTubo-${id}"></span></span>
+    </button>`;
+  }).join("");
+}
+function renderMarcos(){
+  $("#marcos").innerHTML = Object.entries(MARCOS).map(([id,m]) => `<button class="opt" data-marco="${id}" aria-pressed="false">
+    <span class="ico"><svg viewBox="0 0 40 24" width="40" height="24" aria-hidden="true" style="color:var(--fg)">
+      <rect x="2" y="7" width="36" height="10" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="${id === "vuelta" ? "0" : "2 2"}" opacity=".6"/>
+      <line x1="3" y1="6" x2="3" y2="18" stroke="currentColor" stroke-width="3"/><line x1="37" y1="6" x2="37" y2="18" stroke="currentColor" stroke-width="3"/>
+      ${id === "vuelta" ? '<line x1="3" y1="6" x2="37" y2="6" stroke="currentColor" stroke-width="3"/><line x1="3" y1="18" x2="37" y2="18" stroke="currentColor" stroke-width="3"/>' : ""}
+    </svg></span>
+    <span><strong>${m.nombre}</strong><small>${m.desc}</small><span class="tag" id="dMarco-${id}"></span></span>
+  </button>`).join("");
+}
+renderTapas(); renderProfs(); renderTubos(); renderMarcos(); renderPagos();
+
+FIELDS.forEach(([k]) => {
+  const r = $("#r"+k), n = $("#n"+k);
+  r.addEventListener("input", () => { state[k] = +r.value; changed(true); });
+  n.addEventListener("input", () => { const v = +n.value; if (v >= LIM[k][0] && v <= LIM[k][1]) { state[k] = v; changed(true); } });
+  n.addEventListener("change", () => { let v = Math.round(+n.value || state[k]); v = Math.min(LIM[k][1], Math.max(LIM[k][0], v)); state[k] = v; n.value = v; changed(true); });
+});
+document.addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  if (b.dataset.h){ state.H = +b.dataset.h; state.W = +b.dataset.w; state.nivelesManual = false; changed(true); }
+  else if (b.dataset.tablas){ state.tablas = +b.dataset.tablas; changed(true); }
+  else if (b.dataset.niv){ state.niveles = +b.dataset.niv; state.nivelesManual = true; changed(true); }
+  else if (b.dataset.mat){
+    if (state.material !== b.dataset.mat){ state.material = b.dataset.mat; state.tapa = MATERIALES[state.material].colores[0].id; renderTapas(); }
+    changed(true);
+  }
+  else if (b.dataset.tapa){ state.tapa = b.dataset.tapa; changed(true); }
+  else if (b.dataset.color){ state.color = b.dataset.color; changed(true); }
+  else if (b.dataset.tubo){ state.tubo = b.dataset.tubo; changed(true); }
+  else if (b.dataset.marco){ state.marco = b.dataset.marco; changed(true); }
+  else if (b.dataset.pago){ state.pago = +b.dataset.pago; renderUI(); }
+  else if (b.dataset.go){ go(+b.dataset.go); }
+  else if (b.dataset.view){ setView(b.dataset.view, true); }
+});
+$("#anclaje").addEventListener("click", () => { state.anclaje = !state.anclaje; changed(false); });
+$("#prev").addEventListener("click", () => go(step - 1));
+$("#next").addEventListener("click", () => go(step + 1));
+$("#btnDims").addEventListener("click", () => { showDims = !showDims; $("#btnDims").setAttribute("aria-pressed", showDims); if (three) three.dims.visible = showDims; });
+$("#btnCenter").addEventListener("click", () => setView(currentView, true));
+$("#copy").addEventListener("click", () => {
+  const text = $("#msg").textContent, st = $("#copyStatus");
+  const fallback = () => { $(".msg").open = true; const rg = document.createRange(); rg.selectNodeContents($("#msg")); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(rg); st.textContent = "Mensaje seleccionado. Copialo con tu teclado o el menú."; };
+  try { navigator.clipboard.writeText(text).then(() => { st.textContent = "Mensaje copiado. Pegalo en WhatsApp."; }, fallback); } catch (e) { fallback(); }
+});
+
+function go(i, quiet){
+  step = Math.max(0, Math.min(4, i));
+  document.querySelectorAll(".pane").forEach(p => p.hidden = +p.dataset.pane !== step);
+  document.querySelectorAll(".step").forEach(s => {
+    const n = +s.dataset.go;
+    if (n === step) s.setAttribute("aria-current", "step"); else s.removeAttribute("aria-current");
+    s.classList.toggle("done", n < step);
+  });
+  $("#prev").hidden = step === 0;
+  $("#next").hidden = step === 4;
+  $("#waBar").hidden = step !== 4;
+  $("#next").textContent = step === 3 ? "Ver resumen" : "Siguiente";
+  if (quiet) return;
+  const cur = document.querySelector(`.step[data-go="${step}"]`);
+  cur.scrollIntoView({ block: "nearest", inline: "center", behavior: reduceMotion ? "auto" : "smooth" });
+  if (window.innerWidth < 900){
+    const steps = $("#steps"), stage = $(".stage");
+    const y = steps.getBoundingClientRect().top + scrollY - stage.offsetHeight - 12;
+    if (scrollY > y) window.scrollTo({ top: y, behavior: reduceMotion ? "auto" : "smooth" });
+  }
+}
+
+function press(sel, attr, val){ document.querySelectorAll(sel).forEach(b => b.setAttribute("aria-pressed", b.dataset[attr] === val)); }
+const delta = (r, s2) => { const d = calc(s2).precio - r.precio; return d === 0 ? "Mismo precio" : (d < 0 ? `− ${fmt(-d)}` : `+ ${fmt(d)}`); };
+
+function changed(geoChanged){
+  if (!state.nivelesManual) state.niveles = nivelesSugeridos(state.H);
+  renderUI();
+  if (geoChanged) scheduleBuild();
+}
+
+function renderUI(){
+  const s = state, r = calc(s), g = r.g, q = quoteNo(s);
+  FIELDS.forEach(([k]) => { $("#r"+k).value = s[k]; if (document.activeElement !== $("#n"+k)) $("#n"+k).value = s[k]; });
+  document.querySelectorAll(".preset").forEach(b => b.setAttribute("aria-pressed", +b.dataset.h === s.H && +b.dataset.w === s.W));
+  press(".opt[data-tablas]", "tablas", String(s.tablas));
+  press("#niveles button", "niv", String(s.niveles));
+  const sug = nivelesSugeridos(s.H);
+  document.querySelectorAll("#niveles button").forEach(b => b.classList.toggle("sug", +b.dataset.niv === sug));
+  press(".opt[data-mat]", "mat", s.material);
+  press(".sw[data-tapa]", "tapa", s.tapa);
+  press(".sw[data-color]", "color", s.color);
+  press(".opt[data-tubo]", "tubo", s.tubo);
+  press(".opt[data-marco]", "marco", s.marco);
+
+  // diferencias de precio en cada opción respecto de lo elegido
+  PROFS.forEach(p => { const el = $("#dProf-" + p.tablas); el.textContent = p.tablas === s.tablas ? "" : delta(r, { ...s, tablas: p.tablas }); el.hidden = p.tablas === s.tablas; });
+  Object.keys(MATERIALES).forEach(m => { const el = $("#dMat-" + m); el.textContent = m === s.material ? "" : delta(r, { ...s, material: m }) + " sobre tu precio actual"; el.hidden = m === s.material; });
+  Object.keys(CFG.tubos).forEach(t => { const el = $("#dTubo-" + t); el.textContent = t === s.tubo ? "" : delta(r, { ...s, tubo: t }); el.hidden = t === s.tubo; });
+  Object.keys(MARCOS).forEach(m => { const el = $("#dMarco-" + m); el.textContent = m === s.marco ? "" : delta(r, { ...s, marco: m }); el.hidden = m === s.marco; });
+
+  $("#nivelInfo").textContent = `Espacio libre entre estantes: ${cm(g.luz)} cm.${s.nivelesManual ? "" : " Cantidad sugerida para este alto."}`;
+  const nn = $("#nivelNote");
+  nn.hidden = g.luz >= 22 && g.luz <= 55;
+  nn.textContent = g.luz < 22 ? `Con ${s.niveles} niveles quedan ${cm(g.luz)} cm entre estantes: muy justo para la mayoría de las cosas. Probá con uno menos.`
+                              : `Con ${s.niveles} niveles quedan ${cm(g.luz)} cm entre estantes. Si es para libros o frascos, conviene sumar un nivel.`;
+  const dn = $("#divNote");
+  dn.hidden = !g.div;
+  dn.textContent = `Con más de ${CFG.divisionDesde} cm de ancho lleva una división al medio (dos patas más) para que las tablas no se arqueen con el peso.`;
+
+  const anc = calc({ ...s, anclaje: true }).precio - calc({ ...s, anclaje: false }).precio;
+  $("#dAnc").innerHTML = `+ ${fmt(anc)}<small>kit completo</small>`;
+  $("#anclaje").setAttribute("aria-checked", s.anclaje);
+  $("#anclaje").textContent = s.anclaje ? "Anclaje agregado" : "Agregar anclaje";
+  const an = $("#ancNote");
+  an.hidden = !riesgoVuelco(s) || s.anclaje;
+  an.textContent = `Recomendado: con ${s.H} cm de alto y ${cm(g.D)} cm de profundidad, el estante puede volcarse hacia adelante si no está fijado a la pared.`;
+
+  $("#spec").textContent = `${s.H} × ${s.W} × ${cm(g.D)} cm · ${s.niveles} niveles · ${MATERIALES[s.material].nombre} · ${g.t.nombre}`;
+  $("#barPrice").textContent = fmt(r.precio);
+  $("#price").textContent = fmt(r.precio);
+  const plan = cuotasPlan(r.precio, s.pago);
+  $("#cuotas").textContent = plan ? `Con tarjeta: ${plan.txt}` : "Contado o transferencia. También en cuotas con tarjeta de crédito.";
+  press("#pagos button", "pago", String(s.pago));
+  $("#quote").textContent = q;
+  const rows = [
+    ["Medidas", `Alto ${s.H} × ancho ${s.W} × prof. ${cm(g.D)} cm`],
+    ["Niveles", `${s.niveles} · ${cm(g.luz)} cm libres entre estantes`],
+    ["Estantes", tapaTxt(s)],
+    ["Estructura", estructuraTxt(s)],
+    ["Adicionales", s.anclaje ? "Anclaje a pared" : "Ninguno"]
+  ];
+  $("#summary").innerHTML = rows.map(([a,b]) => `<div><dt>${a}</dt><dd>${b}</dd></div>`).join("");
+  const msg = message(s, r, q);
+  $("#msg").textContent = msg;
+  const href = `https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent(msg)}`;
+  $("#wa").href = href; $("#waBar").href = href;
+  $("#copyStatus").textContent = "";
+  renderTaller(r);
+}
+
+function renderTaller(){}
+
+/* ===================== VISOR 3D ===================== */
+let three = null, currentView = "iso", buildPending = false, tween = null;
+const VIEWS = { iso: [1, 0.45, 1.25], frente: [0, 0.18, 1], lateral: [1, 0.18, 0] };
+const cssVar = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const lin = hex => new THREE.Color(hex).convertSRGBToLinear();
+
+function init3D(){
+  const el = $("#gl");
+  if (!window.THREE || !THREE.OrbitControls){ el.insertAdjacentHTML("beforeend", '<p class="glfail">No se pudo cargar la vista 3D. El cotizador funciona igual.</p>'); return; }
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); }
+  catch (e) { el.insertAdjacentHTML("beforeend", '<p class="glfail">Tu navegador no muestra 3D. El cotizador funciona igual.</p>'); return; }
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  el.prepend(renderer.domElement);
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(32, 1, 1, 8000);
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true; controls.dampingFactor = 0.08; controls.enablePan = false;
+  controls.minDistance = 60; controls.maxDistance = 1600;
+  controls.minPolarAngle = 0.12; controls.maxPolarAngle = Math.PI/2 - 0.04;
+  controls.addEventListener("start", () => { tween = null; markView(null); });
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x3a3a3a, 0.8));
+  const sun = new THREE.DirectionalLight(0xffffff, 0.85);
+  sun.position.set(160, 320, 240); sun.castShadow = true; sun.shadow.mapSize.set(1024, 1024);
+  Object.assign(sun.shadow.camera, { left: -260, right: 260, top: 300, bottom: -100, near: 10, far: 1100 });
+  sun.shadow.bias = -0.0006; scene.add(sun);
+  const fill = new THREE.DirectionalLight(0xffffff, 0.28); fill.position.set(-220, 160, -120); scene.add(fill);
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(3000, 3000), new THREE.ShadowMaterial({ opacity: 0.3 }));
+  floor.rotation.x = -Math.PI/2; floor.receiveShadow = true; scene.add(floor);
+  const group = new THREE.Group(), dims = new THREE.Group();
+  scene.add(group, dims);
+  three = { el, renderer, scene, camera, controls, group, dims, anchors: {} };
+  const resize = () => { const w = el.clientWidth, h = el.clientHeight; if (!w || !h) return; renderer.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix(); };
+  if (window.ResizeObserver) new ResizeObserver(resize).observe(el); else addEventListener("resize", resize);
+  resize();
+  build();
+  setView("iso", false);
+  loop();
+  const themeChange = () => buildDims();
+  if (window.matchMedia) matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", themeChange);
+  new MutationObserver(themeChange).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+}
+
+const texCache = {};
+function woodTex(t, v = 0){
+  const key = t.id + ":" + v;
+  if (texCache[key]) return texCache[key];
+  let seed = 11 + v * 7919; const rnd = () => (seed = seed * 16807 % 2147483647) / 2147483647;
+  const cv = document.createElement("canvas"); cv.width = 1024; cv.height = 256;
+  const g = cv.getContext("2d"); g.fillStyle = t.base; g.fillRect(0, 0, 1024, 256);
+  for (let i = 0; i < 90; i++){
+    g.strokeStyle = t.veta; g.globalAlpha = 0.04 + rnd() * 0.15; g.lineWidth = 0.6 + rnd() * 2.4;
+    g.beginPath(); let y = rnd() * 256; g.moveTo(0, y);
+    for (let x = 0; x <= 1024; x += 48){ y += (rnd() - 0.5) * 4; g.lineTo(x, y); }
+    g.stroke();
+  }
+  if (t.nudos){
+    const n = 1 + Math.floor(rnd() * 3);
+    for (let i = 0; i < n; i++){
+      const x = 60 + rnd() * 900, y = 40 + rnd() * 176, rx = 9 + rnd() * 14, ry = 5 + rnd() * 6;
+      g.fillStyle = t.veta; g.globalAlpha = 0.6; g.beginPath(); g.ellipse(x, y, rx, ry, 0, 0, Math.PI * 2); g.fill();
+      g.strokeStyle = t.veta; g.lineWidth = 1.4;
+      for (let k = 1; k < 4; k++){ g.globalAlpha = 0.28 - k * 0.06; g.beginPath(); g.ellipse(x, y, rx + k * 8, ry + k * 4, 0, 0, Math.PI * 2); g.stroke(); }
+    }
+  }
+  g.globalAlpha = 1;
+  const tx = new THREE.CanvasTexture(cv); tx.encoding = THREE.sRGBEncoding; tx.anisotropy = 4;
+  return texCache[key] = tx;
+}
+function clearGroup(gr){
+  gr.children.slice().forEach(o => { o.geometry && o.geometry.dispose(); o.material && o.material.dispose && o.material.dispose(); gr.remove(o); });
+}
+
+function build(){
+  if (!three) return;
+  const s = state, g = geo(s), gr = three.group;
+  clearGroup(gr);
+  const col = COLORES.find(c => c.id === s.color).hex;
+  const steel = new THREE.MeshStandardMaterial({ color: lin(col), metalness: 0.35, roughness: s.color === "gris" ? 0.4 : 0.6 });
+  const tp = tapaInfo(s), pino = s.material === "pino";
+  const woodM = v => new THREE.MeshStandardMaterial({ map: woodTex(tp, v), roughness: pino ? 0.72 : 0.62 });
+  const plainM = tp.veta ? woodM(0) : new THREE.MeshStandardMaterial({ color: lin(tp.base), roughness: 0.5 });
+  const padM = new THREE.MeshStandardMaterial({ color: lin("#2a2a2a"), roughness: 0.8 });
+  const box = (w, h, d, m, x, y, z) => { const o = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), m); o.position.set(x, y, z); o.castShadow = o.receiveShadow = true; gr.add(o); return o; };
+
+  const c = g.lado, W = s.W, D = g.D;
+  const px = W/2 - c/2, pz = D/2 - c/2;
+  const xs = g.div ? [-px, 0, px] : [-px, px];
+  xs.forEach(x => [-1, 1].forEach(sz => {
+    box(c, s.H - PAT, c, steel, x, PAT + (s.H - PAT)/2, sz * pz);          // pata
+    const p = new THREE.Mesh(new THREE.CylinderGeometry(c * 0.55, c * 0.62, PAT, 16), padM);
+    p.position.set(x, PAT/2, sz * pz); p.castShadow = true; gr.add(p);
+  }));
+  g.ys.forEach((y, i) => {
+    xs.forEach(x => box(c, c, g.madera, steel, x, y, 0));                  // travesaños de cada nivel
+    if (s.marco === "vuelta" || i === g.ys.length - 1){                     // largueros frente y atrás
+      [-1, 1].forEach(sz => box(W - 2*c, c, c, steel, 0, y, sz * pz));
+    }
+    const yt = y + c/2 + g.T/2;
+    if (pino){
+      const n = s.tablas, bw = g.madera / n, gap = 0.12;
+      for (let k = 0; k < n; k++) box(W, g.T, bw - gap, woodM((i + k) % 3), 0, yt, -g.madera/2 + bw * (k + 0.5));
+    } else box(W, g.T, g.madera, plainM, 0, yt, 0);
+  });
+  if (s.anclaje){                                                           // escuadras arriba, contra la pared
+    const y = g.ys[g.ys.length - 1];
+    [-1, 1].forEach(sx => box(4, 4, 0.4, steel, sx * (W/2 - c - 6), y - 2, -D/2 - 0.2));
+  }
+  buildDims();
+}
+
+function buildDims(){
+  if (!three) return;
+  const s = state, d = three.dims, D = geo(s).D, W = s.W; clearGroup(d);
+  const M = new THREE.LineBasicMaterial({ color: lin(cssVar("--accent") || "#65b8ff") });
+  const V = (x, y, z) => new THREE.Vector3(x, y, z);
+  const seg = (a, b) => d.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([a, b]), M));
+  const y = s.H + 6, o = 6, k = 3;
+  seg(V(-W/2, y, D/2 + o), V(W/2, y, D/2 + o));
+  seg(V(-W/2, y - k, D/2 + o), V(-W/2, y + k, D/2 + o));
+  seg(V(W/2, y - k, D/2 + o), V(W/2, y + k, D/2 + o));
+  seg(V(W/2 + o, y, -D/2), V(W/2 + o, y, D/2));
+  seg(V(W/2 + o, y - k, -D/2), V(W/2 + o, y + k, -D/2));
+  seg(V(W/2 + o, y - k, D/2), V(W/2 + o, y + k, D/2));
+  const hx = W/2 + o + 6, hz = D/2 + o;
+  seg(V(hx, 0, hz), V(hx, s.H, hz));
+  seg(V(hx - k, 0, hz), V(hx + k, 0, hz));
+  seg(V(hx - k, s.H, hz), V(hx + k, s.H, hz));
+  three.anchors = { L: V(0, y, D/2 + o), D: V(W/2 + o, y, 0), H: V(hx, s.H/2, hz) };
+  d.visible = showDims;
+}
+
+function fitPose(dirVec){
+  const s = state, c = three.camera, D = geo(s).D;
+  const r = 0.5 * Math.hypot(s.W + 30, D + 20, s.H + 16);
+  const fv = c.fov * Math.PI / 180, fh = 2 * Math.atan(Math.tan(fv/2) * c.aspect);
+  const angosto = c.aspect < 1.1;                          // en celular deja aire para los botones de arriba
+  const dist = r / Math.sin(Math.min(fv, fh) / 2) * (angosto ? 1.32 : 1.0);
+  const target = new THREE.Vector3(0, s.H * (angosto ? 0.6 : 0.5), 0);
+  return { target, pos: target.clone().add(dirVec.clone().normalize().multiplyScalar(dist)) };
+}
+function markView(name){ document.querySelectorAll("[data-view]").forEach(b => b.setAttribute("aria-pressed", b.dataset.view === name)); }
+function setView(name, anim){
+  if (!three) return;
+  currentView = name; markView(name);
+  const pose = fitPose(new THREE.Vector3(...VIEWS[name]));
+  if (!anim || reduceMotion){ three.camera.position.copy(pose.pos); three.controls.target.copy(pose.target); tween = null; return; }
+  tween = { p0: three.camera.position.clone(), t0: three.controls.target.clone(), p1: pose.pos, t1: pose.target, start: performance.now(), dur: 650 };
+}
+function refit(){
+  const c = three.camera, ctl = three.controls;
+  const pose = fitPose(c.position.clone().sub(ctl.target));
+  if (tween){ tween.p1 = pose.pos; tween.t1 = pose.target; return; }
+  c.position.copy(pose.pos); ctl.target.copy(pose.target);
+}
+function scheduleBuild(){
+  if (!three || buildPending) return;
+  buildPending = true;
+  requestAnimationFrame(() => { buildPending = false; build(); refit(); });
+}
+
+const tmpV = () => new THREE.Vector3();
+function placeLabels(){
+  const { el, camera, anchors } = three, w = el.clientWidth, h = el.clientHeight;
+  const vals = { L: state.W + " cm", D: cm(geo(state).D) + " cm", H: state.H + " cm" }, pts = [];
+  ["L", "D", "H"].forEach(k => {
+    const lab = $("#dim" + k);
+    if (!showDims || !anchors[k]){ lab.hidden = true; return; }
+    const v = tmpV().copy(anchors[k]).project(camera);
+    lab.hidden = v.z > 1;
+    if (lab.textContent !== vals[k]) lab.textContent = vals[k];
+    pts.push({ lab, x: (v.x + 1) / 2 * w, y: (1 - v.y) / 2 * h, bw: lab.offsetWidth || 64, bh: lab.offsetHeight || 22 });
+  });
+  for (let i = 1; i < pts.length; i++) for (let j = 0; j < i; j++){
+    const a = pts[j], b = pts[i];
+    if (Math.abs(a.x - b.x) < (a.bw + b.bw) / 2 + 4 && Math.abs(a.y - b.y) < (a.bh + b.bh) / 2 + 4){
+      b.y = a.y + (b.y >= a.y ? 1 : -1) * ((a.bh + b.bh) / 2 + 6);
+    }
+  }
+  pts.forEach(p => { p.lab.style.transform = `translate(${p.x.toFixed(1)}px, ${p.y.toFixed(1)}px) translate(-50%, -50%)`; });
+}
+function loop(){
+  requestAnimationFrame(loop);
+  if (tween){
+    const k = Math.min(1, (performance.now() - tween.start) / tween.dur), e = 1 - Math.pow(1 - k, 3);
+    three.camera.position.lerpVectors(tween.p0, tween.p1, e);
+    three.controls.target.lerpVectors(tween.t0, tween.t1, e);
+    if (k >= 1) tween = null;
+  }
+  three.controls.update();
+  three.renderer.render(three.scene, three.camera);
+  placeLabels();
+}
+
+/* ---------- tema (misma clave que fabrilar.com.ar) ---------- */
+const THEME_KEY = "fabrilar-theme";
+const isLight = () => { const a = document.documentElement.getAttribute("data-theme"); return a ? a === "light" : !!(window.matchMedia && matchMedia("(prefers-color-scheme: light)").matches); };
+function syncTheme(){ const b = $("#theme"); b.setAttribute("aria-checked", isLight()); b.setAttribute("aria-label", isLight() ? "Pasar a modo oscuro" : "Pasar a modo claro"); }
+try { const t = localStorage.getItem(THEME_KEY); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+$("#theme").addEventListener("click", () => {
+  const next = isLight() ? "dark" : "light";
+  document.documentElement.setAttribute("data-theme", next);
+  try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
+  syncTheme();
+});
+if (window.matchMedia) matchMedia("(prefers-color-scheme: light)").addEventListener?.("change", () => { syncTheme(); buildDims(); });
+syncTheme();
+
+/* ---------- arranque ---------- */
+changed(false);
+go(0, true);
+init3D();
+</script>
+</body>
+</html>
