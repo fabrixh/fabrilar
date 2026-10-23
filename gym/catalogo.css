@@ -104,3 +104,21 @@ body:has(.lightbox.open) .back-to-top{visibility:hidden}
 .product-video{position:absolute;top:14px;left:14px;z-index:2;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid #91ceff;border-radius:6px;background:#0055ad;color:#fff;font-size:.8rem;font-weight:700;letter-spacing:.06em;text-decoration:none;box-shadow:0 2px 8px #0005}
 .product-video:hover{background:#003e80;color:#fff}
 .product-video:focus-visible{outline:3px solid #fff;outline-offset:3px}
+
+/* Acceso al cotizador de escritorios (portada y Hogar). */
+#cotizador{background:var(--section-alt2);padding:4rem max(3rem,calc((100vw - 1344px)/2))}
+.cz-in{max-width:1344px;margin:auto;display:grid;gap:2.5rem;align-items:center}
+.cz-txt{min-width:0}
+.cz-txt .section-sub{margin-bottom:1.5rem}
+.cz-datos{display:flex;flex-wrap:wrap;gap:.6rem;list-style:none;margin:0 0 2rem;padding:0;font-size:.8rem;color:var(--text-muted)}
+.cz-datos li{border:1px solid var(--border);padding:.5rem .8rem}
+.cz-fig{display:block;width:100%;max-width:440px;justify-self:center;color:var(--text)}
+.cz-fig svg{display:block;width:100%;height:auto;overflow:visible}
+.cz-f{stroke:var(--text);stroke-width:2.4;stroke-linecap:square}
+.cz-top{fill:var(--surface);stroke:var(--text);stroke-width:1.2;stroke-linejoin:round}
+.cz-edge{fill:var(--bg3);stroke:var(--text);stroke-width:1.2;stroke-linejoin:round}
+.cz-d{stroke:var(--gold);stroke-width:1}
+.cz-fig text{fill:var(--gold);font:400 11px "Jost",sans-serif;letter-spacing:.06em}
+.cz-fig:hover .cz-top{fill:var(--card-hover)}
+@media(min-width:900px){.cz-in{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}}
+@media(max-width:768px){#cotizador{padding:3rem 1.25rem}.cz-fig{max-width:340px}}
