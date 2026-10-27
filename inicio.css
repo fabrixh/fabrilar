@@ -14,3 +14,11 @@
 
 /* Portada de escritorio más compacta: altura determinada por el contenido. */
 @media(min-width:769px){.hero{min-height:0!important;padding:3rem 3rem 3rem!important}}
+
+/* Propósito de Fabrilar, junto a la historia del taller. */
+.purpose-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.4rem;max-width:1000px;margin:2.5rem auto 0;text-align:left}
+.purpose-card{min-width:0;padding:1.8rem;border:1px solid var(--border);border-top:2px solid var(--gold);background:var(--surface)}
+.purpose-card .purpose-label{font:500 .65rem/1.5 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 .7rem}
+.purpose-card h3{font:400 2.1rem/1.15 'Cormorant Garamond',serif;color:var(--text);margin:0 0 1rem}
+.purpose-card>p:last-child{font:400 .95rem/1.8 'Jost',sans-serif;color:var(--text-muted);margin:0}
+@media(max-width:700px){.purpose-grid{grid-template-columns:1fr;gap:1rem;margin-top:2rem}.purpose-card{padding:1.4rem}}
