@@ -915,6 +915,10 @@
   scene.background=new THREE.Color(0x101012);
   scene.fog=new THREE.Fog(0x101012,1500,2800);
 
+  // Arranca con AMBIENTE y SOL activados
+  bEnv.onclick();
+  bSun.onclick();
+
   /* ---------- resize + loop ---------- */
   function resize(){
     renderer.setSize(window.innerWidth,window.innerHeight);
