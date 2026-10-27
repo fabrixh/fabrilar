@@ -1,0 +1,26 @@
+/* Encabezado común con la identidad de la portada. Solo selectores site-*.
+   Sigue el flujo normal para conservar el visor sticky y sus cálculos de scroll. */
+.site-header{position:relative;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:80px;padding:12px 48px;margin-left:calc(-1 * max(16px,env(safe-area-inset-left,0px)));margin-right:calc(-1 * max(16px,env(safe-area-inset-right,0px)));border-bottom:1px solid var(--line);background:var(--bg);color:var(--fg)}
+.site-logo{display:block;flex:0 0 auto;text-decoration:none}.site-logo img{display:block;height:52px;width:auto;max-width:none}
+[data-theme="light"] .site-logo img{filter:brightness(0) saturate(100%) invert(26%) sepia(86%) saturate(2000%) hue-rotate(184deg)}
+.site-links{display:flex;align-items:center;gap:28px;list-style:none;padding:0;margin:0}
+.site-links a{display:block;color:var(--muted);font:400 11px/1.5 'Jost',sans-serif;letter-spacing:.15em;text-transform:uppercase;white-space:nowrap;text-decoration:none;transition:color .2s}
+.site-links a:hover,.site-links a[aria-current="page"]{color:var(--accent)}
+.site-links .site-pill{padding:9px 18px;background:var(--action);color:#fff;font-weight:500}.site-links .site-pill:hover{background:var(--action-hover);color:#fff}
+.site-dropdown{position:relative}.site-dropdown-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:180px;padding:8px 0;background:var(--surface);border:1px solid var(--line);visibility:hidden;opacity:0;transition:opacity .15s;z-index:60}
+.site-dropdown-menu a{padding:10px 16px;font-size:10px}.site-dropdown:hover .site-dropdown-menu,.site-dropdown:focus-within .site-dropdown-menu{visibility:visible;opacity:1}
+.site-controls{display:flex;align-items:center;gap:16px;flex-shrink:0}
+.site-header .site-theme{display:flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:9px 12px;border:1px solid var(--line);background:transparent;cursor:pointer;color:var(--muted);border-radius:0}
+.site-theme svg{display:block;width:14px;height:14px;fill:currentColor}.site-theme .track{display:block;position:relative;width:32px;height:18px;border-radius:10px;background:var(--surface);border:1px solid var(--line)}
+.site-theme .thumb{position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:var(--muted);transition:transform .2s}
+.site-theme[aria-checked="true"] .track{background:var(--action)}.site-theme[aria-checked="true"] .thumb{transform:translateX(14px);background:white}
+.site-menu-toggle{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;padding:10px;border:1px solid transparent;background:transparent;cursor:pointer}
+.site-menu-toggle span{display:block;width:22px;height:1.5px;background:var(--muted);transition:transform .2s,opacity .2s}
+.site-menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}.site-menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}.site-menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.site-mobile{position:fixed;inset:calc(80px + env(safe-area-inset-top,0px)) 0 0;background:var(--bg);z-index:45;overflow-y:auto;overscroll-behavior:contain;padding:24px 28px 40px}
+.site-mobile[hidden]{display:none!important}.site-mobile .site-links{flex-direction:column;align-items:stretch;gap:4px;max-width:520px;margin:auto}.site-mobile .site-links>li>a{padding:11px 8px;font-size:13px}.site-mobile .site-dropdown-menu{position:static;transform:none;visibility:visible;opacity:1;border:0;padding:0 0 8px 18px;background:none}.site-mobile .site-dropdown-menu a{font-size:11px;padding:8px}.site-mobile .site-pill{text-align:center}
+.site-header :focus-visible,.site-mobile :focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+@media(max-width:1250px){.site-desktop{display:none}.site-menu-toggle{display:flex}.site-header{padding:12px 24px}.site-controls{margin-left:auto}}
+@media(min-width:1251px){.site-mobile{display:none!important}}
+@media(prefers-reduced-motion:reduce){.site-header *,.site-mobile *{transition:none!important}}
+

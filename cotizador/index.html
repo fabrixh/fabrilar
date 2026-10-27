@@ -86,13 +86,52 @@ h1{margin:0;font:300 clamp(40px,7vw,64px)/1.02 var(--display);text-wrap:balance}
 .otro a:hover{border-color:var(--accent);color:var(--accent)}
 @media (max-width:420px){.toplink{display:none}.fig svg{height:170px}}
 </style>
+<link rel="stylesheet" href="/cotizador/navegacion.css?v=20261027">
+<script defer src="/cotizador/navegacion.js?v=20261027"></script>
 </head>
 <body>
+<header class="site-header" data-theme-controller="shared">
+  <a class="site-logo" href="/" aria-label="Fabrilar · Volver al inicio"><img src="/img/logo-fabrilar-nav.png" alt="Fabrilar" width="54" height="52"></a>
+  <nav class="site-desktop" aria-label="Navegación principal"><ul class="site-links">
+    <li><a href="/#gym">Gym</a></li><li><a href="/#hogar">Hogar</a></li>
+    <li><a href="/cotizador/" aria-current="page">Cotizador</a></li>
+    <li class="site-dropdown"><a href="/#visores">Visores 3D ▾</a>
+      <div class="site-dropdown-menu">
+        <a href="/tbar">T-Bar</a>
+        <a href="/jaula">Jaula</a>
+        <a href="/perchero">Perchero</a>
+        <a href="/gimnasio-rebatible/">Gimnasio rebatible</a>
+      </div>
+    </li>
+    <li><a href="/deposito">Depósito 3D Realista</a></li>
+    <li><a href="/#nosotros">Sobre Nosotros</a></li>
+    <li><a href="/#redes">Redes</a></li>
+    <li><a href="/#contacto" class="site-pill">Contacto</a></li>
+  </ul></nav>
+  <div class="site-controls"><button class="theme site-theme" id="theme" role="switch" aria-checked="false" aria-label="Modo claro">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+    <span class="track"><span class="thumb"></span></span>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+  </button><button type="button" class="site-menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-mobile-menu"><span></span><span></span><span></span></button></div>
+</header>
+<nav class="site-mobile" id="site-mobile-menu" aria-label="Navegación móvil" hidden><ul class="site-links">
+    <li><a href="/#gym">Gym</a></li><li><a href="/#hogar">Hogar</a></li>
+    <li><a href="/cotizador/" aria-current="page">Cotizador</a></li>
+    <li class="site-dropdown"><a href="/#visores">Visores 3D ▾</a>
+      <div class="site-dropdown-menu">
+        <a href="/tbar">T-Bar</a>
+        <a href="/jaula">Jaula</a>
+        <a href="/perchero">Perchero</a>
+        <a href="/gimnasio-rebatible/">Gimnasio rebatible</a>
+      </div>
+    </li>
+    <li><a href="/deposito">Depósito 3D Realista</a></li>
+    <li><a href="/#nosotros">Sobre Nosotros</a></li>
+    <li><a href="/#redes">Redes</a></li>
+    <li><a href="/#contacto" class="site-pill">Contacto</a></li>
+  </ul></nav>
 <div class="wrap">
-  <header class="top">
-    <a class="brand" href="/" aria-label="Fabrilar · Volver al inicio"><b>FABRILAR</b><span>Hogar · Cotizadores</span></a>
-    <a class="toplink" href="/hogar/">Catálogo Hogar</a>
-  </header>
+
 
   <section class="intro">
     <p class="eyebrow">Muebles a medida · La Rioja</p>
