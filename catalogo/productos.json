@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-21T12:58:29.955Z",
+  "capturedAt": "2026-10-27T05:38:15.375Z",
   "products": [
     {
       "code": "FAB-00001",
@@ -11,7 +11,12 @@
       "regularPrice": 150000,
       "currency": "ARS",
       "available": true,
-      "image": "/img/catalogo/b77b630500ec5012.webp"
+      "image": "/img/catalogo/b77b630500ec5012.webp",
+      "slug": "banco-de-pecho-multifuncional-rebatible",
+      "url": "/gym/banco-de-pecho-multifuncional-rebatible/",
+      "images": [
+        "/img/catalogo/b77b630500ec5012.webp"
+      ]
     },
     {
       "code": "FAB-00002",
@@ -23,7 +28,12 @@
       "regularPrice": 179000,
       "currency": "ARS",
       "available": true,
-      "image": "/img/catalogo/14ee1b2e47c397a1.webp"
+      "image": "/img/catalogo/14ee1b2e47c397a1.webp",
+      "slug": "banco-de-pecho-multifuncional-rebatible-c-accesorio-de-piernas",
+      "url": "/gym/banco-de-pecho-multifuncional-rebatible-c-accesorio-de-piernas/",
+      "images": [
+        "/img/catalogo/14ee1b2e47c397a1.webp"
+      ]
     },
     {
       "code": "FAB-00003",
@@ -35,7 +45,12 @@
       "regularPrice": 140000,
       "currency": "ARS",
       "available": true,
-      "image": "/img/catalogo/4a29666b46650b1d.webp"
+      "image": "/img/catalogo/4a29666b46650b1d.webp",
+      "slug": "banco-multiangular",
+      "url": "/gym/banco-multiangular/",
+      "images": [
+        "/img/catalogo/4a29666b46650b1d.webp"
+      ]
     },
     {
       "code": "FAB-00004",
@@ -47,7 +62,12 @@
       "regularPrice": 139000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/598cdf3fe73117ee.webp"
+      "image": "/img/catalogo/598cdf3fe73117ee.webp",
+      "slug": "barra-de-dominadas-pared-c-tapizado",
+      "url": "/gym/barra-de-dominadas-pared-c-tapizado/",
+      "images": [
+        "/img/catalogo/598cdf3fe73117ee.webp"
+      ]
     },
     {
       "code": "FAB-00005",
@@ -59,7 +79,12 @@
       "regularPrice": 89000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/5373859766c782fb.webp"
+      "image": "/img/catalogo/5373859766c782fb.webp",
+      "slug": "barra-de-dominadas-pared",
+      "url": "/gym/barra-de-dominadas-pared/",
+      "images": [
+        "/img/catalogo/5373859766c782fb.webp"
+      ]
     },
     {
       "code": "FAB-00006",
@@ -71,7 +96,12 @@
       "regularPrice": 120000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/24740c8123e2ce17.webp"
+      "image": "/img/catalogo/24740c8123e2ce17.webp",
+      "slug": "banco-scott-regulable-de-brazos",
+      "url": "/gym/banco-scott-regulable-de-brazos/",
+      "images": [
+        "/img/catalogo/24740c8123e2ce17.webp"
+      ]
     },
     {
       "code": "FAB-00007",
@@ -82,7 +112,12 @@
       "price": 360000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/24c5e826c5722de4.webp"
+      "image": "/img/catalogo/24c5e826c5722de4.webp",
+      "slug": "banco-multigym-rack-con-dominadas",
+      "url": "/gym/banco-multigym-rack-con-dominadas/",
+      "images": [
+        "/img/catalogo/24c5e826c5722de4.webp"
+      ]
     },
     {
       "code": "FAB-00008",
@@ -93,7 +128,12 @@
       "price": 220000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/e6a4bf47eb89ae0f.webp"
+      "image": "/img/catalogo/e6a4bf47eb89ae0f.webp",
+      "slug": "banco-de-pecho-multifuncional",
+      "url": "/gym/banco-de-pecho-multifuncional/",
+      "images": [
+        "/img/catalogo/e6a4bf47eb89ae0f.webp"
+      ]
     },
     {
       "code": "FAB-00009",
@@ -104,7 +144,12 @@
       "price": 140000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/e04b73e462a426c3.webp"
+      "image": "/img/catalogo/e04b73e462a426c3.webp",
+      "slug": "sentadilla-sissy-regulable",
+      "url": "/gym/sentadilla-sissy-regulable/",
+      "images": [
+        "/img/catalogo/e04b73e462a426c3.webp"
+      ]
     },
     {
       "code": "FAB-00010",
@@ -116,7 +161,12 @@
       "regularPrice": 650000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/0099ea7248ec6a4d.webp"
+      "image": "/img/catalogo/0099ea7248ec6a4d.webp",
+      "slug": "torre-de-poleas-regulables",
+      "url": "/gym/torre-de-poleas-regulables/",
+      "images": [
+        "/img/catalogo/0099ea7248ec6a4d.webp"
+      ]
     },
     {
       "code": "FAB-00011",
@@ -128,7 +178,12 @@
       "regularPrice": 200000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/4f0ee421e3e20098.webp"
+      "image": "/img/catalogo/4f0ee421e3e20098.webp",
+      "slug": "poleas-altas-y-bajas-de-pared",
+      "url": "/gym/poleas-altas-y-bajas-de-pared/",
+      "images": [
+        "/img/catalogo/4f0ee421e3e20098.webp"
+      ]
     },
     {
       "code": "FAB-00012",
@@ -139,7 +194,12 @@
       "price": 550000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/7cad3ac41ea4fd2e.webp"
+      "image": "/img/catalogo/7cad3ac41ea4fd2e.webp",
+      "slug": "maquina-de-sentadillas-pantorrillas-y-hombros",
+      "url": "/gym/maquina-de-sentadillas-pantorrillas-y-hombros/",
+      "images": [
+        "/img/catalogo/7cad3ac41ea4fd2e.webp"
+      ]
     },
     {
       "code": "FAB-00013",
@@ -150,7 +210,12 @@
       "price": 950000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/89bbcc7b17149f20.webp"
+      "image": "/img/catalogo/89bbcc7b17149f20.webp",
+      "slug": "jaula-smith-con-poleas-dobles-altas-y-bajas",
+      "url": "/gym/jaula-smith-con-poleas-dobles-altas-y-bajas/",
+      "images": [
+        "/img/catalogo/89bbcc7b17149f20.webp"
+      ]
     },
     {
       "code": "FAB-00014",
@@ -161,7 +226,12 @@
       "price": 900000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/93ea44ae436c2204.webp"
+      "image": "/img/catalogo/93ea44ae436c2204.webp",
+      "slug": "smith-con-rodamientos-lineales",
+      "url": "/gym/smith-con-rodamientos-lineales/",
+      "images": [
+        "/img/catalogo/93ea44ae436c2204.webp"
+      ]
     },
     {
       "code": "FAB-00015",
@@ -172,7 +242,12 @@
       "price": 350000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/5bc10136bece1a58.webp"
+      "image": "/img/catalogo/5bc10136bece1a58.webp",
+      "slug": "sillon-de-cuadriceps",
+      "url": "/gym/sillon-de-cuadriceps/",
+      "images": [
+        "/img/catalogo/5bc10136bece1a58.webp"
+      ]
     },
     {
       "code": "FAB-00016",
@@ -184,7 +259,12 @@
       "regularPrice": 900000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/2e5260c64a3400df.webp"
+      "image": "/img/catalogo/2e5260c64a3400df.webp",
+      "slug": "prensa-45",
+      "url": "/gym/prensa-45/",
+      "images": [
+        "/img/catalogo/2e5260c64a3400df.webp"
+      ]
     },
     {
       "code": "FAB-00017",
@@ -196,7 +276,12 @@
       "regularPrice": 1100000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/8eb418bcfbee1d96.webp"
+      "image": "/img/catalogo/8eb418bcfbee1d96.webp",
+      "slug": "hack-45",
+      "url": "/gym/hack-45/",
+      "images": [
+        "/img/catalogo/8eb418bcfbee1d96.webp"
+      ]
     },
     {
       "code": "FAB-00018",
@@ -208,7 +293,12 @@
       "regularPrice": 700000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/8cd5bde4bcde815e.webp"
+      "image": "/img/catalogo/8cd5bde4bcde815e.webp",
+      "slug": "rack-articulado-plegable-multifuncional-pared-con-j-hook-topes-seguridad-y-dominadas",
+      "url": "/gym/rack-articulado-plegable-multifuncional-pared-con-j-hook-topes-seguridad-y-dominadas/",
+      "images": [
+        "/img/catalogo/8cd5bde4bcde815e.webp"
+      ]
     },
     {
       "code": "FAB-00019",
@@ -220,7 +310,12 @@
       "regularPrice": 490000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/288594b4f3683615.webp"
+      "image": "/img/catalogo/288594b4f3683615.webp",
+      "slug": "rack-pared-con-j-hooks-y-topes-seguridad",
+      "url": "/gym/rack-pared-con-j-hooks-y-topes-seguridad/",
+      "images": [
+        "/img/catalogo/288594b4f3683615.webp"
+      ]
     },
     {
       "code": "FAB-00020",
@@ -232,7 +327,12 @@
       "regularPrice": 90000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/b2890a50a2072d26.webp"
+      "image": "/img/catalogo/b2890a50a2072d26.webp",
+      "slug": "soporte-rack-sentadillas-piernas",
+      "url": "/gym/soporte-rack-sentadillas-piernas/",
+      "images": [
+        "/img/catalogo/b2890a50a2072d26.webp"
+      ]
     },
     {
       "code": "FAB-00021",
@@ -243,7 +343,12 @@
       "price": 450000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/30bebcbfccfd6ce8.webp"
+      "image": "/img/catalogo/30bebcbfccfd6ce8.webp",
+      "slug": "hammer-tren-superior",
+      "url": "/gym/hammer-tren-superior/",
+      "images": [
+        "/img/catalogo/30bebcbfccfd6ce8.webp"
+      ]
     },
     {
       "code": "FAB-00022",
@@ -255,7 +360,12 @@
       "regularPrice": 380000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/d4430f40d18b1a9a.webp"
+      "image": "/img/catalogo/d4430f40d18b1a9a.webp",
+      "slug": "brazos-con-ruleman",
+      "url": "/gym/brazos-con-ruleman/",
+      "images": [
+        "/img/catalogo/d4430f40d18b1a9a.webp"
+      ]
     },
     {
       "code": "FAB-00023",
@@ -267,7 +377,12 @@
       "regularPrice": 200000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/0cb777bf1f2cf023.webp"
+      "image": "/img/catalogo/0cb777bf1f2cf023.webp",
+      "slug": "hip-thrust-puente-de-gluteos",
+      "url": "/gym/hip-thrust-puente-de-gluteos/",
+      "images": [
+        "/img/catalogo/0cb777bf1f2cf023.webp"
+      ]
     },
     {
       "code": "FAB-00024",
@@ -278,7 +393,12 @@
       "price": 65000,
       "currency": "ARS",
       "available": true,
-      "image": "/img/catalogo/804b3f3e9e085cdb.webp"
+      "image": "/img/catalogo/804b3f3e9e085cdb.webp",
+      "slug": "soporte-rodillo-para-bicicleta-fija",
+      "url": "/gym/soporte-rodillo-para-bicicleta-fija/",
+      "images": [
+        "/img/catalogo/804b3f3e9e085cdb.webp"
+      ]
     },
     {
       "code": "FAB-00025",
@@ -289,7 +409,12 @@
       "price": 30000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/b2d7e289edc94990.webp"
+      "image": "/img/catalogo/b2d7e289edc94990.webp",
+      "slug": "soporte-bolsa-de-boxeo",
+      "url": "/gym/soporte-bolsa-de-boxeo/",
+      "images": [
+        "/img/catalogo/b2d7e289edc94990.webp"
+      ]
     },
     {
       "code": "FAB-00026",
@@ -300,7 +425,12 @@
       "price": 120000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/05576210ad3fe387.webp"
+      "image": "/img/catalogo/05576210ad3fe387.webp",
+      "slug": "soporte-discos-110x72x69",
+      "url": "/gym/soporte-discos-110x72x69/",
+      "images": [
+        "/img/catalogo/05576210ad3fe387.webp"
+      ]
     },
     {
       "code": "FAB-00027",
@@ -311,7 +441,12 @@
       "price": 20000,
       "currency": "ARS",
       "available": true,
-      "image": "/img/catalogo/8ea939799eccbfb3.webp"
+      "image": "/img/catalogo/8ea939799eccbfb3.webp",
+      "slug": "barra-larga-recta-140cm-30mm",
+      "url": "/gym/barra-larga-recta-140cm-30mm/",
+      "images": [
+        "/img/catalogo/8ea939799eccbfb3.webp"
+      ]
     },
     {
       "code": "FAB-00028",
@@ -323,7 +458,12 @@
       "regularPrice": 25000,
       "currency": "ARS",
       "available": true,
-      "image": "/img/catalogo/30abc6343f680df9.webp"
+      "image": "/img/catalogo/30abc6343f680df9.webp",
+      "slug": "barra-larga-recta-180cm-30mm",
+      "url": "/gym/barra-larga-recta-180cm-30mm/",
+      "images": [
+        "/img/catalogo/30abc6343f680df9.webp"
+      ]
     },
     {
       "code": "FAB-00029",
@@ -334,7 +474,10 @@
       "price": 95000,
       "currency": "ARS",
       "available": true,
-      "image": null
+      "image": null,
+      "slug": "barra-larga-recta-maciza-cromada-180cm-30mm",
+      "url": "/gym/barra-larga-recta-maciza-cromada-180cm-30mm/",
+      "images": []
     },
     {
       "code": "FAB-00030",
@@ -345,7 +488,12 @@
       "price": 35000,
       "currency": "ARS",
       "available": true,
-      "image": "/img/catalogo/f0dd51671f7134bd.webp"
+      "image": "/img/catalogo/f0dd51671f7134bd.webp",
+      "slug": "barra-ezeta-w-120cm-30mm",
+      "url": "/gym/barra-ezeta-w-120cm-30mm/",
+      "images": [
+        "/img/catalogo/f0dd51671f7134bd.webp"
+      ]
     },
     {
       "code": "FAB-00031",
@@ -356,7 +504,12 @@
       "price": 129000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/5e46b52e8c99017f.webp"
+      "image": "/img/catalogo/5e46b52e8c99017f.webp",
+      "slug": "barra-trap-hexagonal-145cm",
+      "url": "/gym/barra-trap-hexagonal-145cm/",
+      "images": [
+        "/img/catalogo/5e46b52e8c99017f.webp"
+      ]
     },
     {
       "code": "FAB-00032",
@@ -367,7 +520,12 @@
       "price": 40000,
       "currency": "ARS",
       "available": true,
-      "image": "/img/catalogo/5a30bbcdbc720205.webp"
+      "image": "/img/catalogo/5a30bbcdbc720205.webp",
+      "slug": "agarre-remo-doble",
+      "url": "/gym/agarre-remo-doble/",
+      "images": [
+        "/img/catalogo/5a30bbcdbc720205.webp"
+      ]
     },
     {
       "code": "FAB-00033",
@@ -378,7 +536,12 @@
       "price": 30000,
       "currency": "ARS",
       "available": true,
-      "image": "/img/catalogo/cb727174f0989bee.webp"
+      "image": "/img/catalogo/cb727174f0989bee.webp",
+      "slug": "agarre-triangulo",
+      "url": "/gym/agarre-triangulo/",
+      "images": [
+        "/img/catalogo/cb727174f0989bee.webp"
+      ]
     },
     {
       "code": "FAB-00034",
@@ -389,7 +552,10 @@
       "price": 30000,
       "currency": "ARS",
       "available": true,
-      "image": null
+      "image": null,
+      "slug": "barra-larga-agarre-espalda-polea",
+      "url": "/gym/barra-larga-agarre-espalda-polea/",
+      "images": []
     },
     {
       "code": "FAB-00035",
@@ -400,7 +566,10 @@
       "price": 25000,
       "currency": "ARS",
       "available": true,
-      "image": null
+      "image": null,
+      "slug": "soga-con-agarre",
+      "url": "/gym/soga-con-agarre/",
+      "images": []
     },
     {
       "code": "FAB-00036",
@@ -411,7 +580,12 @@
       "price": 3750,
       "currency": "ARS",
       "available": true,
-      "image": "/img/catalogo/94c7b97562b61ac7.webp"
+      "image": "/img/catalogo/94c7b97562b61ac7.webp",
+      "slug": "discos-pvc-1-25kg",
+      "url": "/gym/discos-pvc-1-25kg/",
+      "images": [
+        "/img/catalogo/94c7b97562b61ac7.webp"
+      ]
     },
     {
       "code": "FAB-00037",
@@ -422,7 +596,12 @@
       "price": 7500,
       "currency": "ARS",
       "available": true,
-      "image": "/img/catalogo/f3e62487c910fa8d.webp"
+      "image": "/img/catalogo/f3e62487c910fa8d.webp",
+      "slug": "discos-pvc-2-5kg",
+      "url": "/gym/discos-pvc-2-5kg/",
+      "images": [
+        "/img/catalogo/f3e62487c910fa8d.webp"
+      ]
     },
     {
       "code": "FAB-00038",
@@ -433,7 +612,10 @@
       "price": 7500,
       "currency": "ARS",
       "available": true,
-      "image": null
+      "image": null,
+      "slug": "discos-pvc-body-agarre-3kg",
+      "url": "/gym/discos-pvc-body-agarre-3kg/",
+      "images": []
     },
     {
       "code": "FAB-00039",
@@ -444,7 +626,12 @@
       "price": 15000,
       "currency": "ARS",
       "available": true,
-      "image": "/img/catalogo/67b5e35b7c4df2ad.webp"
+      "image": "/img/catalogo/67b5e35b7c4df2ad.webp",
+      "slug": "discos-pvc-5kg",
+      "url": "/gym/discos-pvc-5kg/",
+      "images": [
+        "/img/catalogo/67b5e35b7c4df2ad.webp"
+      ]
     },
     {
       "code": "FAB-00040",
@@ -455,7 +642,10 @@
       "price": 35000,
       "currency": "ARS",
       "available": true,
-      "image": null
+      "image": null,
+      "slug": "discos-pvc-12kg",
+      "url": "/gym/discos-pvc-12kg/",
+      "images": []
     },
     {
       "code": "FAB-00041",
@@ -466,7 +656,12 @@
       "price": 12000,
       "currency": "ARS",
       "available": true,
-      "image": "/img/catalogo/029bfb32a894f94a.webp"
+      "image": "/img/catalogo/029bfb32a894f94a.webp",
+      "slug": "mancuernas-hexa-pvc-3kg",
+      "url": "/gym/mancuernas-hexa-pvc-3kg/",
+      "images": [
+        "/img/catalogo/029bfb32a894f94a.webp"
+      ]
     },
     {
       "code": "FAB-00042",
@@ -477,7 +672,12 @@
       "price": 17000,
       "currency": "ARS",
       "available": true,
-      "image": "/img/catalogo/e8c73142307c6a0c.webp"
+      "image": "/img/catalogo/e8c73142307c6a0c.webp",
+      "slug": "mancuernas-hexa-pvc-6kg",
+      "url": "/gym/mancuernas-hexa-pvc-6kg/",
+      "images": [
+        "/img/catalogo/e8c73142307c6a0c.webp"
+      ]
     },
     {
       "code": "FAB-00043",
@@ -488,7 +688,10 @@
       "price": 23000,
       "currency": "ARS",
       "available": true,
-      "image": null
+      "image": null,
+      "slug": "mancuernas-hexa-pvc-8kg",
+      "url": "/gym/mancuernas-hexa-pvc-8kg/",
+      "images": []
     },
     {
       "code": "FAB-00045",
@@ -499,7 +702,10 @@
       "price": 16000,
       "currency": "ARS",
       "available": true,
-      "image": null
+      "image": null,
+      "slug": "mancuerna-par-discos-intercambiables-4kg",
+      "url": "/gym/mancuerna-par-discos-intercambiables-4kg/",
+      "images": []
     },
     {
       "code": "FAB-00046",
@@ -510,7 +716,10 @@
       "price": 21000,
       "currency": "ARS",
       "available": false,
-      "image": null
+      "image": null,
+      "slug": "mancuerna-par-discos-intercambiables-8kg",
+      "url": "/gym/mancuerna-par-discos-intercambiables-8kg/",
+      "images": []
     },
     {
       "code": "FAB-00047",
@@ -521,7 +730,10 @@
       "price": 25000,
       "currency": "ARS",
       "available": false,
-      "image": null
+      "image": null,
+      "slug": "mancuerna-par-discos-intercambiables-10kg",
+      "url": "/gym/mancuerna-par-discos-intercambiables-10kg/",
+      "images": []
     },
     {
       "code": "FAB-00048",
@@ -532,7 +744,10 @@
       "price": 10000,
       "currency": "ARS",
       "available": true,
-      "image": null
+      "image": null,
+      "slug": "discos-10kg",
+      "url": "/gym/discos-10kg/",
+      "images": []
     },
     {
       "code": "FAB-00051",
@@ -543,7 +758,10 @@
       "price": 14000,
       "currency": "ARS",
       "available": true,
-      "image": null
+      "image": null,
+      "slug": "mancuernas-cano-largo-33cm-7-8cm-d4-d5-d10",
+      "url": "/gym/mancuernas-cano-largo-33cm-7-8cm-d4-d5-d10/",
+      "images": []
     },
     {
       "code": "FAB-00052",
@@ -554,7 +772,10 @@
       "price": 8000,
       "currency": "ARS",
       "available": true,
-      "image": null
+      "image": null,
+      "slug": "mancuernas-cano-arandela-32cm",
+      "url": "/gym/mancuernas-cano-arandela-32cm/",
+      "images": []
     },
     {
       "code": "FAB-00053",
@@ -565,7 +786,10 @@
       "price": 10000,
       "currency": "ARS",
       "available": true,
-      "image": null
+      "image": null,
+      "slug": "mancuernas-cano-arandela-40cm",
+      "url": "/gym/mancuernas-cano-arandela-40cm/",
+      "images": []
     },
     {
       "code": "FAB-00080",
@@ -576,7 +800,12 @@
       "price": 1700,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/ecb88ad07cda4d95.webp"
+      "image": "/img/catalogo/ecb88ad07cda4d95.webp",
+      "slug": "mancuerna-hexagonal-cemento-x-kg",
+      "url": "/gym/mancuerna-hexagonal-cemento-x-kg/",
+      "images": [
+        "/img/catalogo/ecb88ad07cda4d95.webp"
+      ]
     },
     {
       "code": "FAB-00082",
@@ -588,7 +817,12 @@
       "regularPrice": 29000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/f6d665ec6dbcab90.webp"
+      "image": "/img/catalogo/f6d665ec6dbcab90.webp",
+      "slug": "combos-barra-larga-mancuernas-y-discos-10-kilos",
+      "url": "/gym/combos-barra-larga-mancuernas-y-discos-10-kilos/",
+      "images": [
+        "/img/catalogo/f6d665ec6dbcab90.webp"
+      ]
     },
     {
       "code": "FAB-00083",
@@ -600,7 +834,12 @@
       "regularPrice": 1400000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/7420bae1312f5003.webp"
+      "image": "/img/catalogo/7420bae1312f5003.webp",
+      "slug": "abductor-aductor-dual-trabaja-ambos-movimientos-en-un-solo-equipo",
+      "url": "/gym/abductor-aductor-dual-trabaja-ambos-movimientos-en-un-solo-equipo/",
+      "images": [
+        "/img/catalogo/7420bae1312f5003.webp"
+      ]
     },
     {
       "code": "FAB-00055",
@@ -611,7 +850,12 @@
       "price": 75000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/951e8a677a61a9cc.webp"
+      "image": "/img/catalogo/951e8a677a61a9cc.webp",
+      "slug": "mesa-escritorio-100x45x140",
+      "url": "/hogar/mesa-escritorio-100x45x140/",
+      "images": [
+        "/img/catalogo/951e8a677a61a9cc.webp"
+      ]
     },
     {
       "code": "FAB-00056",
@@ -622,7 +866,12 @@
       "price": 75000,
       "currency": "ARS",
       "available": true,
-      "image": "/img/catalogo/a7abc0cc96d9e6fd.webp"
+      "image": "/img/catalogo/a7abc0cc96d9e6fd.webp",
+      "slug": "organizador-lavarropa",
+      "url": "/hogar/organizador-lavarropa/",
+      "images": [
+        "/img/catalogo/a7abc0cc96d9e6fd.webp"
+      ]
     },
     {
       "code": "FAB-00057",
@@ -633,7 +882,12 @@
       "price": 190000,
       "currency": "ARS",
       "available": true,
-      "image": "/img/catalogo/75219b85e45d4296.webp"
+      "image": "/img/catalogo/75219b85e45d4296.webp",
+      "slug": "estante-190x150x34-5-niveles",
+      "url": "/hogar/estante-190x150x34-5-niveles/",
+      "images": [
+        "/img/catalogo/75219b85e45d4296.webp"
+      ]
     },
     {
       "code": "FAB-00058",
@@ -645,7 +899,12 @@
       "regularPrice": 120000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/3afe305ec349f037.webp"
+      "image": "/img/catalogo/3afe305ec349f037.webp",
+      "slug": "mesa-ratonera-80x60x55",
+      "url": "/hogar/mesa-ratonera-80x60x55/",
+      "images": [
+        "/img/catalogo/3afe305ec349f037.webp"
+      ]
     },
     {
       "code": "FAB-00059",
@@ -656,7 +915,12 @@
       "price": 110000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/b434e904b094ea30.webp"
+      "image": "/img/catalogo/b434e904b094ea30.webp",
+      "slug": "rack-para-smart-tv-estilo-industrial-140x70altox40prof",
+      "url": "/hogar/rack-para-smart-tv-estilo-industrial-140x70altox40prof/",
+      "images": [
+        "/img/catalogo/b434e904b094ea30.webp"
+      ]
     },
     {
       "code": "FAB-00061",
@@ -667,7 +931,12 @@
       "price": 109000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/d8481066d6265ac5.webp"
+      "image": "/img/catalogo/d8481066d6265ac5.webp",
+      "slug": "alacena-de-cocina",
+      "url": "/hogar/alacena-de-cocina/",
+      "images": [
+        "/img/catalogo/d8481066d6265ac5.webp"
+      ]
     },
     {
       "code": "FAB-00062",
@@ -678,7 +947,12 @@
       "price": 800000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/56e71b55e915f187.webp"
+      "image": "/img/catalogo/56e71b55e915f187.webp",
+      "slug": "escalera-metalica",
+      "url": "/hogar/escalera-metalica/",
+      "images": [
+        "/img/catalogo/56e71b55e915f187.webp"
+      ]
     },
     {
       "code": "FAB-00063",
@@ -689,7 +963,12 @@
       "price": 250000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/117c5579c36058e8.webp"
+      "image": "/img/catalogo/117c5579c36058e8.webp",
+      "slug": "perchero-para-negocio",
+      "url": "/hogar/perchero-para-negocio/",
+      "images": [
+        "/img/catalogo/117c5579c36058e8.webp"
+      ]
     },
     {
       "code": "FAB-00064",
@@ -700,7 +979,12 @@
       "price": 20000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/69c40baee3acb414.webp"
+      "image": "/img/catalogo/69c40baee3acb414.webp",
+      "slug": "kit-para-parrilla-palita-y-atizador",
+      "url": "/hogar/kit-para-parrilla-palita-y-atizador/",
+      "images": [
+        "/img/catalogo/69c40baee3acb414.webp"
+      ]
     },
     {
       "code": "FAB-00065",
@@ -711,7 +995,12 @@
       "price": 60000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/742bc62e2e215f92.webp"
+      "image": "/img/catalogo/742bc62e2e215f92.webp",
+      "slug": "parrilla-simple",
+      "url": "/hogar/parrilla-simple/",
+      "images": [
+        "/img/catalogo/742bc62e2e215f92.webp"
+      ]
     },
     {
       "code": "FAB-00066",
@@ -722,7 +1011,12 @@
       "price": 190000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/9b30d6c0c757d555.webp"
+      "image": "/img/catalogo/9b30d6c0c757d555.webp",
+      "slug": "mesa-para-gimnasio",
+      "url": "/hogar/mesa-para-gimnasio/",
+      "images": [
+        "/img/catalogo/9b30d6c0c757d555.webp"
+      ]
     },
     {
       "code": "FAB-00067",
@@ -733,7 +1027,12 @@
       "price": 350000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/19aa5f577a44b847.webp"
+      "image": "/img/catalogo/19aa5f577a44b847.webp",
+      "slug": "mesa-de-trabajo-modelo-300-kg",
+      "url": "/hogar/mesa-de-trabajo-modelo-300-kg/",
+      "images": [
+        "/img/catalogo/19aa5f577a44b847.webp"
+      ]
     },
     {
       "code": "FAB-00069",
@@ -744,7 +1043,12 @@
       "price": 99000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/ac35eee9ef43c428.webp"
+      "image": "/img/catalogo/ac35eee9ef43c428.webp",
+      "slug": "desayunador-con-banquetas",
+      "url": "/hogar/desayunador-con-banquetas/",
+      "images": [
+        "/img/catalogo/ac35eee9ef43c428.webp"
+      ]
     },
     {
       "code": "FAB-00070",
@@ -755,7 +1059,12 @@
       "price": 59000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/ee5a98ac08751f6e.webp"
+      "image": "/img/catalogo/ee5a98ac08751f6e.webp",
+      "slug": "organizador-estante-para-inodoro",
+      "url": "/hogar/organizador-estante-para-inodoro/",
+      "images": [
+        "/img/catalogo/ee5a98ac08751f6e.webp"
+      ]
     },
     {
       "code": "FAB-00072",
@@ -766,7 +1075,12 @@
       "price": 149000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/042baceda311ac53.webp"
+      "image": "/img/catalogo/042baceda311ac53.webp",
+      "slug": "cama-de-una-plaza",
+      "url": "/hogar/cama-de-una-plaza/",
+      "images": [
+        "/img/catalogo/042baceda311ac53.webp"
+      ]
     },
     {
       "code": "FAB-00074",
@@ -777,7 +1091,12 @@
       "price": 220000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/da6a8a89d409b976.webp"
+      "image": "/img/catalogo/da6a8a89d409b976.webp",
+      "slug": "mueble-electrico-estante-mesa",
+      "url": "/hogar/mueble-electrico-estante-mesa/",
+      "images": [
+        "/img/catalogo/da6a8a89d409b976.webp"
+      ]
     },
     {
       "code": "FAB-00075",
@@ -788,7 +1107,12 @@
       "price": 350000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/ba2a342d8b6708fa.webp"
+      "image": "/img/catalogo/ba2a342d8b6708fa.webp",
+      "slug": "mostrador-de-recepcion",
+      "url": "/hogar/mostrador-de-recepcion/",
+      "images": [
+        "/img/catalogo/ba2a342d8b6708fa.webp"
+      ]
     },
     {
       "code": "FAB-00081",
@@ -799,7 +1123,12 @@
       "price": 200000,
       "currency": "ARS",
       "available": false,
-      "image": "/img/catalogo/af1d73e0e47c0e22.webp"
+      "image": "/img/catalogo/af1d73e0e47c0e22.webp",
+      "slug": "perchero-loft-industrial-con-ruedas",
+      "url": "/hogar/perchero-loft-industrial-con-ruedas/",
+      "images": [
+        "/img/catalogo/af1d73e0e47c0e22.webp"
+      ]
     }
   ]
 }

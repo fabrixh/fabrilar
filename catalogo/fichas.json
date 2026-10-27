@@ -1,0 +1,431 @@
+{
+  "version": 1,
+  "items": {
+    "FAB-00001": {
+      "url": "/gym/banco-de-pecho-multifuncional-rebatible/",
+      "slug": "banco-de-pecho-multifuncional-rebatible",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00002": {
+      "url": "/gym/banco-de-pecho-multifuncional-rebatible-c-accesorio-de-piernas/",
+      "slug": "banco-de-pecho-multifuncional-rebatible-c-accesorio-de-piernas",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00003": {
+      "url": "/gym/banco-multiangular/",
+      "slug": "banco-multiangular",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00004": {
+      "url": "/gym/barra-de-dominadas-pared-c-tapizado/",
+      "slug": "barra-de-dominadas-pared-c-tapizado",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00005": {
+      "url": "/gym/barra-de-dominadas-pared/",
+      "slug": "barra-de-dominadas-pared",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00006": {
+      "url": "/gym/banco-scott-regulable-de-brazos/",
+      "slug": "banco-scott-regulable-de-brazos",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00007": {
+      "url": "/gym/banco-multigym-rack-con-dominadas/",
+      "slug": "banco-multigym-rack-con-dominadas",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00008": {
+      "url": "/gym/banco-de-pecho-multifuncional/",
+      "slug": "banco-de-pecho-multifuncional",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00009": {
+      "url": "/gym/sentadilla-sissy-regulable/",
+      "slug": "sentadilla-sissy-regulable",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00010": {
+      "url": "/gym/torre-de-poleas-regulables/",
+      "slug": "torre-de-poleas-regulables",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00011": {
+      "url": "/gym/poleas-altas-y-bajas-de-pared/",
+      "slug": "poleas-altas-y-bajas-de-pared",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00012": {
+      "url": "/gym/maquina-de-sentadillas-pantorrillas-y-hombros/",
+      "slug": "maquina-de-sentadillas-pantorrillas-y-hombros",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00013": {
+      "url": "/gym/jaula-smith-con-poleas-dobles-altas-y-bajas/",
+      "slug": "jaula-smith-con-poleas-dobles-altas-y-bajas",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00014": {
+      "url": "/gym/smith-con-rodamientos-lineales/",
+      "slug": "smith-con-rodamientos-lineales",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00015": {
+      "url": "/gym/sillon-de-cuadriceps/",
+      "slug": "sillon-de-cuadriceps",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00016": {
+      "url": "/gym/prensa-45/",
+      "slug": "prensa-45",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00017": {
+      "url": "/gym/hack-45/",
+      "slug": "hack-45",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00018": {
+      "url": "/gym/rack-articulado-plegable-multifuncional-pared-con-j-hook-topes-seguridad-y-dominadas/",
+      "slug": "rack-articulado-plegable-multifuncional-pared-con-j-hook-topes-seguridad-y-dominadas",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00019": {
+      "url": "/gym/rack-pared-con-j-hooks-y-topes-seguridad/",
+      "slug": "rack-pared-con-j-hooks-y-topes-seguridad",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00020": {
+      "url": "/gym/soporte-rack-sentadillas-piernas/",
+      "slug": "soporte-rack-sentadillas-piernas",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00021": {
+      "url": "/gym/hammer-tren-superior/",
+      "slug": "hammer-tren-superior",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00022": {
+      "url": "/gym/brazos-con-ruleman/",
+      "slug": "brazos-con-ruleman",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00023": {
+      "url": "/gym/hip-thrust-puente-de-gluteos/",
+      "slug": "hip-thrust-puente-de-gluteos",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00024": {
+      "url": "/gym/soporte-rodillo-para-bicicleta-fija/",
+      "slug": "soporte-rodillo-para-bicicleta-fija",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00025": {
+      "url": "/gym/soporte-bolsa-de-boxeo/",
+      "slug": "soporte-bolsa-de-boxeo",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00026": {
+      "url": "/gym/soporte-discos-110x72x69/",
+      "slug": "soporte-discos-110x72x69",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00027": {
+      "url": "/gym/barra-larga-recta-140cm-30mm/",
+      "slug": "barra-larga-recta-140cm-30mm",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00028": {
+      "url": "/gym/barra-larga-recta-180cm-30mm/",
+      "slug": "barra-larga-recta-180cm-30mm",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00029": {
+      "url": "/gym/barra-larga-recta-maciza-cromada-180cm-30mm/",
+      "slug": "barra-larga-recta-maciza-cromada-180cm-30mm",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00030": {
+      "url": "/gym/barra-ezeta-w-120cm-30mm/",
+      "slug": "barra-ezeta-w-120cm-30mm",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00031": {
+      "url": "/gym/barra-trap-hexagonal-145cm/",
+      "slug": "barra-trap-hexagonal-145cm",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00032": {
+      "url": "/gym/agarre-remo-doble/",
+      "slug": "agarre-remo-doble",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00033": {
+      "url": "/gym/agarre-triangulo/",
+      "slug": "agarre-triangulo",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00034": {
+      "url": "/gym/barra-larga-agarre-espalda-polea/",
+      "slug": "barra-larga-agarre-espalda-polea",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00035": {
+      "url": "/gym/soga-con-agarre/",
+      "slug": "soga-con-agarre",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00036": {
+      "url": "/gym/discos-pvc-1-25kg/",
+      "slug": "discos-pvc-1-25kg",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00037": {
+      "url": "/gym/discos-pvc-2-5kg/",
+      "slug": "discos-pvc-2-5kg",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00038": {
+      "url": "/gym/discos-pvc-body-agarre-3kg/",
+      "slug": "discos-pvc-body-agarre-3kg",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00039": {
+      "url": "/gym/discos-pvc-5kg/",
+      "slug": "discos-pvc-5kg",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00040": {
+      "url": "/gym/discos-pvc-12kg/",
+      "slug": "discos-pvc-12kg",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00041": {
+      "url": "/gym/mancuernas-hexa-pvc-3kg/",
+      "slug": "mancuernas-hexa-pvc-3kg",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00042": {
+      "url": "/gym/mancuernas-hexa-pvc-6kg/",
+      "slug": "mancuernas-hexa-pvc-6kg",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00043": {
+      "url": "/gym/mancuernas-hexa-pvc-8kg/",
+      "slug": "mancuernas-hexa-pvc-8kg",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00045": {
+      "url": "/gym/mancuerna-par-discos-intercambiables-4kg/",
+      "slug": "mancuerna-par-discos-intercambiables-4kg",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00046": {
+      "url": "/gym/mancuerna-par-discos-intercambiables-8kg/",
+      "slug": "mancuerna-par-discos-intercambiables-8kg",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00047": {
+      "url": "/gym/mancuerna-par-discos-intercambiables-10kg/",
+      "slug": "mancuerna-par-discos-intercambiables-10kg",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00048": {
+      "url": "/gym/discos-10kg/",
+      "slug": "discos-10kg",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00051": {
+      "url": "/gym/mancuernas-cano-largo-33cm-7-8cm-d4-d5-d10/",
+      "slug": "mancuernas-cano-largo-33cm-7-8cm-d4-d5-d10",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00052": {
+      "url": "/gym/mancuernas-cano-arandela-32cm/",
+      "slug": "mancuernas-cano-arandela-32cm",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00053": {
+      "url": "/gym/mancuernas-cano-arandela-40cm/",
+      "slug": "mancuernas-cano-arandela-40cm",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00080": {
+      "url": "/gym/mancuerna-hexagonal-cemento-x-kg/",
+      "slug": "mancuerna-hexagonal-cemento-x-kg",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00082": {
+      "url": "/gym/combos-barra-larga-mancuernas-y-discos-10-kilos/",
+      "slug": "combos-barra-larga-mancuernas-y-discos-10-kilos",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00083": {
+      "url": "/gym/abductor-aductor-dual-trabaja-ambos-movimientos-en-un-solo-equipo/",
+      "slug": "abductor-aductor-dual-trabaja-ambos-movimientos-en-un-solo-equipo",
+      "line": "gym",
+      "active": true
+    },
+    "FAB-00055": {
+      "url": "/hogar/mesa-escritorio-100x45x140/",
+      "slug": "mesa-escritorio-100x45x140",
+      "line": "hogar",
+      "active": true
+    },
+    "FAB-00056": {
+      "url": "/hogar/organizador-lavarropa/",
+      "slug": "organizador-lavarropa",
+      "line": "hogar",
+      "active": true
+    },
+    "FAB-00057": {
+      "url": "/hogar/estante-190x150x34-5-niveles/",
+      "slug": "estante-190x150x34-5-niveles",
+      "line": "hogar",
+      "active": true
+    },
+    "FAB-00058": {
+      "url": "/hogar/mesa-ratonera-80x60x55/",
+      "slug": "mesa-ratonera-80x60x55",
+      "line": "hogar",
+      "active": true
+    },
+    "FAB-00059": {
+      "url": "/hogar/rack-para-smart-tv-estilo-industrial-140x70altox40prof/",
+      "slug": "rack-para-smart-tv-estilo-industrial-140x70altox40prof",
+      "line": "hogar",
+      "active": true
+    },
+    "FAB-00061": {
+      "url": "/hogar/alacena-de-cocina/",
+      "slug": "alacena-de-cocina",
+      "line": "hogar",
+      "active": true
+    },
+    "FAB-00062": {
+      "url": "/hogar/escalera-metalica/",
+      "slug": "escalera-metalica",
+      "line": "hogar",
+      "active": true
+    },
+    "FAB-00063": {
+      "url": "/hogar/perchero-para-negocio/",
+      "slug": "perchero-para-negocio",
+      "line": "hogar",
+      "active": true
+    },
+    "FAB-00064": {
+      "url": "/hogar/kit-para-parrilla-palita-y-atizador/",
+      "slug": "kit-para-parrilla-palita-y-atizador",
+      "line": "hogar",
+      "active": true
+    },
+    "FAB-00065": {
+      "url": "/hogar/parrilla-simple/",
+      "slug": "parrilla-simple",
+      "line": "hogar",
+      "active": true
+    },
+    "FAB-00066": {
+      "url": "/hogar/mesa-para-gimnasio/",
+      "slug": "mesa-para-gimnasio",
+      "line": "hogar",
+      "active": true
+    },
+    "FAB-00067": {
+      "url": "/hogar/mesa-de-trabajo-modelo-300-kg/",
+      "slug": "mesa-de-trabajo-modelo-300-kg",
+      "line": "hogar",
+      "active": true
+    },
+    "FAB-00069": {
+      "url": "/hogar/desayunador-con-banquetas/",
+      "slug": "desayunador-con-banquetas",
+      "line": "hogar",
+      "active": true
+    },
+    "FAB-00070": {
+      "url": "/hogar/organizador-estante-para-inodoro/",
+      "slug": "organizador-estante-para-inodoro",
+      "line": "hogar",
+      "active": true
+    },
+    "FAB-00072": {
+      "url": "/hogar/cama-de-una-plaza/",
+      "slug": "cama-de-una-plaza",
+      "line": "hogar",
+      "active": true
+    },
+    "FAB-00074": {
+      "url": "/hogar/mueble-electrico-estante-mesa/",
+      "slug": "mueble-electrico-estante-mesa",
+      "line": "hogar",
+      "active": true
+    },
+    "FAB-00075": {
+      "url": "/hogar/mostrador-de-recepcion/",
+      "slug": "mostrador-de-recepcion",
+      "line": "hogar",
+      "active": true
+    },
+    "FAB-00081": {
+      "url": "/hogar/perchero-loft-industrial-con-ruedas/",
+      "slug": "perchero-loft-industrial-con-ruedas",
+      "line": "hogar",
+      "active": true
+    }
+  }
+}
