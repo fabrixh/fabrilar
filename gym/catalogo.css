@@ -123,3 +123,6 @@ body:has(.lightbox.open) .back-to-top{visibility:hidden}
 .cz-fig:hover .cz-top{fill:var(--card-hover)}
 @media(min-width:900px){.cz-in{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}}
 @media(max-width:768px){#cotizador{padding:3rem 1.25rem}.cz-fig{max-width:340px}}
+
+/* Las tarjetas con ficha conservan navegación nativa. */
+a.product-photo{display:block;text-decoration:none;cursor:pointer}.galeria-nombre a{color:inherit;text-decoration:none}.galeria-nombre a:hover{color:var(--gold)}

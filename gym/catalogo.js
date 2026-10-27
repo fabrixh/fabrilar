@@ -20,7 +20,7 @@ cards.forEach((card) => {
   card.removeAttribute('onclick');
   card.dataset.nombre = title;
   const img = card.querySelector('img');
-  if (img) {
+  if (img && !img.closest('a.product-photo')) {
   const photo = document.createElement('button');
   photo.type = 'button';
   photo.className = 'product-photo';
@@ -52,10 +52,12 @@ cards.forEach((card) => {
     card.querySelector('.product-photo').after(video);
   }
   const name = card.querySelector('.galeria-nombre');
+  if (!name.querySelector('a')) {
   const heading = document.createElement('h3');
   heading.className = name.className;
   heading.textContent = title;
   name.replaceWith(heading);
+  }
   const consult = card.querySelector('.btn-consultar');
   const prices = card.querySelector('.galeria-precio').innerText.replace(/\s+/g, ' ').trim();
   const link = document.createElement('a');
