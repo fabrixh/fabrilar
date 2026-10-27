@@ -111,6 +111,17 @@
     font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;
     letter-spacing:.18em;color:var(--accent);text-align:center;margin-bottom:8px;
   }
+  .sun-head{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:8px}
+  .sun-head .sun-label{margin-bottom:0}
+  #bPlay{
+    flex:none;width:30px;height:30px;border-radius:50%;
+    border:1px solid var(--accent);background:var(--btn);color:var(--accent);
+    font-size:12px;line-height:1;cursor:pointer;display:grid;place-items:center;
+    padding:0;transition:background .2s;
+  }
+  #bPlay:hover{background:var(--btn-hover)}
+  #bPlay.on{background:var(--accent);color:var(--bg)}
+  #bPlay:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
   .sun-row{display:flex;align-items:center;gap:10px;margin:7px 0}
   .sun-row span{
     font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;
@@ -204,9 +215,12 @@
 </nav>
 
 <div id="sunPanel">
-  <div class="sun-label" id="sunLabel">☀ JULIO · 12:00 HS</div>
+  <div class="sun-head">
+    <button id="bPlay" aria-label="Reproducir el día" title="Ver el día completo">▶</button>
+    <div class="sun-label" id="sunLabel">☀ JULIO · 12:00 HS</div>
+  </div>
   <div class="sun-row"><span>MES</span><input type="range" id="sMonth" min="0" max="11" step="1" value="6"></div>
-  <div class="sun-row"><span>HORA</span><input type="range" id="sHour" min="7" max="19" step="0.5" value="12"></div>
+  <div class="sun-row"><span>HORA</span><input type="range" id="sHour" min="5" max="20" step="0.25" value="12"></div>
   <div class="sun-row"><span>ORIENT.</span><input type="range" id="sOrient" min="0" max="355" step="5" value="0"></div>
 </div>
 
@@ -692,7 +706,8 @@
     mFarVeg.color.copy(skyUni.horizonColor.value).lerp(new THREE.Color(0x2c3a26),0.62);
     mFarVeg2.color.copy(skyUni.horizonColor.value).lerp(new THREE.Color(0x2e3b2a),0.45);
     scene.background=null;
-    scene.fog=new THREE.Fog(skyUni.horizonColor.value.getHex(),1500,2600);
+    if(scene.fog)scene.fog.color.copy(skyUni.horizonColor.value);
+    else scene.fog=new THREE.Fog(skyUni.horizonColor.value.getHex(),1500,2600);
   }
 
   /* ---------- camera control ---------- */
@@ -826,8 +841,9 @@
   const keyHome={pos:key.position.clone(),color:key.color.clone(),intensity:key.intensity};
   const cSunset=new THREE.Color(0xff8c42), cNoon=new THREE.Color(0xfff4e0);
 
-  function updateSun(){
-    const m=+sMonth.value, h=+sHour.value, o=+sOrient.value;
+  function updateSun(hOverride){
+    const m=+sMonth.value, o=+sOrient.value;
+    const h=(typeof hOverride==='number')?hOverride:+sHour.value;
     shed.rotation.y=o*Math.PI/180;
     // solar declination for mid-month day
     const N=Math.round(m*30.4+15);
@@ -847,13 +863,48 @@
     key.intensity=sinAlt<=0?0.05:0.55+0.9*t;
     hemi.intensity=sinAlt<=0?0.25:0.4+0.35*t;
     // label
-    const hh=Math.floor(h), mm=h%1?'30':'00';
+    let mins=Math.round(h*60/5)*5;
+    const hh=Math.floor(mins/60), mm=String(mins%60).padStart(2,'0');
     const bearing=(180-o+360)%360;
     const rumbo=RUMBOS[Math.round(bearing/45)%8];
     sunLabel.textContent=(sinAlt<=0?'🌙 ':'☀ ')+MESES[m]+' · '+hh+':'+mm+' HS · PUERTAS AL '+rumbo;
     updateSky();
   }
   [sMonth,sHour,sOrient].forEach(s=>s.addEventListener('input',()=>{if(sunMode)updateSun();}));
+
+  /* ---------- play: el día avanza solo, amanecer → atardecer en bucle ---------- */
+  const DAY_SECONDS=20;               // duración de un día completo en pantalla
+  const bPlay=document.getElementById('bPlay');
+  let playing=false, playHour=12, firstPlay=true;
+  function dayWindow(){                // amanecer/atardecer (hora solar) según el mes
+    const N=Math.round(+sMonth.value*30.4+15);
+    const dec=-23.44*Math.PI/180*Math.cos(2*Math.PI*(N+10)/365);
+    const cosH=Math.min(1,Math.max(-1,-Math.tan(LAT)*Math.tan(dec)));
+    const half=Math.acos(cosH)*12/Math.PI;           // horas desde el mediodía
+    return {from:Math.max(+sHour.min,12-half-0.3), to:Math.min(+sHour.max,12+half+0.3)};
+  }
+  function setPlaying(on){
+    playing=on;
+    bPlay.classList.toggle('on',on);
+    bPlay.textContent=on?'❚❚':'▶';
+    bPlay.setAttribute('aria-label',on?'Pausar el día':'Reproducir el día');
+    if(on){
+      const w=dayWindow(), h=+sHour.value;
+      // la primera vez (o si la hora está fuera del día) arranca al amanecer; si no, sigue desde donde estaba
+      playHour=(!firstPlay&&h>=w.from&&h<w.to-0.05)?h:w.from;
+      firstPlay=false;
+    }
+  }
+  bPlay.onclick=()=>setPlaying(!playing);
+  sHour.addEventListener('pointerdown',()=>{if(playing)setPlaying(false);});
+  function stepDay(dt){
+    if(!playing||!sunMode)return;
+    const w=dayWindow();
+    playHour+=dt*(w.to-w.from)/DAY_SECONDS;
+    if(playHour>=w.to)playHour=w.from;               // bucle: vuelve a amanecer
+    sHour.value=playHour;            // el slider acompaña (redondeado a su paso)
+    updateSun(playHour);             // el sol usa la hora continua, sin saltos
+  }
   bSun.onclick=()=>{
     sunMode=!sunMode;
     bSun.classList.toggle('on',sunMode);
@@ -862,6 +913,7 @@
     if(sunMode){
       updateSun();
     }else{
+      setPlaying(false);
       key.position.copy(keyHome.pos);
       key.color.copy(keyHome.color);
       key.intensity=keyHome.intensity;
@@ -928,8 +980,12 @@
   window.addEventListener('resize',resize);
   resize();
 
-  function animate(){
+  let lastT=performance.now();
+  function animate(now){
     requestAnimationFrame(animate);
+    now=now||performance.now();
+    const dt=Math.min(0.1,(now-lastT)/1000); lastT=now;
+    stepDay(dt);
     if(auto)tTheta+=0.0032;
     applyCam();
     const goal=doorsOpen?1.9:0;               // ~109°
