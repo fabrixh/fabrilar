@@ -432,6 +432,12 @@
       "slug": "sillon-de-cuadriceps-a-discos",
       "line": "gym",
       "active": true
+    },
+    "FAB-00085": {
+      "url": "/gym/banco-plano-regulable/",
+      "slug": "banco-plano-regulable",
+      "line": "gym",
+      "active": true
     }
   }
 }
