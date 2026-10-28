@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-27T06:58:09.278Z",
+  "capturedAt": "2026-10-28T13:51:38.518Z",
   "products": [
     {
       "code": "FAB-00001",
@@ -242,7 +242,7 @@
       "line": "gym",
       "category": "Piernas y glúteos",
       "description": "Sillón para entrenamiento de cuádriceps.",
-      "price": 350000,
+      "price": 550000,
       "currency": "ARS",
       "available": false,
       "image": "/img/catalogo/5bc10136bece1a58.webp",
@@ -846,6 +846,23 @@
         "/img/catalogo/78744f253e3a1046.webp",
         "/img/catalogo/52ca2d73d97c5868.webp",
         "/img/catalogo/36b31fd8000400ea.webp"
+      ]
+    },
+    {
+      "code": "FAB-00084",
+      "name": "Sillon de cuadriceps a discos",
+      "line": "gym",
+      "category": "Piernas y glúteos",
+      "description": "Sillón para entrenamiento de cuádriceps.",
+      "price": 400000,
+      "regularPrice": 450000,
+      "currency": "ARS",
+      "available": false,
+      "image": "/img/catalogo/2e112c1bf03e5ba6.webp",
+      "slug": "sillon-de-cuadriceps-a-discos",
+      "url": "/gym/sillon-de-cuadriceps-a-discos/",
+      "images": [
+        "/img/catalogo/2e112c1bf03e5ba6.webp"
       ]
     },
     {

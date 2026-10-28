@@ -426,6 +426,12 @@
       "slug": "perchero-loft-industrial-con-ruedas",
       "line": "hogar",
       "active": true
+    },
+    "FAB-00084": {
+      "url": "/gym/sillon-de-cuadriceps-a-discos/",
+      "slug": "sillon-de-cuadriceps-a-discos",
+      "line": "gym",
+      "active": true
     }
   }
 }
