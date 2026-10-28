@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-28T14:20:23.506Z",
+  "capturedAt": "2026-10-28T14:25:00.594Z",
   "products": [
     {
       "code": "FAB-00001",
@@ -44,8 +44,8 @@
       "line": "gym",
       "category": "Bancos",
       "description": "Banco multiangular con respaldo regulable para entrenamiento.",
-      "price": 160000,
-      "regularPrice": 180000,
+      "price": 190000,
+      "regularPrice": 210000,
       "currency": "ARS",
       "available": true,
       "image": "/img/catalogo/4a29666b46650b1d.webp",
@@ -873,8 +873,8 @@
       "line": "gym",
       "category": "Bancos",
       "description": "Banco plano regulable multiples posiciones, inclinado, plano, declinado y 90 grados para una gran variedad de ejercicios",
-      "price": 170000,
-      "regularPrice": 190000,
+      "price": 180000,
+      "regularPrice": 200000,
       "currency": "ARS",
       "available": false,
       "image": "/img/catalogo/d82f390b1ccda04f.webp",
