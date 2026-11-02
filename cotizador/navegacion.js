@@ -1,3 +1,10 @@
+
+// El menú móvil abre el catálogo completo de cada línea.
+document.querySelectorAll('#mobileMenu a, #site-mobile-menu a').forEach(link => {
+  const target = link.getAttribute('href');
+  if (['#gym', '/#gym'].includes(target)) link.setAttribute('href', '/gym/');
+  if (['#hogar', '/#hogar'].includes(target)) link.setAttribute('href', '/hogar/');
+});
 /* Navegación independiente de geometría, precios, cuotas y configuración 3D. */
 (() => {
  const header=document.querySelector('.site-header');if(!header)return;

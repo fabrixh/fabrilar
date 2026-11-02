@@ -1,3 +1,10 @@
+
+// El menú móvil abre el catálogo completo de cada línea.
+document.querySelectorAll('#mobileMenu a, #site-mobile-menu a').forEach(link => {
+  const target = link.getAttribute('href');
+  if (['#gym', '/#gym'].includes(target)) link.setAttribute('href', '/gym/');
+  if (['#hogar', '/#hogar'].includes(target)) link.setAttribute('href', '/hogar/');
+});
 /* Ficha independiente: no ejecuta el código que transforma tarjetas del catálogo. */
 function toggleTheme(){const next=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=next;try{localStorage.setItem('fabrilar-theme',next);}catch(_){}}
 try{const saved=localStorage.getItem('fabrilar-theme');if(['dark','light'].includes(saved))document.documentElement.dataset.theme=saved;}catch(_){}
