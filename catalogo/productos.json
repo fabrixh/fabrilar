@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-28T17:04:50.707Z",
+  "capturedAt": "2026-11-02T04:21:30.259Z",
   "products": [
     {
       "code": "FAB-00001",
@@ -886,6 +886,23 @@
         "/img/catalogo/cf7a2b8c4ecd5e40.webp",
         "/img/catalogo/c871f6c2a83b7af2.webp",
         "/img/catalogo/b73d96620b531800.webp"
+      ]
+    },
+    {
+      "code": "FAB-00086",
+      "name": "Máquina Para Pantorrillas Sentado Gym",
+      "line": "gym",
+      "category": "Piernas y glúteos",
+      "description": "Trabajo aislado de gemelos sentado. Compacta y ergonómica. No incluye discos",
+      "price": 239000,
+      "regularPrice": 270000,
+      "currency": "ARS",
+      "available": false,
+      "image": "/img/catalogo/381422d087a78722.webp",
+      "slug": "maquina-para-pantorrillas-sentado-gym",
+      "url": "/gym/maquina-para-pantorrillas-sentado-gym/",
+      "images": [
+        "/img/catalogo/381422d087a78722.webp"
       ]
     },
     {

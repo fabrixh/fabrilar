@@ -438,6 +438,12 @@
       "slug": "banco-plano-regulable",
       "line": "gym",
       "active": true
+    },
+    "FAB-00086": {
+      "url": "/gym/maquina-para-pantorrillas-sentado-gym/",
+      "slug": "maquina-para-pantorrillas-sentado-gym",
+      "line": "gym",
+      "active": true
     }
   }
 }
