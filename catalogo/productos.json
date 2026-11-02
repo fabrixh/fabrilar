@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-11-02T04:34:09.469Z",
+  "capturedAt": "2026-11-02T04:47:39.712Z",
   "products": [
     {
       "code": "FAB-00001",
@@ -181,11 +181,12 @@
       "regularPrice": 229000,
       "currency": "ARS",
       "available": true,
-      "image": "/img/catalogo/4f0ee421e3e20098.webp",
+      "image": "/img/catalogo/dc700f9d6e95964b.webp",
       "slug": "poleas-altas-y-bajas-de-pared",
       "url": "/gym/poleas-altas-y-bajas-de-pared/",
       "images": [
-        "/img/catalogo/4f0ee421e3e20098.webp"
+        "/img/catalogo/dc700f9d6e95964b.webp",
+        "/img/catalogo/2c083ee7403f1c7c.webp"
       ]
     },
     {
