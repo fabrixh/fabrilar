@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-11-02T04:21:30.259Z",
+  "capturedAt": "2026-11-02T04:34:09.469Z",
   "products": [
     {
       "code": "FAB-00001",
@@ -548,17 +548,19 @@
     },
     {
       "code": "FAB-00034",
-      "name": "Barra larga agarre espalda polea",
+      "name": "Barra larga dorsalera agarre espalda polea",
       "line": "gym",
       "category": "Agarres",
       "description": "Barra de agarre para ejercicios de espalda en polea.",
       "price": 30000,
       "currency": "ARS",
       "available": true,
-      "image": null,
+      "image": "/img/catalogo/2080eea861e86c1c.webp",
       "slug": "barra-larga-agarre-espalda-polea",
       "url": "/gym/barra-larga-agarre-espalda-polea/",
-      "images": []
+      "images": [
+        "/img/catalogo/2080eea861e86c1c.webp"
+      ]
     },
     {
       "code": "FAB-00035",
@@ -569,10 +571,29 @@
       "price": 25000,
       "currency": "ARS",
       "available": true,
-      "image": null,
+      "image": "/img/catalogo/5b263bfa0e26b006.webp",
       "slug": "soga-con-agarre",
       "url": "/gym/soga-con-agarre/",
-      "images": []
+      "images": [
+        "/img/catalogo/5b263bfa0e26b006.webp"
+      ]
+    },
+    {
+      "code": "FAB-00060",
+      "name": "Barra dorsalera con estribos",
+      "line": "gym",
+      "category": "Agarres",
+      "description": "Barra de agarre para ejercicios de espalda en polea.",
+      "price": 50000,
+      "currency": "ARS",
+      "available": false,
+      "image": "/img/catalogo/ce757d543816d936.webp",
+      "slug": "barra-dorsalera-con-estribos",
+      "url": "/gym/barra-dorsalera-con-estribos/",
+      "images": [
+        "/img/catalogo/ce757d543816d936.webp",
+        "/img/catalogo/80713d387e76a3eb.webp"
+      ]
     },
     {
       "code": "FAB-00036",

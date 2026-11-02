@@ -444,6 +444,12 @@
       "slug": "maquina-para-pantorrillas-sentado-gym",
       "line": "gym",
       "active": true
+    },
+    "FAB-00060": {
+      "url": "/gym/barra-dorsalera-con-estribos/",
+      "slug": "barra-dorsalera-con-estribos",
+      "line": "gym",
+      "active": true
     }
   }
 }
