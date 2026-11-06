@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-11-06T16:17:47.327Z",
+  "capturedAt": "2026-11-06T16:53:20.646Z",
   "products": [
     {
       "code": "FAB-00001",
@@ -160,8 +160,8 @@
       "line": "gym",
       "category": "Poleas",
       "description": "Torre de poleas regulables para entrenamiento.",
-      "price": 649000,
-      "regularPrice": 699000,
+      "price": 699000,
+      "regularPrice": 799000,
       "currency": "ARS",
       "available": false,
       "image": "/img/catalogo/0099ea7248ec6a4d.webp",
@@ -932,7 +932,7 @@
       "name": "Torre de Poleas regulables",
       "line": "gym",
       "category": "Poleas",
-      "description": "Entrená espalda, brazos, pecho y hombros con un solo equipo. Regulá la altura de las poleas para cambiar el ángulo de tiro y hacer ejercicios como remos, cruces, curls de bíceps y extensiones de tríceps. Mirá el video para ver la torre en acción. Si querés saber si entra en tu espacio, escribinos por WhatsApp y te confirmamos las medidas, qué incluye y el plazo de fabricación.",
+      "description": "Torre de poleas regulables para entrenamiento.",
       "price": 899000,
       "regularPrice": 999000,
       "currency": "ARS",
