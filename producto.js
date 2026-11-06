@@ -23,6 +23,21 @@ document.getElementById('share')?.addEventListener('click',async()=>{
 
 
 const galleryImage=document.getElementById('main-photo');
+if (galleryImage && document.querySelector('link[rel="canonical"]')?.href ===
+    'https://fabrilar.com.ar/gym/torre-de-poleas-regulables-fab-00088/') {
+  const stage = galleryImage.closest('.gallery-stage');
+  if (stage) {
+    const video = document.createElement('a');
+    video.className = 'product-video';
+    video.href = 'https://www.instagram.com/p/Db3QEKfBPWd/';
+    video.target = '_blank';
+    video.rel = 'noopener noreferrer';
+    video.textContent = '▶ VIDEO ↗';
+    video.setAttribute('aria-label', 'Ver video de la torre en Instagram (abre en otra pestaña)');
+    stage.append(video);
+  }
+}
+
 const thumbnails=[...document.querySelectorAll('.photo-thumbnail')];
 function showProductPhoto(index){if(!galleryImage||!thumbnails.length)return;const selected=(index+thumbnails.length)%thumbnails.length;galleryImage.src=thumbnails[selected].dataset.image;thumbnails.forEach((button,i)=>button.setAttribute('aria-pressed',String(i===selected)));document.getElementById('photo-position').textContent='Foto '+(selected+1)+' de '+thumbnails.length;}
 thumbnails.forEach((button,index)=>button.addEventListener('click',()=>showProductPhoto(index)));
