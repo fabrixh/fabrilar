@@ -38,9 +38,9 @@ cards.forEach((card) => {
     abrirLightbox(img.src, title, card.dataset.desc, visiblePhotos.indexOf(card));
   });
   }
-  // Videos destacados solo en la portada; cada enlace conserva la foto ampliable.
-  const videoUrls = {"FAB-00083":"https://www.instagram.com/p/DdNXZReBxAt/","FAB-00002":"https://www.instagram.com/p/DaGy3DtJdLw/","FAB-00017":"https://www.instagram.com/p/DW7_s2tDpbM/"};
-  if (isHomePage && card.closest('#gym') && videoUrls[card.dataset.codigo]) {
+  // Videos destacados en portada y video de la torre en su tarjeta del catálogo.
+  const videoUrls = {"FAB-00083":"https://www.instagram.com/p/DdNXZReBxAt/","FAB-00002":"https://www.instagram.com/p/DaGy3DtJdLw/","FAB-00017":"https://www.instagram.com/p/DW7_s2tDpbM/","FAB-00088":"https://www.instagram.com/p/Db3QEKfBPWd/"};
+  if ((isHomePage || card.dataset.codigo === 'FAB-00088') && card.closest('#gym') && videoUrls[card.dataset.codigo]) {
     card.querySelector('.product-video')?.remove();
     const video = document.createElement('a');
     video.className = 'product-video';
