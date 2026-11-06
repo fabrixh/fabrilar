@@ -455,6 +455,12 @@
       "url": "/gym/torre-de-poleas-regulables-fab-00087/",
       "slug": "torre-de-poleas-regulables-fab-00087",
       "line": "gym",
+      "active": false
+    },
+    "FAB-00088": {
+      "url": "/gym/torre-de-poleas-regulables-fab-00088/",
+      "slug": "torre-de-poleas-regulables-fab-00088",
+      "line": "gym",
       "active": true
     }
   }

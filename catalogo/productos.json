@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-11-06T16:00:34.985Z",
+  "capturedAt": "2026-11-06T16:17:47.327Z",
   "products": [
     {
       "code": "FAB-00001",
@@ -928,7 +928,7 @@
       ]
     },
     {
-      "code": "FAB-00087",
+      "code": "FAB-00088",
       "name": "Torre de Poleas regulables",
       "line": "gym",
       "category": "Poleas",
@@ -938,10 +938,13 @@
       "currency": "ARS",
       "available": false,
       "image": "/img/catalogo/9ade39e6ea632b7d.webp",
-      "slug": "torre-de-poleas-regulables-fab-00087",
-      "url": "/gym/torre-de-poleas-regulables-fab-00087/",
+      "slug": "torre-de-poleas-regulables-fab-00088",
+      "url": "/gym/torre-de-poleas-regulables-fab-00088/",
       "images": [
-        "/img/catalogo/9ade39e6ea632b7d.webp"
+        "/img/catalogo/9ade39e6ea632b7d.webp",
+        "/img/catalogo/1303b0c81d759a0d.webp",
+        "/img/catalogo/9971f4a2ef92b01e.webp",
+        "/img/catalogo/511e569bc3357717.webp"
       ]
     },
     {
