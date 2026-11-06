@@ -450,6 +450,12 @@
       "slug": "barra-dorsalera-con-estribos",
       "line": "gym",
       "active": true
+    },
+    "FAB-00087": {
+      "url": "/gym/torre-de-poleas-regulables-fab-00087/",
+      "slug": "torre-de-poleas-regulables-fab-00087",
+      "line": "gym",
+      "active": true
     }
   }
 }
