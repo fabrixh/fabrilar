@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-11-06T16:53:20.646Z",
+  "capturedAt": "2026-11-16T01:42:48.395Z",
   "products": [
     {
       "code": "FAB-00001",
@@ -24,8 +24,8 @@
       "line": "gym",
       "category": "Bancos",
       "description": "Banco de pecho multifuncional rebatible con accesorio para entrenamiento de piernas.",
-      "price": 219000,
-      "regularPrice": 229000,
+      "price": 299000,
+      "regularPrice": 329000,
       "currency": "ARS",
       "available": true,
       "image": "/img/catalogo/14ee1b2e47c397a1.webp",
