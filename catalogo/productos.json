@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-11-16T01:45:04.573Z",
+  "capturedAt": "2026-11-16T01:46:52.837Z",
   "products": [
     {
       "code": "FAB-00001",
@@ -95,8 +95,8 @@
       "line": "gym",
       "category": "Bancos",
       "description": "Banco Scott regulable con apoyo tapizado para entrenamiento de brazos.",
-      "price": 119000,
-      "regularPrice": 140000,
+      "price": 149000,
+      "regularPrice": 170000,
       "currency": "ARS",
       "available": false,
       "image": "/img/catalogo/24740c8123e2ce17.webp",
@@ -128,7 +128,7 @@
       "line": "gym",
       "category": "Bancos",
       "description": "Banco de pecho multifuncional para entrenamiento.",
-      "price": 269000,
+      "price": 289000,
       "currency": "ARS",
       "available": false,
       "image": "/img/catalogo/e6a4bf47eb89ae0f.webp",
