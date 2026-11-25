@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-11-16T01:46:52.837Z",
+  "capturedAt": "2026-11-25T13:46:31.483Z",
   "products": [
     {
       "code": "FAB-00001",
@@ -211,7 +211,8 @@
       "line": "gym",
       "category": "Smith y jaulas",
       "description": "Jaula Smith con poleas dobles altas y bajas.",
-      "price": 950000,
+      "price": 1200000,
+      "regularPrice": 1400000,
       "currency": "ARS",
       "available": false,
       "image": "/img/catalogo/89bbcc7b17149f20.webp",
@@ -227,7 +228,7 @@
       "line": "gym",
       "category": "Smith y jaulas",
       "description": "Máquina Smith con rodamientos lineales.",
-      "price": 900000,
+      "price": 1690000,
       "currency": "ARS",
       "available": false,
       "image": "/img/catalogo/93ea44ae436c2204.webp",
